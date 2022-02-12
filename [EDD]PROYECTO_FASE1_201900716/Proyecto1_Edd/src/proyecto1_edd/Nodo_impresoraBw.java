@@ -8,28 +8,18 @@ package proyecto1_edd;
  *
  * @author Kelly
  */
-public class Cliente {
+public class Nodo_impresoraBw {
 
     private int id_cliente;
     private String nombre_cliente;
-    private int img_color;
     private int img_bw;
-    private int totalImagenes;
+    private Nodo_impresoraBw siguiente;
 
-    public Cliente(int id_cliente, String nombre_cliente, int img_color, int img_bw, int totalImgenes) {
+    public Nodo_impresoraBw(int id_cliente, String nombre_cliente, int img_bw) {
         this.id_cliente = id_cliente;
         this.nombre_cliente = nombre_cliente;
-        this.img_color = img_color;
         this.img_bw = img_bw;
-        this.totalImagenes = totalImgenes;
-    }
-
-    public int getTotalImagenes() {
-        return totalImagenes;
-    }
-
-    public void setTotalImagenes(int totalImagenes) {
-        this.totalImagenes = totalImagenes;
+        this.siguiente = null;
     }
 
     public int getId_cliente() {
@@ -48,14 +38,6 @@ public class Cliente {
         this.nombre_cliente = nombre_cliente;
     }
 
-    public int getImg_color() {
-        return img_color;
-    }
-
-    public void setImg_color(int img_color) {
-        this.img_color = img_color;
-    }
-
     public int getImg_bw() {
         return img_bw;
     }
@@ -64,12 +46,12 @@ public class Cliente {
         this.img_bw = img_bw;
     }
 
-    public void mostrarCliente() {
-        System.out.println("id" + this.getId_cliente());
-        System.out.println("nombre:" + this.getNombre_cliente());
-        System.out.println("Total de imagenes"+this.getTotalImagenes());
-        System.out.println("Img-color:" + this.getImg_color());
-        System.out.println("Img-bw:" + this.getImg_bw());
-
+    public Nodo_impresoraBw getSiguiente() {
+        return siguiente;
     }
+
+    public void setSiguiente(Nodo_impresoraBw siguiente) {
+        this.siguiente = siguiente;
+    }
+
 }

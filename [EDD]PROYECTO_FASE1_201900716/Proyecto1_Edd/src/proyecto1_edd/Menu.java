@@ -14,7 +14,7 @@ public class Menu {
     
     public static int cont1 = 0;
     public static int cont2 = 0;
-    public static int pasos = 0;
+    public static int pasos =1;
     
     public void menu() {
         Scanner entrada = new Scanner(System.in);
@@ -39,8 +39,9 @@ public class Menu {
                     break;
                 case "2":
                     System.out.println("Ejecutar pasosss\n");
+                    System.out.println(">>>>>>>>>>>>>>>>>>>>>Paso"+this.pasos+"<<<<<<<<<<<<<<<<<<");
                     Operaciones op = new Operaciones();
-                    op.avanzarpasos(pasos++);
+                    op.avanzarpasos(pasos);
 //                    op.pasos(pasos++);
 //                    op.ingresarImagPilas();
 //                    CargaMasiva.ventanilla.mostrarLista();

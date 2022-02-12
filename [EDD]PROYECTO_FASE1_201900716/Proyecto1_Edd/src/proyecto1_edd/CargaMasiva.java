@@ -17,6 +17,8 @@ import org.json.JSONObject;
 public class CargaMasiva {
  public static Cola_clientes cola = new Cola_clientes();
  public static ListaVentanillas ventanilla = new ListaVentanillas();
+public static ColaImpresora_bw impresora_bw= new ColaImpresora_bw();
+public static ColaImpresora_c impresora_c= new ColaImpresora_c();
     public static String abrirArchivo() {
 
         Scanner entrada = new Scanner(System.in);

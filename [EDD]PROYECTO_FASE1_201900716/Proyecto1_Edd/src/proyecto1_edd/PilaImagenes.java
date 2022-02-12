@@ -45,10 +45,40 @@ public class PilaImagenes {
             System.out.println("La pila esta vacia");
 
         } else {
+
             this.cima = this.cima.getSiguiente();
 
         }
 
+    }
+
+    public void retornarImagen(String nombreCliente) {
+        NodoPilaI temp = this.cima;
+        //Cliente cliente = null;
+
+        while (temp != null) {
+            if (temp.getNombre_cliente().equals(nombreCliente)) {
+                if (temp.getImg_color() == 2) {
+                    //cliente = new Cliente(temp.getId_cliente(), temp.getNombre_cliente(), temp.getImg_color(), temp.getImg_bw(), temp.getImg_color() + temp.getImg_bw());
+                    CargaMasiva.impresora_c.encolar(temp.getId_cliente(), temp.getNombre_cliente(), temp.getImg_color());
+                    this.pop();
+                } else {
+                    if (temp.getImg_bw() == 1) {
+                        System.out.println("imagen blanco y negros");
+                        //cliente = new Cliente(temp.getId_cliente(), temp.getNombre_cliente(), temp.getImg_color(), temp.getImg_bw(), temp.getImg_color() + temp.getImg_bw());
+                        CargaMasiva.impresora_bw.encolar(temp.getId_cliente(), temp.getNombre_cliente(), temp.getImg_bw());
+
+                        this.pop();
+                    }
+
+                }
+//                this.pop();
+            }
+
+            temp = temp.getSiguiente();
+
+        }
+        //return cliente;
     }
 
     public void mostrarPila() {
@@ -57,10 +87,10 @@ public class PilaImagenes {
         while (temp != null) {
 
             System.out.println(temp.getNombre_cliente());
-            System.out.println(temp.getImg_bw());
-            System.out.println(temp.getImg_color());
-            //this.pop();
+            System.out.println("color: " + temp.getImg_color());
+            System.out.println("bw " + temp.getImg_bw());
 
+            //this.pop();
             temp = temp.getSiguiente();
 
         }

@@ -70,7 +70,7 @@ public class ListaVentanillas {
             //this.pop();
             if (temp.getPila().PilaVacia() == true) {
                 pila = temp.getVentanillas();
-                System.out.println("ventanillas vacia:" + temp.getVentanillas());
+                //System.out.println("ventanillas vacia:" + temp.getVentanillas());
                 temp = null;
                 break;
 
