@@ -10,7 +10,7 @@ package proyecto1_edd;
  */
 public class PilaImagenes {
 
-    private NodoPilaI cima;
+     NodoPilaI cima;
 
     public PilaImagenes() {
 

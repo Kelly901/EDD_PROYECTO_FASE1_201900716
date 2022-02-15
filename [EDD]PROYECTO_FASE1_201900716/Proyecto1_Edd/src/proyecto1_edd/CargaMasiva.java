@@ -19,6 +19,8 @@ public class CargaMasiva {
  public static ListaVentanillas ventanilla = new ListaVentanillas();
 public static ColaImpresora_bw impresora_bw= new ColaImpresora_bw();
 public static ColaImpresora_c impresora_c= new ColaImpresora_c();
+public static ListaCircular listaCicular= new ListaCircular();
+
     public static String abrirArchivo() {
 
         Scanner entrada = new Scanner(System.in);

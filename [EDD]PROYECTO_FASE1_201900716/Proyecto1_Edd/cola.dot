@@ -1,0 +1,8 @@
+digraph G{
+label="Estado de la cola";
+node[shape=box];
+
+{rank=same;
+
+}
+}

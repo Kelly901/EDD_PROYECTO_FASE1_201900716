@@ -1,0 +1,22 @@
+digraph G{
+label="Cola de impresion a color";
+node[shape=box];
+n1872034366[label="Juan Perez
+IMG C "];
+n1581781576[label="Juan Perez
+IMG C "];
+n1670675563[label="Andres Lopez
+IMG C "];
+n723074861[label="Andres Lopez
+IMG C "];
+n895328852[label="Andres Lopez
+IMG C "];
+
+{rank=same;
+n1581781576->n1872034366;
+n1670675563->n1581781576;
+n723074861->n1670675563;
+n895328852->n723074861;
+
+}
+}

@@ -1,0 +1,12 @@
+digraph G{
+label="Estado de la cola";
+node[shape=box];
+nV1627674070[label="ventanilla 1"];
+nV1360875712[label="ventanilla 2"];
+nP1725154839[label="IMG C"];
+
+nV1627674070->nV1360875712;
+nV1360875712->nP1725154839;
+
+
+}

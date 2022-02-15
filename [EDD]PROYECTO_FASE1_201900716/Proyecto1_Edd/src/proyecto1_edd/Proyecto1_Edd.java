@@ -14,16 +14,13 @@ public class Proyecto1_Edd {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
 
-        //System.out.println("cambio10002");
         Menu menu = new Menu();
         menu.menu();
-
 //CargaMasiva cargar=new CargaMasiva();
-
 //cargar.abrirArchivo();
 
+      
 
     }
 

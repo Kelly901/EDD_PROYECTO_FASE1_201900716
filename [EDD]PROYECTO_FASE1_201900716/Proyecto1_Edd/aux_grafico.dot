@@ -1,0 +1,33 @@
+digraph G{node[shape=box];
+subgraph cluster_1 {
+label="Estado de la cola";
+n1639705018[label="Luiz Higueros
+Imagen C: 2
+Imagen bw: 1"];
+n1627674070[label="Maria Hernandez
+Imagen C: 2
+Imagen bw: 0"];
+
+{rank=same;
+n1627674070->n1639705018;
+
+}}subgraph cluster_2 {
+label="Ventanas ";
+nV1360875712[label="ventanilla 1"];
+nP1580066828[label="IMG C"];
+nP491044090[label="IMG C"];
+nP644117698[label="IMG C"];
+nV1625635731[label="ventanilla 2"];
+nP1872034366[label="IMG C"];
+nP1581781576[label="IMG C"];
+
+nV1360875712->nV1625635731;
+nV1360875712->nP1580066828;
+nP1580066828->nP491044090;
+nV1360875712->nP491044090;
+nP491044090->nP644117698;
+nV1625635731->nP1872034366;
+nP1872034366->nP1581781576;
+}
+
+}

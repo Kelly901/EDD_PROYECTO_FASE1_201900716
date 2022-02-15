@@ -1,0 +1,13 @@
+digraph G{
+label="Cola de impresion BW";
+node[shape=box];
+n1304836502[label="Andres Lopez
+IMG Bw "];
+n225534817[label="Andres Lopez
+IMG Bw "];
+
+{rank=same;
+n225534817->n1304836502;
+
+}
+}

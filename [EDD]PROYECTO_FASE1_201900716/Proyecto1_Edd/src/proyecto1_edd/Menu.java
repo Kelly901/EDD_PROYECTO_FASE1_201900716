@@ -14,7 +14,7 @@ public class Menu {
     
     public static int cont1 = 0;
     public static int cont2 = 0;
-    public static int pasos =1;
+    public static int pasos = 1;
     
     public void menu() {
         Scanner entrada = new Scanner(System.in);
@@ -32,6 +32,7 @@ public class Menu {
                     System.out.println("Parametros iniciales\n");
                     parametrosIniciales();
                     this.linea();
+//C:\Users\Kelly\Desktop\Proyecto_Edd\[EDD]PROYECTO_FASE1_201900716\Proyecto1_Edd\clientes_prueba.json
 
                     //a.Carga masiva de clientes
                     //CargaMasiva.abrirArchivo();
@@ -39,9 +40,10 @@ public class Menu {
                     break;
                 case "2":
                     System.out.println("Ejecutar pasosss\n");
-                    System.out.println(">>>>>>>>>>>>>>>>>>>>>Paso"+this.pasos+"<<<<<<<<<<<<<<<<<<");
+                    System.out.println(">>>>>>>>>>>>>>>>>>>>>Paso" + this.pasos + "<<<<<<<<<<<<<<<<<<");
                     Operaciones op = new Operaciones();
                     op.avanzarpasos(pasos);
+
 //                    op.pasos(pasos++);
 //                    op.ingresarImagPilas();
 //                    CargaMasiva.ventanilla.mostrarLista();
@@ -53,11 +55,31 @@ public class Menu {
                     break;
                 case "4":
                     System.out.println("Reportes\n");
+                    Reportes rep = new Reportes();
+                    rep.crearGrafo("Colas.jpg", "cola", rep.generarGrafos());
+                    rep.crearGrafo("ventanilla.jpg", "ventanilla", rep.GrafoVentanilla());
+                    rep.crearGrafo("impresoraC.jpg", "impresoraC", rep.generarGrafosImpresoraC());
+                    rep.crearGrafo("impresoraBw.jpg", "impresoraBw", rep.generarGrafosImpresoraBw());
+                    
                     this.linea();
                     
                     break;
                 case "5":
                     System.out.println(this.acerDe());
+//lista
+                    ListaEsperaS lis = new ListaEsperaS();
+                    ListaEsperaS lis2 = new ListaEsperaS();
+                    //cliente
+
+                    Cliente c1 = new Cliente(1, "D", 1, 2, 3);
+                    Cliente cl2 = new Cliente(2, "J", 3, 1, 1);
+                    lis2.insertar(cl2);
+                    lis2.insertar(c1);
+                    CargaMasiva.listaCicular.insertar(lis, c1);
+                    CargaMasiva.listaCicular.insertar(lis2, cl2);
+
+                    
+                    CargaMasiva.listaCicular.mostrar();
                     this.linea();
                     break;
                 case "6":

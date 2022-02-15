@@ -92,20 +92,24 @@ public class Operaciones {
                 if (temp.getCliente().getNombre_cliente().equals(nombre)) {
                     if (temp.getCliente().getImg_color() == 0 && temp.getCliente().getImg_bw() == 0) {
                         //cliente = (Cliente) temp.getPila().retornarImagen(temp.getCliente().getNombre_cliente(),2);
+
                         temp.getPila().retornarImagen(temp.getCliente().getNombre_cliente());
+//
+                        ListaEsperaS lista = new ListaEsperaS();
+                        //lista.insertar(temp.getCliente());
+                        CargaMasiva.listaCicular.insertar(lista, temp.getCliente());
+                         System.out.println(lista);
+                        CargaMasiva.listaCicular.mostrar();
+//
+//
+
+//
                         CargaMasiva.impresora_c.mostrar();
                         CargaMasiva.impresora_bw.mostrar();
                         //Menu.pasos += 1;
                         System.err.println(">>>>>>Pila vacia<<<<<");
                         temp.setCliente(null);
                         //CargaMasiva.impresora_c.encolar(cliente.getId_cliente(), cliente.getNombre_cliente(), cliente.getImg_color());
-//                } else {
-//                    if (temp.getCliente().getImg_bw() == 0) {
-//                        //cliente = (Cliente) temp.getPila().retornarImagen(temp.getCliente().getNombre_cliente(),1);
-//                        temp.getPila().retornarImagen(temp.getCliente().getNombre_cliente(), 1);
-//                        //CargaMasiva.impresora_bw.encolar(cliente.getId_cliente(), cliente.getNombre_cliente(), cliente.getImg_color());
-//                        CargaMasiva.impresora_bw.mostrar();
-//                    }
 
                     }
                 }
@@ -118,7 +122,13 @@ public class Operaciones {
     public void avanzarpasos(int pasos) {
         NodoVentanilla temp = CargaMasiva.ventanilla.cabeza;
 //Enviar las imagenes de la pila a su respectiva impresora
-
+        if (CargaMasiva.impresora_c.colaVacia() == false) {
+            enviarClienteSalaEspera();
+            System.out.println("Estado actual de la impresora");
+            CargaMasiva.listaCicular.mostrar();
+            System.out.println("_____________");
+            CargaMasiva.impresora_c.mostrar();
+        }
         guardarImg_ColasImpresion();
         if (temp.getCliente() != null) {
             // System.out.println("pasos" + pasos);
@@ -131,6 +141,7 @@ public class Operaciones {
 
     }
 
+//Borrar este metodo no se utliza
     public String nombre_cliente() {
         NodoVentanilla temp = CargaMasiva.ventanilla.cabeza;
         String nombre = "";
@@ -148,5 +159,52 @@ public class Operaciones {
 
         return nombre;
 
+    }
+
+//
+    public void enviarClienteSalaEspera() {
+
+        NodoCircular temp = CargaMasiva.listaCicular.primero;
+        Nodo_impresoraC impresoraC = CargaMasiva.impresora_c.frente;
+  if (impresoraC.getNombre_cliente().equals(temp.getCliente().getNombre_cliente())) {
+        while (temp.getSiguiente() != CargaMasiva.listaCicular.primero) {
+    
+            if (impresoraC.getImg_color() > 0) {
+                System.out.println("Imagen a color en lista de espera 2");
+                impresoraC.setImg_color(impresoraC.getImg_color() - 1);
+                System.out.println("valor color actual: " + impresoraC.getImg_color());
+                if (impresoraC.getImg_color() == 0) {
+              
+                        System.out.println("entro al segundo if 2");
+                        temp.getLista().insertar((Cliente) CargaMasiva.impresora_c.devolverCliente());
+                        CargaMasiva.impresora_c.desencolar();
+                    
+
+                }
+
+            }}
+            temp = temp.getSiguiente();
+
+        
+       
+
+            if (impresoraC.getImg_color() > 0) {
+                System.out.println("Imagen a color en lista de espera");
+                impresoraC.setImg_color(impresoraC.getImg_color() - 1);
+                System.out.println("valor color actual:" + impresoraC.getImg_color());
+                //if (impresoraC.getImg_color() == 0) {
+                    if (impresoraC.getNombre_cliente().equals(temp.getCliente().getNombre_cliente())) {
+                        System.out.println("entor al segundo if");
+                        temp.getLista().insertar((Cliente) CargaMasiva.impresora_c.devolverCliente());
+                        CargaMasiva.impresora_c.desencolar();
+                    }
+
+                //}
+
+            }
+
+        }
+
+//    System.out.println(".");
     }
 }
