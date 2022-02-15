@@ -67,7 +67,7 @@ public class Cola_clientes {
         
         if (!colaVacia()) {
      
-            cliente=new Cliente(frente.getId_cliente(),frente.getNombre_cliente(),this.frente.getImg_color(), this.frente.getImg_bw(),this.frente.getImg_bw()+this.frente.getImg_color());
+            cliente=new Cliente(frente.getId_cliente(),frente.getNombre_cliente(),this.frente.getImg_color(), this.frente.getImg_bw(),this.frente.getImg_bw()+this.frente.getImg_color(),"");
 
         }
 

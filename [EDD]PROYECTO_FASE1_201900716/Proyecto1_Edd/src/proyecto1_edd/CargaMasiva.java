@@ -20,6 +20,7 @@ public class CargaMasiva {
 public static ColaImpresora_bw impresora_bw= new ColaImpresora_bw();
 public static ColaImpresora_c impresora_c= new ColaImpresora_c();
 public static ListaCircular listaCicular= new ListaCircular();
+public static ListaAtendidos listaAtendidos=new ListaAtendidos();
 
     public static String abrirArchivo() {
 

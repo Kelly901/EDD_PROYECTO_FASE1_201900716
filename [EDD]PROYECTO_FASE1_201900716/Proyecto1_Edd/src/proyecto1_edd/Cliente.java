@@ -15,13 +15,34 @@ public class Cliente {
     private int img_color;
     private int img_bw;
     private int totalImagenes;
+    private String ventanilla;
+    private int pasos = 0;
 
-    public Cliente(int id_cliente, String nombre_cliente, int img_color, int img_bw, int totalImgenes) {
+    public Cliente(int id_cliente, String nombre_cliente, int img_color, int img_bw, int totalImgenes, String ventanilla) {
         this.id_cliente = id_cliente;
         this.nombre_cliente = nombre_cliente;
         this.img_color = img_color;
         this.img_bw = img_bw;
         this.totalImagenes = totalImgenes;
+//------------------------------------------
+        this.ventanilla = ventanilla;
+        
+    }
+
+    public String getVentanilla() {
+        return ventanilla;
+    }
+
+    public void setVentanilla(String ventanilla) {
+        this.ventanilla = ventanilla;
+    }
+
+    public int getPasos() {
+        return pasos;
+    }
+
+    public void setPasos(int pasos) {
+        this.pasos = pasos;
     }
 
     public int getTotalImagenes() {
@@ -67,9 +88,14 @@ public class Cliente {
     public void mostrarCliente() {
         System.out.println("id" + this.getId_cliente());
         System.out.println("nombre:" + this.getNombre_cliente());
-        System.out.println("Total de imagenes"+this.getTotalImagenes());
+        System.out.println("Total de imagenes" + this.getTotalImagenes());
         System.out.println("Img-color:" + this.getImg_color());
         System.out.println("Img-bw:" + this.getImg_bw());
+
+    }
+
+    public void contaPasos() {
+        this.pasos += 1;
 
     }
 }

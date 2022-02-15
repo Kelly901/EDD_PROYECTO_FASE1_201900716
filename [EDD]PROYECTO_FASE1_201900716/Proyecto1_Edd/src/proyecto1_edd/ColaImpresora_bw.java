@@ -23,7 +23,7 @@ public class ColaImpresora_bw {
 
         return this.frente == null;
     }
-
+//__________________________________________________________________________________
     public void encolar(int id_cliente, String nombre_cliente, int img_bw) {
 
         Nodo_impresoraBw nuevo = new Nodo_impresoraBw(id_cliente, nombre_cliente, img_bw);
@@ -37,7 +37,7 @@ public class ColaImpresora_bw {
         }
         this.fin = nuevo;
     }
-
+//____________________________________________________________________________________
     public Object desencolar() {
         Object auxiliar = null;
 
@@ -52,7 +52,21 @@ public class ColaImpresora_bw {
         return auxiliar;
 
     }
+//_______________________________________________________________________________
+public Object devolverCliente() {
 
+        Cliente cliente = null;
+        
+        if (!colaVacia()) {
+     
+            cliente=new Cliente(this.frente.getId_cliente(),this.frente.getNombre_cliente(),0,this.frente.getImg_bw(),0,"");
+
+        }
+
+        return cliente;
+
+    }
+//________________________________________________________________
  public void mostrar() {
 
         Nodo_impresoraBw aux = this.frente;

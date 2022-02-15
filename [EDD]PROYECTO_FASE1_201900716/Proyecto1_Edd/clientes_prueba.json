@@ -21,6 +21,18 @@
         "id_cliente":"4",
         "nombre_cliente":"Maria Hernandez",
         "img_color":"2",
-        "img_bw":"0"
+        "img_bw":"3"
+    },
+    "Cliente5":{
+        "id_cliente":"5",
+        "nombre_cliente":"Diego ",
+        "img_color":"4",
+        "img_bw":"8"
+    },
+    "Cliente6":{
+        "id_cliente":"6",
+        "nombre_cliente":"Pedro ",
+        "img_color":"4",
+        "img_bw":"8"
     }
 }

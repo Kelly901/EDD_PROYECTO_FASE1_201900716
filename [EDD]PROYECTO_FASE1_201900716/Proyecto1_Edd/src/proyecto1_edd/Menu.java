@@ -67,16 +67,20 @@ public class Menu {
                 case "5":
                     System.out.println(this.acerDe());
 //lista
-                    ListaEsperaS lis = new ListaEsperaS();
-                    ListaEsperaS lis2 = new ListaEsperaS();
-                    //cliente
-
-                    Cliente c1 = new Cliente(1, "D", 1, 2, 3);
-                    Cliente cl2 = new Cliente(2, "J", 3, 1, 1);
-                    lis2.insertar(cl2);
-                    lis2.insertar(c1);
-                    CargaMasiva.listaCicular.insertar(lis, c1);
-                    CargaMasiva.listaCicular.insertar(lis2, cl2);
+//                    ListaEsperaS lis = new ListaEsperaS();
+//                    ListaEsperaS lis2 = new ListaEsperaS();
+//                    ListaEsperaS lis3 = new ListaEsperaS();
+//                    //cliente
+//
+//                    Cliente c1 = new Cliente(1, "D", 1, 2, 3);
+//                    Cliente cl2 = new Cliente(2, "J", 3, 1, 1);
+//                    Cliente c3 = new Cliente(3, "E", 4, 5, 1);
+//                    lis.insertar(c1);
+//                    lis2.insertar(cl2);
+//                    lis2.insertar(c3);
+//                    CargaMasiva.listaCicular.insertar(lis, c1);
+//                    CargaMasiva.listaCicular.insertar(lis2, cl2);
+//                    CargaMasiva.listaCicular.insertar(lis3, c3);
 
                     
                     CargaMasiva.listaCicular.mostrar();

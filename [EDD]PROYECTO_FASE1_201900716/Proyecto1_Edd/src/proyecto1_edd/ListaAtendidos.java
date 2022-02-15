@@ -8,23 +8,22 @@ package proyecto1_edd;
  *
  * @author Kelly
  */
-public class ListaEsperaS {
+public class ListaAtendidos {
+    NodoAtendidos cabeza;
 
-    NodoListaE cabeza;
-
-    public ListaEsperaS() {
+    public ListaAtendidos() {
 
         this.cabeza = null;
 
     }
 
     public void insertar(Cliente cliente) {
-        NodoListaE nuevo = new NodoListaE(cliente);
+        NodoAtendidos nuevo = new NodoAtendidos(cliente);
         if (this.cabeza == null) {
             this.cabeza = nuevo;
 
         } else {
-            NodoListaE auxiliar = this.cabeza;
+            NodoAtendidos auxiliar = this.cabeza;
             while (auxiliar.getSiguiente() != null) {
                 auxiliar = auxiliar.getSiguiente();
 
@@ -40,14 +39,15 @@ public class ListaEsperaS {
     }
 
     public void mostraLista() {
-        NodoListaE temp = this.cabeza;
+        NodoAtendidos temp = this.cabeza;
 
         while (temp != null) {
+            System.out.println("Nombre:"+temp.getCliente().getNombre_cliente());
+            System.out.println("Ventanilla:"+temp.getCliente().getVentanilla());
+            System.out.println("Pasos:"+temp.getCliente().getPasos());
             System.out.println("Total de imagenes"+temp.getCliente().getTotalImagenes());
-            System.out.println("Img Color: " + temp.getCliente().getImg_color());
-            System.out.println("Img Bw: " + temp.getCliente().getImg_bw());
+       
             temp = temp.getSiguiente();
         }
     }
-
 }
