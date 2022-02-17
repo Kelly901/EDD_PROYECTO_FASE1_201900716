@@ -1,0 +1,39 @@
+digraph G{
+label="Estado de la lista Clientes atendidos";
+node[shape=box];
+n2055281021[label="Juan Perez
+Imagen C: 2
+Pasos: 9"];
+n1554547125[label="Andres Gutierrez
+Imagen C: 5
+Pasos: 16"];
+n617901222[label="Luiz Higueros
+Imagen C: 3
+Pasos: 11"];
+n1159190947[label="Maria Hernandez
+Imagen C: 5
+Pasos: 15"];
+n925858445[label="Pablo Alvarez
+Imagen C: 1
+Pasos: 5"];
+n798154996[label="Pedro 
+Imagen C: 4
+Pasos: 15"];
+n681842940[label="Rosario Medina
+Imagen C: 0
+Pasos: 3"];
+n1392838282[label="Diego 
+Imagen C: 6
+Pasos: 19"];
+
+{rank=same;
+n2055281021->n1554547125;
+n1554547125->n617901222;
+n617901222->n1159190947;
+n1159190947->n925858445;
+n925858445->n798154996;
+n798154996->n681842940;
+n681842940->n1392838282;
+
+}
+}

@@ -15,12 +15,18 @@ import org.json.JSONObject;
  * @author Kelly
  */
 public class CargaMasiva {
- public static Cola_clientes cola = new Cola_clientes();
- public static ListaVentanillas ventanilla = new ListaVentanillas();
-public static ColaImpresora_bw impresora_bw= new ColaImpresora_bw();
-public static ColaImpresora_c impresora_c= new ColaImpresora_c();
-public static ListaCircular listaCicular= new ListaCircular();
-public static ListaAtendidos listaAtendidos=new ListaAtendidos();
+
+    public static Cola_clientes cola = new Cola_clientes();
+    public static ListaVentanillas ventanilla = new ListaVentanillas();
+    public static ColaImpresora_bw impresora_bw = new ColaImpresora_bw();
+    public static ColaImpresora_c impresora_c = new ColaImpresora_c();
+    public static ListaCircular listaCicular = new ListaCircular();
+    public static ListaAtendidos listaAtendidos = new ListaAtendidos();
+    public static ListaTop5Color listaTop5 = new ListaTop5Color();
+    public static Top5Bw listaTop5_bw = new Top5Bw();
+    public static ClienteConMasPasos masPasos = new ClienteConMasPasos();
+
+    public static int ultimoId = 0;
 
     public static String abrirArchivo() {
 
@@ -51,7 +57,6 @@ public static ListaAtendidos listaAtendidos=new ListaAtendidos();
     }
 
     public static void leerArchivoJson() {
-       
 
         System.out.println("______________\n\n");
         //Se cree un objeto de tipo Json a partir de una caddena de entrada.
@@ -70,13 +75,14 @@ public static ListaAtendidos listaAtendidos=new ListaAtendidos();
             System.out.println("img_bw:->" + myJSON2.getJSONObject(c2).get("img_bw"));
             cola.encolar(Integer.parseInt(myJSON2.getJSONObject(c2).get("id_cliente").toString()), myJSON2.getJSONObject(c2).get("nombre_cliente").toString(), Integer.parseInt(myJSON2.getJSONObject(c2).get("img_color").toString()), Integer.parseInt(myJSON2.getJSONObject(c2).get("img_bw").toString()));
             System.out.println("_______________");
+            ultimoId = Integer.parseInt(myJSON2.getJSONObject(c2).get("id_cliente").toString());
             //con el segundo for se recorre para obtener los datos dentro de los subdiccionarios
 
         }
         cola.mostrar();
-       // System.out.println("-------\n Desencolar:" + cola.desencolar() + "\n________________\ncola");
+        // System.out.println("-------\n Desencolar:" + cola.desencolar() + "\n________________\ncola");
         cola.mostrar();
-
+        System.out.println(">>>>>utlitmo id<<<<<<<<<<" + ultimoId);
         //System.out.println(cadena2);
     }
 

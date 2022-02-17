@@ -60,7 +60,7 @@ public void encolar(int id_cliente, String nombre_cliente, int img_color) {
         
         if (!colaVacia()) {
      
-            cliente=new Cliente(this.frente.getId_cliente(),this.frente.getNombre_cliente(),this.frente.getImg_color(),0,0,"");
+            cliente=new Cliente(this.frente.getId_cliente(),this.frente.getNombre_cliente(),this.frente.getImg_color(),0,0,"",0,0);
 
         }
 

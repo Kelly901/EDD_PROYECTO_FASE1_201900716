@@ -13,20 +13,27 @@ public class Cliente {
     private int id_cliente;
     private String nombre_cliente;
     private int img_color;
+    private int img_color2;
     private int img_bw;
+    private int img_bw2;
+
+  
+
     private int totalImagenes;
     private String ventanilla;
     private int pasos = 0;
 
-    public Cliente(int id_cliente, String nombre_cliente, int img_color, int img_bw, int totalImgenes, String ventanilla) {
+    public Cliente(int id_cliente, String nombre_cliente, int img_color, int img_bw, int totalImgenes, String ventanilla, int img_color2, int img_bw2) {
         this.id_cliente = id_cliente;
         this.nombre_cliente = nombre_cliente;
         this.img_color = img_color;
         this.img_bw = img_bw;
         this.totalImagenes = totalImgenes;
+        this.img_color2 = img_color2;
+        this.img_bw2 = img_bw2;
 //------------------------------------------
         this.ventanilla = ventanilla;
-        
+
     }
 
     public String getVentanilla() {
@@ -85,6 +92,22 @@ public class Cliente {
         this.img_bw = img_bw;
     }
 
+  public int getImg_color2() {
+        return img_color2;
+    }
+
+    public void setImg_color2(int img_color2) {
+        this.img_color2 = img_color2;
+    }
+
+    public int getImg_bw2() {
+        return img_bw2;
+    }
+
+    public void setImg_bw2(int img_bw2) {
+        this.img_bw2 = img_bw2;
+    }
+
     public void mostrarCliente() {
         System.out.println("id" + this.getId_cliente());
         System.out.println("nombre:" + this.getNombre_cliente());
@@ -93,6 +116,8 @@ public class Cliente {
         System.out.println("Img-bw:" + this.getImg_bw());
 
     }
+
+
 
     public void contaPasos() {
         this.pasos += 1;

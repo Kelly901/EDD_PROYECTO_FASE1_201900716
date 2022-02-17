@@ -64,7 +64,7 @@ public class PilaImagenes {
                     this.pop();
                 } else {
                     if (temp.getImg_bw() == 1) {
-                        System.out.println("imagen blanco y negros");
+                        //System.out.println("imagen blanco y negros");
                         //cliente = new Cliente(temp.getId_cliente(), temp.getNombre_cliente(), temp.getImg_color(), temp.getImg_bw(), temp.getImg_color() + temp.getImg_bw());
                         CargaMasiva.impresora_bw.encolar(temp.getId_cliente(), temp.getNombre_cliente(), temp.getImg_bw());
 

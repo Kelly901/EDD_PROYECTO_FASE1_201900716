@@ -1,8 +1,51 @@
 digraph G{
 label="Estado de la cola";
 node[shape=box];
+n1627674070[label="Edward Flores
+Imagen C: 4
+Imagen bw: 4"];
+n1360875712[label="Pablo Alvarez
+Imagen C: 0
+Imagen bw: 3"];
+n1625635731[label="Celeste Rosales
+Imagen C: 3
+Imagen bw: 3"];
+n1580066828[label="Roberto Ovalle
+Imagen C: 0
+Imagen bw: 4"];
+n491044090[label="Jorge Escobar
+Imagen C: 3
+Imagen bw: 2"];
+n644117698[label="Celeste Rosales
+Imagen C: 1
+Imagen bw: 1"];
+n1872034366[label="Melany Perez
+Imagen C: 3
+Imagen bw: 4"];
+n1581781576[label="Emely Reyes
+Imagen C: 0
+Imagen bw: 3"];
+n1725154839[label="Antonio Hernandez
+Imagen C: 1
+Imagen bw: 4"];
+n1670675563[label="Roberto Ovalle
+Imagen C: 4
+Imagen bw: 0"];
+n723074861[label="Emely Reyes
+Imagen C: 1
+Imagen bw: 0"];
 
 {rank=same;
+n1627674070->n1360875712;
+n1360875712->n1625635731;
+n1625635731->n1580066828;
+n1580066828->n491044090;
+n491044090->n644117698;
+n644117698->n1872034366;
+n1872034366->n1581781576;
+n1581781576->n1725154839;
+n1725154839->n1670675563;
+n1670675563->n723074861;
 
 }
 }

@@ -67,7 +67,7 @@ public class Cola_clientes {
         
         if (!colaVacia()) {
      
-            cliente=new Cliente(frente.getId_cliente(),frente.getNombre_cliente(),this.frente.getImg_color(), this.frente.getImg_bw(),this.frente.getImg_bw()+this.frente.getImg_color(),"");
+            cliente=new Cliente(frente.getId_cliente(),frente.getNombre_cliente(),this.frente.getImg_color(), this.frente.getImg_bw(),this.frente.getImg_bw()+this.frente.getImg_color(),"",this.frente.getImg_color(),this.frente.getImg_bw());
 
         }
 
@@ -87,14 +87,14 @@ public class Cola_clientes {
 
             if (this.frente.getImg_color() > 0) {
                 pila.push(this.frente.getId_cliente(), this.frente.getNombre_cliente(), 1, 0);
-                System.out.println("cantidad de imagenes" + this.frente.getImg_color());
+                //System.out.println("cantidad de imagenes" + this.frente.getImg_color());
                 this.frente.setImg_color(this.frente.getImg_color() - 1);
 
             } else {
 
                 if (this.frente.getImg_bw() > 0) {
                     pila.push(this.frente.getId_cliente(), this.frente.getNombre_cliente(), 0, 1);
-                    System.out.println("cantidad de imagenes bw " + this.frente.getImg_bw());
+                    //System.out.println("cantidad de imagenes bw " + this.frente.getImg_bw());
                     this.frente.setImg_bw(this.frente.getImg_bw() - 1);
                 }
 
@@ -119,7 +119,7 @@ public class Cola_clientes {
 
         while (aux != null) {
 
-            System.out.println(aux.getNombre_cliente());
+            //System.out.println(aux.getId_cliente()+". "+aux.getNombre_cliente()+", imgC "+aux.getImg_color()+", imbw"+aux.getImg_bw());
 
           
             aux = aux.getSiguiente();

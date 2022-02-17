@@ -39,11 +39,13 @@ public class ListaEsperaS {
         return this.cabeza == null;
     }
 
+   
+
     public void mostraLista() {
         NodoListaE temp = this.cabeza;
 
         while (temp != null) {
-            System.out.println("Total de imagenes"+temp.getCliente().getTotalImagenes());
+            System.out.println("Total de imagenes" + temp.getCliente().getTotalImagenes());
             System.out.println("Img Color: " + temp.getCliente().getImg_color());
             System.out.println("Img Bw: " + temp.getCliente().getImg_bw());
             temp = temp.getSiguiente();

@@ -1,12 +1,16 @@
 digraph G{
-label="Estado de la cola";
+label="Estado de las ventanillas";
 node[shape=box];
-nV1627674070[label="ventanilla 1"];
-nV1360875712[label="ventanilla 2"];
-nP1725154839[label="IMG C"];
+nV895328852[label="ventanilla 1"];
+nP225534817[label="IMG bw"];
+nP1878246837[label="IMG bw"];
+nV1304836502[label="ventanilla 2"];
+nP929338653[label="IMG C"];
 
-nV1627674070->nV1360875712;
-nV1360875712->nP1725154839;
+nV895328852->nV1304836502;
+nV895328852->nP225534817;
+nP225534817->nP1878246837;
+nV1304836502->nP929338653;
 
-
+{rank=same;nV895328852;nV1304836502;}
 }

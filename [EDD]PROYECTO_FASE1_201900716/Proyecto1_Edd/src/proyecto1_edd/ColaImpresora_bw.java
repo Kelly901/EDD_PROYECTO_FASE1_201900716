@@ -59,7 +59,7 @@ public Object devolverCliente() {
         
         if (!colaVacia()) {
      
-            cliente=new Cliente(this.frente.getId_cliente(),this.frente.getNombre_cliente(),0,this.frente.getImg_bw(),0,"");
+            cliente=new Cliente(this.frente.getId_cliente(),this.frente.getNombre_cliente(),0,this.frente.getImg_bw(),0,"",0,0);
 
         }
 
