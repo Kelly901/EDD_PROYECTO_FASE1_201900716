@@ -1,0 +1,26 @@
+digraph G{
+label="Top5 de clientes con mas imagenes a color";
+node[shape=box];
+n692404036[label="1.Polly Rodriguez
+Imagen C: 3"];
+n1554874502[label="2.Yang Wiggins
+Imagen C: 1"];
+n1846274136[label="4.Faith Hopkins
+Imagen C: 1"];
+n1639705018[label="6.Stefanie Wise
+Imagen C: 1"];
+n1627674070[label="5.Sandy Mason
+Imagen C: 1"];
+n1360875712[label="5.Sandy Mason
+Imagen C: 1"];
+
+{rank=same;
+n692404036->n1554874502;
+n1554874502->n1846274136;
+n1846274136->n1639705018;
+n1639705018->n1627674070;
+n1627674070->n1360875712;
+n1360875712->n1625635731;
+
+}
+}

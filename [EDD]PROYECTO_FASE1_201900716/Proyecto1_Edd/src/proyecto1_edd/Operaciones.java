@@ -200,48 +200,52 @@ public class Operaciones {
         NodoCircular temp = CargaMasiva.listaCicular.primero;
         Nodo_impresoraC impresoraC = CargaMasiva.impresora_c.frente;
         Cliente cliente;
-        while (temp.getSiguiente() != CargaMasiva.listaCicular.primero) {
+        try {
+
+            while (temp.getSiguiente() != CargaMasiva.listaCicular.primero) {
+                cliente = (Cliente) CargaMasiva.impresora_c.devolverCliente();
+                if (temp.getCliente().getId_cliente() == cliente.getId_cliente()) {
+                    if (impresoraC.getImg_color() > 0) {
+                        impresoraC.setImg_color(impresoraC.getImg_color() - 1);
+//
+                        //temp.getCliente().setPasos(temp.getCliente().getPasos() + 1);
+
+                        temp.getCliente().contaPasos();
+//
+                        if (impresoraC.getImg_color() == 0) {
+                            cliente.setTotalImagenes(cliente.getTotalImagenes() + 1);
+                            System.out.println("->Imagen a color entregada al cliente " + cliente.getNombre_cliente());
+                            temp.getLista().insertar(cliente);
+                            CargaMasiva.impresora_c.desencolar();
+
+                            // System.out.println("if1");
+                        }
+                    }
+                }
+                temp = temp.getSiguiente();
+            }
             cliente = (Cliente) CargaMasiva.impresora_c.devolverCliente();
             if (temp.getCliente().getId_cliente() == cliente.getId_cliente()) {
                 if (impresoraC.getImg_color() > 0) {
-                    impresoraC.setImg_color(impresoraC.getImg_color() - 1);
 //
-                    //temp.getCliente().setPasos(temp.getCliente().getPasos() + 1);
+                    // temp.getCliente().setPasos(temp.getCliente().getPasos() + 1);
 
                     temp.getCliente().contaPasos();
 //
+                    impresoraC.setImg_color(impresoraC.getImg_color() - 1);
                     if (impresoraC.getImg_color() == 0) {
+                        System.out.println("->Imagen a color entregada al cliente " + cliente.getNombre_cliente());
+                        //System.out.println("if12");
                         cliente.setTotalImagenes(cliente.getTotalImagenes() + 1);
-                        System.out.println("->Imagen a color entregada al cliente" + cliente.getNombre_cliente());
                         temp.getLista().insertar(cliente);
                         CargaMasiva.impresora_c.desencolar();
 
-                        System.out.println("if1");
                     }
                 }
             }
-            temp = temp.getSiguiente();
+        } catch (Exception e) {
+            System.out.println(" ");
         }
-        cliente = (Cliente) CargaMasiva.impresora_c.devolverCliente();
-        if (temp.getCliente().getId_cliente() == cliente.getId_cliente()) {
-            if (impresoraC.getImg_color() > 0) {
-//
-                // temp.getCliente().setPasos(temp.getCliente().getPasos() + 1);
-
-                temp.getCliente().contaPasos();
-//
-                impresoraC.setImg_color(impresoraC.getImg_color() - 1);
-                if (impresoraC.getImg_color() == 0) {
-                    System.out.println("->Imagen a color entregada al cliente" + cliente.getNombre_cliente());
-                    //System.out.println("if12");
-                    cliente.setTotalImagenes(cliente.getTotalImagenes() + 1);
-                    temp.getLista().insertar(cliente);
-                    CargaMasiva.impresora_c.desencolar();
-
-                }
-            }
-        }
-
     }
 //_________________________________________________________________________________________________
 
@@ -251,34 +255,33 @@ public class Operaciones {
         Nodo_impresoraBw impresoraC = CargaMasiva.impresora_bw.frente;
         Cliente cliente;
         try {
-            
-        
-        do {
-            cliente = (Cliente) CargaMasiva.impresora_bw.devolverCliente();
-            //System.out.println(temp.getCliente().getNombre_cliente());
-            //System.out.println("B "+temp.getCliente().getImg_bw2());
-            //System.err.println(temp.getCliente().getId_cliente()+"_>"+cliente.getId_cliente());
-            if (temp.getCliente().getId_cliente() == cliente.getId_cliente()) {
-                if (impresoraC.getImg_bw() > 0) {
-                    impresoraC.setImg_bw(impresoraC.getImg_bw() - 1);
+
+            do {
+                cliente = (Cliente) CargaMasiva.impresora_bw.devolverCliente();
+                //System.out.println(temp.getCliente().getNombre_cliente());
+                //System.out.println("B "+temp.getCliente().getImg_bw2());
+                //System.err.println(temp.getCliente().getId_cliente()+"_>"+cliente.getId_cliente());
+                if (temp.getCliente().getId_cliente() == cliente.getId_cliente()) {
+                    if (impresoraC.getImg_bw() > 0) {
+                        impresoraC.setImg_bw(impresoraC.getImg_bw() - 1);
 //
-                    //temp.getCliente().setPasos(temp.getCliente().getPasos() + 1);
-                    temp.getCliente().contaPasos();
+                        //temp.getCliente().setPasos(temp.getCliente().getPasos() + 1);
+                        temp.getCliente().contaPasos();
 //
-                    if (impresoraC.getImg_bw() == 0) {
-                        cliente.setTotalImagenes(cliente.getTotalImagenes() + 1);
-                        temp.getLista().insertar(cliente);
-                        System.out.println("->Imagen BW entregada al cliente" + cliente.getNombre_cliente());
-                        CargaMasiva.impresora_bw.desencolar();
-                        // System.out.println("if1");
+                        if (impresoraC.getImg_bw() == 0) {
+                            cliente.setTotalImagenes(cliente.getTotalImagenes() + 1);
+                            temp.getLista().insertar(cliente);
+                            System.out.println("->Imagen BW entregada al cliente" + cliente.getNombre_cliente());
+                            CargaMasiva.impresora_bw.desencolar();
+                            // System.out.println("if1");
+                        }
                     }
                 }
-            }
-            temp = temp.getSiguiente();
-        } while (temp != CargaMasiva.listaCicular.primero);
+                temp = temp.getSiguiente();
+            } while (temp != CargaMasiva.listaCicular.primero);
 
-} catch (Exception e) {
-            System.err.print(e+" hubo un error");
+        } catch (Exception e) {
+            System.err.print("");
         }
 //        cliente = (Cliente) CargaMasiva.impresora_bw.devolverCliente();
 //        if (temp.getCliente().getId_cliente() == cliente.getId_cliente()) {
@@ -332,7 +335,7 @@ public class Operaciones {
                 CargaMasiva.listaTop5_bw.ordenarLista(temp.getCliente());
 //llenar lista con los pasos
                 CargaMasiva.masPasos.ordenarLista(temp.getCliente());
-                System.out.println("->Cliente atendidos "+temp.getCliente().getNombre_cliente()+"<-");
+                System.out.println("->Cliente atendidos " + temp.getCliente().getNombre_cliente() + "<-");
                 CargaMasiva.listaCicular.EliminarCliente(temp.getCliente().getId_cliente());
 
             }

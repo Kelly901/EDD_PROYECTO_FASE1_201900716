@@ -223,6 +223,7 @@ public class Menu {
 //Menu de reportes
 
     public void reportes() {
+        Grafos gr = new Grafos();
         Scanner entrada = new Scanner(System.in);
         System.out.println(">>>>>>Reportes<<<<<<<\n1.Top 5 de clientes con mayor cantidad de imagenes a color.\n2.Top 5 de clientes con menor cantidad de imanenes BW");
         System.out.println("3.Informacion del cliente que mas pasos tuvo\n4.Buscar ciente.\nIngre su opcion:");
@@ -234,6 +235,7 @@ public class Menu {
                 CargaMasiva.listaAtendidos.mostraLista();
                 System.out.println("_________________________");
                 CargaMasiva.listaTop5.mostraLista();
+                gr.crearGrafo("Top5_color.jpg", "Top5_color", gr.Top5_color());
                 break;
             case "2":
                 //System.out.println("numero de ventanillas"+cantidadVentanillas());

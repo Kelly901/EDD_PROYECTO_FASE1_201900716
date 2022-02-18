@@ -1,52 +1,13 @@
 digraph G{
 label="Cola de impresion a color";
 node[shape=box];
-n1259475182[label="Armando Suarez
+n1247233941[label="Polly Rodriguez
 IMG C "];
-n1300109446[label="Armando Suarez
-IMG C "];
-n1020371697[label="Melany Perez
-IMG C "];
-n789451787[label="Melany Perez
-IMG C "];
-n1950409828[label="Celeste Rosales
-IMG C "];
-n1229416514[label="Celeste Rosales
-IMG C "];
-n2016447921[label="Celeste Rosales
-IMG C "];
-n666988784[label="Celeste Rosales
-IMG C "];
-n1414644648[label="Antonio Lopez
-IMG C "];
-n640070680[label="Antonio Lopez
-IMG C "];
-n1510467688[label="Antonio Lopez
-IMG C "];
-n1995265320[label="Edward Flores
-IMG C "];
-n746292446[label="Edward Flores
-IMG C "];
-n1072591677[label="Edward Flores
-IMG C "];
-n1523554304[label="Edward Flores
+n258952499[label="Yang Wiggins
 IMG C "];
 
 {rank=same;
-n1259475182->n1300109446;
-n1300109446->n1020371697;
-n1020371697->n789451787;
-n789451787->n1950409828;
-n1950409828->n1229416514;
-n1229416514->n2016447921;
-n2016447921->n666988784;
-n666988784->n1414644648;
-n1414644648->n640070680;
-n640070680->n1510467688;
-n1510467688->n1995265320;
-n1995265320->n746292446;
-n746292446->n1072591677;
-n1072591677->n1523554304;
+n1247233941->n258952499;
 
 }
 }

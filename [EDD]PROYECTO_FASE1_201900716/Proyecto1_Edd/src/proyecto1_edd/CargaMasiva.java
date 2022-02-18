@@ -63,10 +63,11 @@ public class CargaMasiva {
         //La cadena se obtuvo de la carga masiva de un archivo.json (abrirArchivo funcion de tipo String que contiene la cadena)
         JSONObject myJSON2 = new JSONObject(abrirArchivo());
         System.out.println(myJSON2.keys());
-        for (int i = myJSON2.length() - 1; i >= 0; i--) {
+        for (int i =1; i <=myJSON2.length(); i++) {
 
             //Se obtiene el nombre de la key del primer diccionario
-            String c2 = myJSON2.names().get(i).toString();
+            String c2 = "Cliente"+String.valueOf(i);
+            System.out.println("c2"+c2);
             System.out.println("id_cliente:->" + myJSON2.getJSONObject(c2).get("id_cliente"));
 
             System.out.println("nombre_cliente:->" + myJSON2.getJSONObject(c2).get("nombre_cliente"));
@@ -81,7 +82,7 @@ public class CargaMasiva {
         }
         cola.mostrar();
         // System.out.println("-------\n Desencolar:" + cola.desencolar() + "\n________________\ncola");
-        cola.mostrar();
+        //cola.mostrar();
         System.out.println(">>>>>utlitmo id<<<<<<<<<<" + ultimoId);
         //System.out.println(cadena2);
     }

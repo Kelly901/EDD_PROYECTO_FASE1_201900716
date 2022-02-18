@@ -1,13 +1,19 @@
 digraph G{
 label="Cola de impresion BW";
 node[shape=box];
-n1175962212[label="Antonio Lopez
+n603742814[label="Yang Wiggins
 IMG Bw "];
-n918221580[label="Antonio Lopez
+n1067040082[label="Douglas Dominguez
+IMG Bw "];
+n1325547227[label="Douglas Dominguez
+IMG Bw "];
+n980546781[label="Douglas Dominguez
 IMG Bw "];
 
 {rank=same;
-n918221580->n1175962212;
+n1067040082->n603742814;
+n1325547227->n1067040082;
+n980546781->n1325547227;
 
 }
 }

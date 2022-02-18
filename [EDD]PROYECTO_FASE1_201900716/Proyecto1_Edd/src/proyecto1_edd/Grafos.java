@@ -236,7 +236,7 @@ public class Grafos {
 
         cadena += nodos + "\n";
         cadena += conexion + "\n";
-        cadena+="{rank=same;"+ventanilas+"}";
+        cadena += "{rank=same;" + ventanilas + "}";
         //cadena += "{rank=same;\n" + conexion+ "\n}";
         //cadena += GrafoVentanilla();
 
@@ -276,37 +276,40 @@ public class Grafos {
         String nodos = "";
         NodoCircular temp = CargaMasiva.listaCicular.primero;
         String principal = "";
-
+// nodos += "nC"  + "[label=\"" + temp.getSiguiente().getCliente().getNombre_cliente() + "\"];\n";
+//  nodos += "nC" + temp.getAnterior().hashCode() + "[label=\"" + temp.getAnterior().getCliente().getNombre_cliente() + "\"];\n";
         do {
 
-            principal += "nC" + temp.hashCode()+";";
+            principal += "nC" + temp.hashCode() + ";";
 
             nodos += "nC" + temp.hashCode() + "[label=\"" + temp.getCliente().getNombre_cliente() + "\"];\n";
             //nodos += "nC" + temp.getSiguiente().hashCode() + "[label=\"" + temp.getSiguiente().getCliente().getNombre_cliente() + "\"];\n";
             //nodos += "nC" + temp.getAnterior().hashCode() + "[label=\"" + temp.getAnterior().getCliente().getNombre_cliente() + "\"];\n";
-            if (temp.getSiguiente() != null) {
+            if (temp.getSiguiente() != null ) {
                 conexion += "nC" + temp.hashCode() + "->nC" + temp.getSiguiente().hashCode() + ";\n";
-                 //conexion += "nC" + temp.getSiguiente().hashCode() + "->nC" + temp.hashCode() + ";\n";
+                //conexion += "nC" + temp.getSiguiente().hashCode() + "->nC" + temp.hashCode() + ";\n";
                 // conexion += "nC" + temp.getSiguiente().hashCode() + "->nC" + temp.getAnterior().hashCode() + ";\n";
             }
-            if (temp.getAnterior() != null) {
+            if (temp.getAnterior() != null ) {
                 conexion += "nC" + temp.hashCode() + "->nC" + temp.getAnterior().hashCode() + ";\n";
                 //conexion += "nC" + temp.getAnterior().hashCode() + "->nC" + temp.hashCode() + ";\n";
                 //conexion += "nC" + temp.getAnterior().hashCode() + "->nC" + temp.getSiguiente().hashCode() + ";\n";
             }
-            
-            
-            NodoListaE aux=temp.getLista().cabeza;
-            
-            
-            while (aux!=null) {
-                
-                if (aux==temp.getLista().cabeza) {
-                      conexion += "nC" + temp.hashCode() + "->nP" + aux.hashCode() + ";\n";
-                      
+//            if (temp==CargaMasiva.listaCicular.primero) {
+//                conexion += "nC" + temp.hashCode() + "->nC" + temp.getAnterior()+ ";\n";
+//            }
+           
+
+            NodoListaE aux = temp.getLista().cabeza;
+
+            while (aux != null) {
+
+                if (aux == temp.getLista().cabeza) {
+                    conexion += "nC" + temp.hashCode() + "->nP" + aux.hashCode() + ";\n";
+
                 }
-                
-                if (aux.getCliente().getImg_color2()==2) {
+
+                if (aux.getCliente().getImg_color2() == 2) {
                     System.out.println("entro");
                     nodos += "nP" + aux.hashCode() + "[label=\"IMG C\"];\n";
                     if (aux.getSiguiente() != null) {
@@ -320,29 +323,72 @@ public class Grafos {
                     nodos += "nP" + aux.hashCode() + "[label=\"IMG bw\"];\n";
                     if (aux.getSiguiente() != null) {
                         // conexion += "nV" + temp.hashCode() + "->nP" + aux.hashCode() + ";\n";
-                      
-                             conexion += "nP" + aux.hashCode() + "->nP" + aux.getSiguiente().hashCode() + ";\n";
-                        
-                       
+
+                        conexion += "nP" + aux.hashCode() + "->nP" + aux.getSiguiente().hashCode() + ";\n";
 
                     }
 
                 }
-                aux=aux.getSiguiente();
+                aux = aux.getSiguiente();
             }
- temp = temp.getSiguiente();
+            temp = temp.getSiguiente();
         } while (temp != CargaMasiva.listaCicular.primero);
-        
-        
+
         cadena += nodos + "\n";
-        cadena +=  conexion + "\n";
-        cadena+="{rank=same;"+principal+"}";
+        cadena += conexion + "\n";
+        cadena += "{rank=same;" + principal + "}";
         //cadena += GrafoVentanilla();
 
         cadena += "\n}";
         return cadena;
 
     }
+    //
+
+    public String Top5_color() {
+        String cadena = "digraph G{\nlabel=\"Top5 de clientes con mas imagenes a color\";\nnode[shape=box];\n";
+//        cadena += "subgraph cluster_1 {\nlabel=\"Estado de la cola\";\n";
+        NodoAtendidos temp = CargaMasiva.listaTop5.cabeza;
+        String conexion = "";
+        String nodos = "";
+        int cont = 0;
+        while (temp != null) {
+
+            nodos += "n" + temp.hashCode() + "[label=\"" + temp.getCliente().getId_cliente() + "." + temp.getCliente().getNombre_cliente() + "\nImagen C: " + temp.getCliente().getImg_color2() + "\"];\n";
+            if (temp.getSiguiente() != null) {
+
+                conexion += "n" + temp.hashCode() + "->n" + temp.getSiguiente().hashCode() + ";\n";
+
+                System.out.println("..." + temp.getSiguiente().getCliente().getNombre_cliente());
+            }
+            if (cont == 5) {
+                break;
+            }
+            cont += 1;
+            temp = temp.getSiguiente();
+
+        }
+
+//        while (temp != null) {
+//
+//            nodos += "n" + temp.hashCode() + "[label=\"" + temp.getCliente().getNombre_cliente() + "\nImagen C: " + temp.getCliente().getTotalImagenes() + "\nPasos: " + temp.getCliente().getPasos() + "\"];\n";
+//            if (temp.getSiguiente() != null) {
+//                conexion += "n" + temp.hashCode() + "->n" + temp.getSiguiente().hashCode() + ";\n";
+//
+//            }
+//            temp = temp.getSiguiente();
+//        }
+        cadena += nodos + "\n";
+        cadena += "{rank=same;\n" + conexion + "\n}";
+        //cadena += GrafoVentanilla();
+
+        cadena += "\n}";
+        return cadena;
+
+    }
+
 }
 
 //{rank=same;nV460141958;nV1163157884;nV1735600054;nV2133927002}
+//
+
