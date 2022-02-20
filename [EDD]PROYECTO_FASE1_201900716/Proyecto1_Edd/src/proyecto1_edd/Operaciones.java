@@ -271,7 +271,7 @@ public class Operaciones {
                         if (impresoraC.getImg_bw() == 0) {
                             cliente.setTotalImagenes(cliente.getTotalImagenes() + 1);
                             temp.getLista().insertar(cliente);
-                            System.out.println("->Imagen BW entregada al cliente" + cliente.getNombre_cliente());
+                            System.out.println("->Imagen BW entregada al cliente " + cliente.getNombre_cliente());
                             CargaMasiva.impresora_bw.desencolar();
                             // System.out.println("if1");
                         }

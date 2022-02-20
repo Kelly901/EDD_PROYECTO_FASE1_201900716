@@ -252,7 +252,7 @@ public class Grafos {
         String nodos = "";
         while (temp != null) {
 
-            nodos += "n" + temp.hashCode() + "[label=\"" + temp.getCliente().getNombre_cliente() + "\nImagen C: " + temp.getCliente().getTotalImagenes() + "\nPasos: " + temp.getCliente().getPasos() + "\"];\n";
+            nodos += "n" + temp.hashCode() + "[label=\"" + temp.getCliente().getNombre_cliente() + "\nTotal de imagenes: " + temp.getCliente().getTotalImagenes() + "\nPasos: " + temp.getCliente().getPasos() + "\"];\n";
             if (temp.getSiguiente() != null) {
                 conexion += "n" + temp.hashCode() + "->n" + temp.getSiguiente().hashCode() + ";\n";
 
@@ -346,20 +346,26 @@ public class Grafos {
     //
 
     public String Top5_color() {
+        
+   
+        
+        
         String cadena = "digraph G{\nlabel=\"Top5 de clientes con mas imagenes a color\";\nnode[shape=box];\n";
 //        cadena += "subgraph cluster_1 {\nlabel=\"Estado de la cola\";\n";
         NodoAtendidos temp = CargaMasiva.listaTop5.cabeza;
         String conexion = "";
         String nodos = "";
-        int cont = 0;
+        int cont = 1;
         while (temp != null) {
 
             nodos += "n" + temp.hashCode() + "[label=\"" + temp.getCliente().getId_cliente() + "." + temp.getCliente().getNombre_cliente() + "\nImagen C: " + temp.getCliente().getImg_color2() + "\"];\n";
             if (temp.getSiguiente() != null) {
+                if (cont<5) {
+                    conexion += "n" + temp.hashCode() + "->n" + temp.getSiguiente().hashCode() + ";\n";
+                }
+                
 
-                conexion += "n" + temp.hashCode() + "->n" + temp.getSiguiente().hashCode() + ";\n";
-
-                System.out.println("..." + temp.getSiguiente().getCliente().getNombre_cliente());
+                //System.out.println("..." + temp.getSiguiente().getCliente().getNombre_cliente());
             }
             if (cont == 5) {
                 break;
@@ -369,15 +375,48 @@ public class Grafos {
 
         }
 
-//        while (temp != null) {
-//
-//            nodos += "n" + temp.hashCode() + "[label=\"" + temp.getCliente().getNombre_cliente() + "\nImagen C: " + temp.getCliente().getTotalImagenes() + "\nPasos: " + temp.getCliente().getPasos() + "\"];\n";
-//            if (temp.getSiguiente() != null) {
-//                conexion += "n" + temp.hashCode() + "->n" + temp.getSiguiente().hashCode() + ";\n";
-//
-//            }
-//            temp = temp.getSiguiente();
-//        }
+
+        cadena += nodos + "\n";
+        cadena += "{rank=same;\n" + conexion + "\n}";
+        //cadena += GrafoVentanilla();
+
+        cadena += "\n}";
+        return cadena;
+
+    }
+    
+    
+    
+public String Top5_bw() {
+        
+        
+        
+        String cadena = "digraph G{\nlabel=\"Top5 de clientes con menos imagenes a BW\";\nnode[shape=box];\n";
+//        cadena += "subgraph cluster_1 {\nlabel=\"Estado de la cola\";\n";
+        NodoAtendidos temp = CargaMasiva.listaTop5_bw.cabeza;
+        String conexion = "";
+        String nodos = "";
+        int cont = 1;
+        while (temp != null) {
+
+            nodos += "n" + temp.hashCode() + "[label=\"" + temp.getCliente().getId_cliente() + "." + temp.getCliente().getNombre_cliente() + "\nImagen C: " + temp.getCliente().getImg_bw2() + "\"];\n";
+            if (temp.getSiguiente() != null) {
+                if (cont<5) {
+                    conexion += "n" + temp.hashCode() + "->n" + temp.getSiguiente().hashCode() + ";\n";
+                }
+                
+
+                //System.out.println("..." + temp.getSiguiente().getCliente().getNombre_cliente());
+            }
+            if (cont == 5) {
+                break;
+            }
+            cont += 1;
+            temp = temp.getSiguiente();
+
+        }
+
+
         cadena += nodos + "\n";
         cadena += "{rank=same;\n" + conexion + "\n}";
         //cadena += GrafoVentanilla();
@@ -387,8 +426,12 @@ public class Grafos {
 
     }
 
-}
 
+//Grafo clieente con mas pasos
+
+
+
+}
 //{rank=same;nV460141958;nV1163157884;nV1735600054;nV2133927002}
 //
 

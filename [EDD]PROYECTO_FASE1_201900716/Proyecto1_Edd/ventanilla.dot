@@ -1,16 +1,18 @@
 digraph G{
 label="Estado de las ventanillas";
 node[shape=box];
-nV149928006[label="ventanilla 1"];
-nP168423058[label="IMG C"];
-nV713338599[label="ventanilla 2"];
-nP821270929[label="IMG bw"];
-nP1160460865[label="IMG C"];
+nV1706377736[label="ventanilla 1"];
+nV468121027[label="ventanilla 2"];
+nP951007336[label="IMG C"];
+nV1804094807[label="ventanilla 3"];
+nP2001049719[label="IMG C"];
+nP1528902577[label="IMG C"];
 
-nV149928006->nV713338599;
-nV149928006->nP168423058;
-nV713338599->nP821270929;
-nP821270929->nP1160460865;
+nV1706377736->nV468121027;
+nV468121027->nV1804094807;
+nV468121027->nP951007336;
+nV1804094807->nP2001049719;
+nP2001049719->nP1528902577;
 
-{rank=same;nV149928006;nV713338599;}
+{rank=same;nV1706377736;nV468121027;nV1804094807;}
 }

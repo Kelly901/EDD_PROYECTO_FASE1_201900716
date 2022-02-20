@@ -1,19 +1,34 @@
 digraph G{
 label="Cola de impresion BW";
 node[shape=box];
-n603742814[label="Yang Wiggins
+n142257191[label="Haley Rosario
 IMG Bw "];
-n1067040082[label="Douglas Dominguez
+n1044036744[label="Haley Rosario
 IMG Bw "];
-n1325547227[label="Douglas Dominguez
+n1826771953[label="Haley Rosario
 IMG Bw "];
-n980546781[label="Douglas Dominguez
+n1406718218[label="Durham Logan
+IMG Bw "];
+n245257410[label="Durham Logan
+IMG Bw "];
+n1705736037[label="Gutierrez Casey
+IMG Bw "];
+n455659002[label="Gutierrez Casey
+IMG Bw "];
+n250421012[label="Gutierrez Casey
+IMG Bw "];
+n1915318863[label="Gutierrez Casey
 IMG Bw "];
 
 {rank=same;
-n1067040082->n603742814;
-n1325547227->n1067040082;
-n980546781->n1325547227;
+n1044036744->n142257191;
+n1826771953->n1044036744;
+n1406718218->n1826771953;
+n245257410->n1406718218;
+n1705736037->n245257410;
+n455659002->n1705736037;
+n250421012->n455659002;
+n1915318863->n250421012;
 
 }
 }

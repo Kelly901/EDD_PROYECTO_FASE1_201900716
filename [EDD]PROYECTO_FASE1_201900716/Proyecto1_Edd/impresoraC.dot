@@ -1,13 +1,46 @@
 digraph G{
 label="Cola de impresion a color";
 node[shape=box];
-n1247233941[label="Polly Rodriguez
+n1927950199[label="Alyce Alford
 IMG C "];
-n258952499[label="Yang Wiggins
+n868693306[label="Alyce Alford
+IMG C "];
+n1746572565[label="Alyce Alford
+IMG C "];
+n989110044[label="Leigh Bright
+IMG C "];
+n424058530[label="Durham Logan
+IMG C "];
+n321001045[label="Durham Logan
+IMG C "];
+n791452441[label="Durham Logan
+IMG C "];
+n834600351[label="Long Meyer
+IMG C "];
+n471910020[label="Long Meyer
+IMG C "];
+n531885035[label="Long Meyer
+IMG C "];
+n1418481495[label="Gutierrez Casey
+IMG C "];
+n303563356[label="Gutierrez Casey
+IMG C "];
+n135721597[label="Gutierrez Casey
 IMG C "];
 
 {rank=same;
-n1247233941->n258952499;
+n1927950199->n868693306;
+n868693306->n1746572565;
+n1746572565->n989110044;
+n989110044->n424058530;
+n424058530->n321001045;
+n321001045->n791452441;
+n791452441->n834600351;
+n834600351->n471910020;
+n471910020->n531885035;
+n531885035->n1418481495;
+n1418481495->n303563356;
+n303563356->n135721597;
 
 }
 }
