@@ -71,7 +71,6 @@ public class Menu {
                 case "5":
                     System.out.println(this.acerDe());
 
-//
                     this.linea();
                     break;
                 case "6":
@@ -140,13 +139,12 @@ public class Menu {
         Grafos gr = new Grafos();
         Scanner entrada = new Scanner(System.in);
         System.out.println(">>>>>>Reportes<<<<<<<\n1.Top 5 de clientes con mayor cantidad de imagenes a color.\n2.Top 5 de clientes con menor cantidad de imanenes BW");
-        System.out.println("3.Informacion del cliente que mas pasos tuvo\n4.Buscar ciente.\nIngrese su opcion:");
+        System.out.println("3.Informacion del cliente que mas pasos tuvo\n4.Buscar ciente. \n5.Clientes atendidos\nIngrese su opcion:");
         String numero = entrada.nextLine();
 
         switch (numero) {
             case "1":
-                System.out.println(">>>>>atentdidos<<<<<<<<<<<");
-                CargaMasiva.listaAtendidos.mostraLista();
+               
                 System.out.println("_________________________");
                 CargaMasiva.listaTop5.mostraLista();
                 gr.crearGrafo("Top5_color.jpg", "Top5_color", gr.Top5_color());
@@ -165,6 +163,10 @@ public class Menu {
                 int id = entrada.nextInt();
                 CargaMasiva.listaAtendidos.buscarCliente(id);
 
+                break;
+            case "5":
+                 System.out.println(">>>>>atentdidos<<<<<<<<<<<");
+                CargaMasiva.listaAtendidos.mostraLista();
                 break;
             default:
                 throw new AssertionError();

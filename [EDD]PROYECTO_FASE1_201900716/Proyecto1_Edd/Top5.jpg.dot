@@ -1,22 +1,22 @@
 digraph G{
 label="Top5 de clientes con menos imagenes a BW";
 node[shape=box];
-n1791741888[label="6.Stefanie Wise
-Imagen C: 0"];
-n1595428806[label="10.Shannon Johnston
-Imagen C: 0"];
-n1072408673[label="15.Elinor Ford
-Imagen C: 0"];
-n1531448569[label="9.Tommie Mcpherson
-Imagen C: 1"];
-n1867083167[label="1.Polly Rodriguez
-Imagen C: 2"];
+n692404036[label="6.Stefanie Wise
+Imagen BW: 0"];
+n1554874502[label="10.Shannon Johnston
+Imagen BW: 0"];
+n1846274136[label="1.Polly Rodriguez
+Imagen BW: 2"];
+n1639705018[label="3.Douglas Dominguez
+Imagen BW: 3"];
+n1627674070[label="4.Faith Hopkins
+Imagen BW: 3"];
 
 {rank=same;
-n1791741888->n1595428806;
-n1595428806->n1072408673;
-n1072408673->n1531448569;
-n1531448569->n1867083167;
+n692404036->n1554874502;
+n1554874502->n1846274136;
+n1846274136->n1639705018;
+n1639705018->n1627674070;
 
 }
 }

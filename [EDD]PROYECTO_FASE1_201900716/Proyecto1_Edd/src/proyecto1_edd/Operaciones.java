@@ -41,7 +41,7 @@ public class Operaciones {
                 Cliente cliente = (Cliente) CargaMasiva.cola.devolverCliente();
                 cliente.setVentanilla(temp.getVentanillas());
 //
-                cliente.contaPasos();
+                //cliente.contaPasos();
 
                 // cliente.setPasos(cliente.getPasos() + 1);
                 temp.setCliente(cliente);
@@ -76,7 +76,7 @@ public class Operaciones {
                     temp.getCliente().contaPasos();
                     //temp.getCliente().setPasos(temp.getCliente().getPasos() + 1);
                     temp.getPila().push(temp.getCliente().getId_cliente(), temp.getCliente().getNombre_cliente(), 2, 0);
-                    System.out.println("->La " + temp.getVentanillas() + " Recibio una imagen");
+                    System.out.println("->La " + temp.getVentanillas() + " Recibio una imagen de "+temp.getCliente().getNombre_cliente());
                     //System.out.println("Cliente:" + temp.getCliente().getNombre_cliente() + " imgcolor:" + temp.getCliente().getImg_color());
                     // Menu.pasos += 1;
                 } else {
@@ -88,7 +88,7 @@ public class Operaciones {
                         //temp.getCliente().setPasos(temp.getCliente().getPasos() + 1);
                         temp.getPila().push(temp.getCliente().getId_cliente(), temp.getCliente().getNombre_cliente(), 0, 1);
                         //System.out.println("Cliente:" + temp.getCliente().getNombre_cliente() + " imgbw:" + temp.getCliente().getImg_bw());
-                        System.out.println("->La " + temp.getVentanillas() + " Recibio una imagen");
+                        System.out.println("->La " + temp.getVentanillas() + " Recibio una imagen de "+temp.getCliente().getNombre_cliente());
                     }
                 }
 
@@ -112,7 +112,7 @@ public class Operaciones {
                         //cliente = (Cliente) temp.getPila().retornarImagen(temp.getCliente().getNombre_cliente(),2);
                         //temp.getCliente().setPasos(temp.getCliente().getPasos() + 1);
 
-                        temp.getCliente().contaPasos();
+                        //temp.getCliente().contaPasos();
                         temp.getPila().retornarImagen(temp.getCliente().getNombre_cliente());
                         System.out.println("->El cliente " + temp.getCliente().getNombre_cliente() + "  esta en la sala de espera.");
                         ListaEsperaS lista = new ListaEsperaS();
@@ -144,16 +144,31 @@ public class Operaciones {
         NodoVentanilla temp = CargaMasiva.ventanilla.cabeza;
 //Enviar las imagenes de la pila a su respectiva impresora
         if (CargaMasiva.listaCicular.listaVacia() == false) {
-            sacarClienteLista();
+            Menu.cont1 = +1;
+            if (CargaMasiva.listaCicular.listaVacia() == false) {
+                sacarClienteLista();
+            }
+            if (CargaMasiva.impresora_c.colaVacia() == false) {
+                enviarClienteSalaEspera();
+                //enviarImagenBw();
+                //System.out.println("Estado actual de la impresora");
+                // CargaMasiva.listaCicular.mostrar();
+                //System.out.println("_____________");
+                //  CargaMasiva.impresora_c.mostrar();
+            }
+
         }
-        if (CargaMasiva.impresora_c.colaVacia() == false) {
-            enviarClienteSalaEspera();
-            //enviarImagenBw();
-            //System.out.println("Estado actual de la impresora");
-            // CargaMasiva.listaCicular.mostrar();
-            //System.out.println("_____________");
-            //  CargaMasiva.impresora_c.mostrar();
-        }
+//        if (CargaMasiva.listaCicular.listaVacia() == false) {
+//            sacarClienteLista();
+//        }
+//        if (CargaMasiva.impresora_c.colaVacia() == false) {
+//            enviarClienteSalaEspera();
+//            //enviarImagenBw();
+//            //System.out.println("Estado actual de la impresora");
+//            // CargaMasiva.listaCicular.mostrar();
+//            //System.out.println("_____________");
+//            //  CargaMasiva.impresora_c.mostrar();
+//        }
         if (CargaMasiva.impresora_bw.colaVacia() == false) {
             // System.out.println(":::::::Impresora bw<<<<<<<<<");
             enviarImagenBw();
@@ -321,7 +336,7 @@ public class Operaciones {
             }
 
             if (temp.getCliente().getTotalImagenes() == suma) {
-                temp.getCliente().contaPasos();
+                //temp.getCliente().contaPasos();
                 //temp.getCliente().setPasos(temp.getCliente().getPasos() + 1);
                 //System.out.println("------------Ventanilla--------" + temp.getCliente().getVentanilla());
                 //System.out.println("<<<<<<<<<pasos del cliente------" + temp.getCliente().getPasos());
@@ -336,6 +351,9 @@ public class Operaciones {
 //llenar lista con los pasos
                 CargaMasiva.masPasos.ordenarLista(temp.getCliente());
                 System.out.println("->Cliente atendidos " + temp.getCliente().getNombre_cliente() + "<-");
+                System.out.println("El cliente dio"+Menu.cont1);
+
+                Menu.cont1 = 0;
                 CargaMasiva.listaCicular.EliminarCliente(temp.getCliente().getId_cliente());
 
             }

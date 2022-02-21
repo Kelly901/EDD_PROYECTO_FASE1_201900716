@@ -1,211 +1,191 @@
 digraph G{
 label="Estado de la cola";
 node[shape=box];
-n692404036[label="Nola Winters
+n1360875712[label="Alyce Alford
 Imagen C: 3
-Imagen bw: 1"];
-n1554874502[label="Gay Mcmillan
+Imagen bw: 0"];
+n1625635731[label="Haley Rosario
 Imagen C: 0
-Imagen bw: 1"];
-n1846274136[label="Carolyn Harmon
+Imagen bw: 4"];
+n1580066828[label="Durham Logan
 Imagen C: 3
 Imagen bw: 2"];
-n1639705018[label="Jolene Mccall
+n491044090[label="Elinor Ford
 Imagen C: 0
 Imagen bw: 0"];
-n1627674070[label="Evelyn Fitzgerald
+n644117698[label="Noelle Morse
 Imagen C: 0
 Imagen bw: 1"];
-n1360875712[label="Hudson Lancaster
-Imagen C: 1
-Imagen bw: 1"];
-n1625635731[label="Ellison Hood
+n1872034366[label="Gutierrez Casey
+Imagen C: 3
+Imagen bw: 4"];
+n1581781576[label="Long Meyer
 Imagen C: 3
 Imagen bw: 0"];
-n1580066828[label="Whitney Clayton
-Imagen C: 0
-Imagen bw: 4"];
-n491044090[label="Moore Horton
-Imagen C: 0
-Imagen bw: 4"];
-n644117698[label="Maggie Levine
+n1725154839[label="Geraldine Pierce
+Imagen C: 3
+Imagen bw: 1"];
+n1670675563[label="Roman Branch
+Imagen C: 3
+Imagen bw: 2"];
+n723074861[label="Pruitt Perez
 Imagen C: 4
 Imagen bw: 2"];
-n1872034366[label="Andrews Vance
+n895328852[label="Nola Winters
+Imagen C: 3
+Imagen bw: 1"];
+n1304836502[label="Gay Mcmillan
+Imagen C: 0
+Imagen bw: 1"];
+n225534817[label="Carolyn Harmon
+Imagen C: 3
+Imagen bw: 2"];
+n1878246837[label="Jolene Mccall
+Imagen C: 0
+Imagen bw: 0"];
+n929338653[label="Evelyn Fitzgerald
+Imagen C: 0
+Imagen bw: 1"];
+n1259475182[label="Hudson Lancaster
+Imagen C: 1
+Imagen bw: 1"];
+n1300109446[label="Ellison Hood
+Imagen C: 3
+Imagen bw: 0"];
+n1020371697[label="Whitney Clayton
+Imagen C: 0
+Imagen bw: 4"];
+n789451787[label="Moore Horton
+Imagen C: 0
+Imagen bw: 4"];
+n1950409828[label="Maggie Levine
+Imagen C: 4
+Imagen bw: 2"];
+n1229416514[label="Andrews Vance
 Imagen C: 2
 Imagen bw: 1"];
-n1581781576[label="Dixie Howard
+n2016447921[label="Dixie Howard
 Imagen C: 0
 Imagen bw: 4"];
-n1725154839[label="Heidi Lowery
+n666988784[label="Heidi Lowery
 Imagen C: 4
 Imagen bw: 2"];
-n1670675563[label="Bennett Malone
+n1414644648[label="Bennett Malone
 Imagen C: 4
 Imagen bw: 2"];
-n723074861[label="Witt Forbes
+n640070680[label="Witt Forbes
 Imagen C: 1
 Imagen bw: 0"];
-n895328852[label="Erma Barron
+n1510467688[label="Erma Barron
 Imagen C: 1
 Imagen bw: 4"];
-n1304836502[label="Mabel Nicholson
+n1995265320[label="Mabel Nicholson
 Imagen C: 2
 Imagen bw: 0"];
-n225534817[label="Maddox Frazier
+n746292446[label="Maddox Frazier
 Imagen C: 1
 Imagen bw: 1"];
-n1878246837[label="Brigitte Wheeler
+n1072591677[label="Brigitte Wheeler
 Imagen C: 4
 Imagen bw: 3"];
-n929338653[label="Christa Mendoza
+n1523554304[label="Christa Mendoza
 Imagen C: 2
 Imagen bw: 3"];
-n1259475182[label="Etta Blake
+n1175962212[label="Etta Blake
 Imagen C: 3
 Imagen bw: 0"];
-n1300109446[label="Macdonald Murray
+n918221580[label="Macdonald Murray
 Imagen C: 1
 Imagen bw: 1"];
-n1020371697[label="Garza York
+n2055281021[label="Garza York
 Imagen C: 2
 Imagen bw: 0"];
-n789451787[label="Hatfield Sykes
+n1554547125[label="Hatfield Sykes
 Imagen C: 1
 Imagen bw: 0"];
-n1950409828[label="Washington Dickerson
+n617901222[label="Washington Dickerson
 Imagen C: 3
 Imagen bw: 0"];
-n1229416514[label="Ethel Cortez
+n1159190947[label="Ethel Cortez
 Imagen C: 3
 Imagen bw: 2"];
-n2016447921[label="Vicky Jimenez
+n925858445[label="Vicky Jimenez
 Imagen C: 4
 Imagen bw: 4"];
-n666988784[label="Romero Sanders
+n798154996[label="Romero Sanders
 Imagen C: 2
 Imagen bw: 0"];
-n1414644648[label="Shana Burke
+n681842940[label="Shana Burke
 Imagen C: 0
 Imagen bw: 4"];
-n640070680[label="Esmeralda Rojas
-Imagen C: 2
-Imagen bw: 3"];
-n1510467688[label="Antonio Hernandez
-Imagen C: 2
-Imagen bw: 0"];
-n1995265320[label="Rosa Valle
-Imagen C: 3
-Imagen bw: 0"];
-n746292446[label="Antonio Hernandez
-Imagen C: 3
-Imagen bw: 1"];
-n1072591677[label="Roberto Ovalle
-Imagen C: 0
-Imagen bw: 1"];
-n1523554304[label="Melany Perez
+n1392838282[label="Emely Reyes
 Imagen C: 4
 Imagen bw: 2"];
-n1175962212[label="Oscar Juarez
+n523429237[label="Melany Perez
+Imagen C: 2
+Imagen bw: 3"];
+n664740647[label="David Garcia
+Imagen C: 0
+Imagen bw: 2"];
+n804564176[label="Emely Reyes
+Imagen C: 1
+Imagen bw: 3"];
+n1421795058[label="Esmeralda Rojas
 Imagen C: 4
 Imagen bw: 0"];
-n918221580[label="Pablo Alvarez
-Imagen C: 3
-Imagen bw: 1"];
-n2055281021[label="Edward Flores
+n1555009629[label="Pablo Alvarez
+Imagen C: 4
+Imagen bw: 3"];
+n41359092[label="Jorge Escobar
 Imagen C: 0
 Imagen bw: 3"];
-n1554547125[label="Roberto Ovalle
-Imagen C: 3
-Imagen bw: 4"];
-n617901222[label="Celeste Rosales
-Imagen C: 1
-Imagen bw: 4"];
-n1159190947[label="Oscar Juarez
-Imagen C: 2
-Imagen bw: 2"];
-n925858445[label="Oscar Juarez
-Imagen C: 1
-Imagen bw: 1"];
-n798154996[label="Celeste Rosales
-Imagen C: 1
-Imagen bw: 0"];
-n681842940[label="Edward Flores
-Imagen C: 2
-Imagen bw: 4"];
-n1392838282[label="Armando Suarez
-Imagen C: 1
-Imagen bw: 1"];
-n523429237[label="Celeste Rosales
-Imagen C: 1
-Imagen bw: 3"];
-n664740647[label="Roberto Ovalle
-Imagen C: 4
-Imagen bw: 1"];
-n804564176[label="Edward Flores
-Imagen C: 3
-Imagen bw: 0"];
-n1421795058[label="David Garcia
-Imagen C: 0
-Imagen bw: 4"];
-n1555009629[label="Melany Perez
-Imagen C: 1
-Imagen bw: 4"];
-n41359092[label="Antonio Lopez
+n149928006[label="David Garcia
 Imagen C: 4
 Imagen bw: 2"];
-n149928006[label="Armando Suarez
-Imagen C: 1
-Imagen bw: 0"];
-n713338599[label="Jorge Escobar
+n713338599[label="Emely Reyes
 Imagen C: 4
-Imagen bw: 3"];
+Imagen bw: 0"];
 n168423058[label="Jorge Escobar
 Imagen C: 3
-Imagen bw: 4"];
-n821270929[label="Rosario Medina
-Imagen C: 0
-Imagen bw: 3"];
-n1160460865[label="Antonio Lopez
-Imagen C: 4
-Imagen bw: 1"];
-n1247233941[label="Edward Flores
-Imagen C: 0
-Imagen bw: 3"];
-n258952499[label="Jorge Escobar
-Imagen C: 3
-Imagen bw: 4"];
-n603742814[label="Pablo Alvarez
+Imagen bw: 0"];
+n821270929[label="Armando Suarez
 Imagen C: 2
 Imagen bw: 0"];
-n1067040082[label="Oscar Juarez
-Imagen C: 1
-Imagen bw: 4"];
-n1325547227[label="Melany Perez
-Imagen C: 0
-Imagen bw: 3"];
-n980546781[label="David Garcia
-Imagen C: 1
-Imagen bw: 4"];
-n2061475679[label="Pablo Alvarez
-Imagen C: 1
-Imagen bw: 0"];
-n140435067[label="Melany Perez
-Imagen C: 4
-Imagen bw: 4"];
-n1450495309[label="Rosario Medina
-Imagen C: 4
-Imagen bw: 3"];
-n1670782018[label="Armando Suarez
+n1160460865[label="Roberto Ovalle
 Imagen C: 3
+Imagen bw: 1"];
+n1247233941[label="Antonio Hernandez
+Imagen C: 1
+Imagen bw: 1"];
+n258952499[label="Jorge Escobar
+Imagen C: 2
+Imagen bw: 4"];
+n603742814[label="Emely Reyes
+Imagen C: 0
+Imagen bw: 4"];
+n1067040082[label="Celeste Rosales
+Imagen C: 4
+Imagen bw: 4"];
+n1325547227[label="Celeste Rosales
+Imagen C: 2
+Imagen bw: 4"];
+n980546781[label="Melany Perez
+Imagen C: 1
 Imagen bw: 2"];
+n2061475679[label="Antonio Lopez
+Imagen C: 1
+Imagen bw: 3"];
+n140435067[label="Antonio Hernandez
+Imagen C: 1
+Imagen bw: 2"];
+n1450495309[label="Oscar Juarez
+Imagen C: 2
+Imagen bw: 3"];
+n1670782018[label="Celeste Rosales
+Imagen C: 3
+Imagen bw: 1"];
 
 {rank=same;
-n692404036->n1554874502;
-n1554874502->n1846274136;
-n1846274136->n1639705018;
-n1639705018->n1627674070;
-n1627674070->n1360875712;
 n1360875712->n1625635731;
 n1625635731->n1580066828;
 n1580066828->n491044090;

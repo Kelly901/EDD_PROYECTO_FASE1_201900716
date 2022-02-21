@@ -399,7 +399,7 @@ public String Top5_bw() {
         int cont = 1;
         while (temp != null) {
 
-            nodos += "n" + temp.hashCode() + "[label=\"" + temp.getCliente().getId_cliente() + "." + temp.getCliente().getNombre_cliente() + "\nImagen C: " + temp.getCliente().getImg_bw2() + "\"];\n";
+            nodos += "n" + temp.hashCode() + "[label=\"" + temp.getCliente().getId_cliente() + "." + temp.getCliente().getNombre_cliente() + "\nImagen BW: " + temp.getCliente().getImg_bw2() + "\"];\n";
             if (temp.getSiguiente() != null) {
                 if (cont<5) {
                     conexion += "n" + temp.hashCode() + "->n" + temp.getSiguiente().hashCode() + ";\n";

@@ -2,17 +2,17 @@ digraph G{
 label="Estado de las ventanillas";
 node[shape=box];
 nV1706377736[label="ventanilla 1"];
-nV468121027[label="ventanilla 2"];
+nP1804094807[label="IMG bw"];
 nP951007336[label="IMG C"];
-nV1804094807[label="ventanilla 3"];
-nP2001049719[label="IMG C"];
+nV468121027[label="ventanilla 2"];
+nP2001049719[label="IMG bw"];
 nP1528902577[label="IMG C"];
 
 nV1706377736->nV468121027;
-nV468121027->nV1804094807;
-nV468121027->nP951007336;
-nV1804094807->nP2001049719;
+nV1706377736->nP1804094807;
+nP1804094807->nP951007336;
+nV468121027->nP2001049719;
 nP2001049719->nP1528902577;
 
-{rank=same;nV1706377736;nV468121027;nV1804094807;}
+{rank=same;nV1706377736;nV468121027;}
 }

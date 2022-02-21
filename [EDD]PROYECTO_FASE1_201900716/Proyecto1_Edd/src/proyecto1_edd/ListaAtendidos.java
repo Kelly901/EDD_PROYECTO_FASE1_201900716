@@ -65,6 +65,7 @@ public class ListaAtendidos {
         NodoAtendidos temp = this.cabeza;
 
         while (temp != null) {
+            System.out.println("_________________________________________________");
             System.out.println("Nombre: " + temp.getCliente().getNombre_cliente());
             System.out.println("Ventanilla: " + temp.getCliente().getVentanilla());
             System.out.println("Pasos:" + temp.getCliente().getPasos());

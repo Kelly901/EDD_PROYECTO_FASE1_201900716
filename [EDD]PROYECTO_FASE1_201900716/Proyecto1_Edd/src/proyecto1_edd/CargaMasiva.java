@@ -25,6 +25,7 @@ public class CargaMasiva {
     public static ListaTop5Color listaTop5 = new ListaTop5Color();
     public static Top5Bw listaTop5_bw = new Top5Bw();
     public static ClienteConMasPasos masPasos = new ClienteConMasPasos();
+    public static int cont  = 0;
 
     public static int ultimoId = 0;
 
@@ -63,11 +64,11 @@ public class CargaMasiva {
         //La cadena se obtuvo de la carga masiva de un archivo.json (abrirArchivo funcion de tipo String que contiene la cadena)
         JSONObject myJSON2 = new JSONObject(abrirArchivo());
         System.out.println(myJSON2.keys());
-        for (int i =1; i <=myJSON2.length(); i++) {
+        for (int i = 1; i <= myJSON2.length(); i++) {
 
             //Se obtiene el nombre de la key del primer diccionario
-            String c2 = "Cliente"+String.valueOf(i);
-            System.out.println("c2"+c2);
+            String c2 = "Cliente" + String.valueOf(i);
+            System.out.println("c2" + c2);
             System.out.println("id_cliente:->" + myJSON2.getJSONObject(c2).get("id_cliente"));
 
             System.out.println("nombre_cliente:->" + myJSON2.getJSONObject(c2).get("nombre_cliente"));
