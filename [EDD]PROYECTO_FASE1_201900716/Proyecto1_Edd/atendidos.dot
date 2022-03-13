@@ -1,39 +1,35 @@
 digraph G{
 label="Estado de la lista Clientes atendidos";
 node[shape=box];
-n791452441[label="Polly Rodriguez
-Total de imagenes: 5
-Pasos: 16"];
-n834600351[label="Yang Wiggins
-Total de imagenes: 5
-Pasos: 14"];
-n471910020[label="Douglas Dominguez
+n951007336[label="Edgar Par
 Total de imagenes: 3
-Pasos: 9"];
-n531885035[label="Faith Hopkins
-Total de imagenes: 4
-Pasos: 12"];
-n1418481495[label="Stefanie Wise
-Total de imagenes: 1
 Pasos: 6"];
-n303563356[label="Sandy Mason
+n2001049719[label="Josue Lopez
 Total de imagenes: 5
-Pasos: 15"];
-n135721597[label="Sandy Mason
+Pasos: 13"];
+n1528902577[label="Luis Rodriguez
 Total de imagenes: 5
-Pasos: 15"];
-n142257191[label="Shannon Johnston
-Total de imagenes: 0
+Pasos: 11"];
+n1927950199[label="Fernando Ambrosio
+Total de imagenes: 1
 Pasos: 3"];
+n868693306[label="Julio Estrada
+Total de imagenes: 4
+Pasos: 9"];
+n1746572565[label="Elinor Ford
+Total de imagenes: 0
+Pasos: 0"];
+n989110044[label="Paula Monterrosa
+Total de imagenes: 5
+Pasos: 11"];
 
 {rank=same;
-n791452441->n834600351;
-n834600351->n471910020;
-n471910020->n531885035;
-n531885035->n1418481495;
-n1418481495->n303563356;
-n303563356->n135721597;
-n135721597->n142257191;
+n951007336->n2001049719;
+n2001049719->n1528902577;
+n1528902577->n1927950199;
+n1927950199->n868693306;
+n868693306->n1746572565;
+n1746572565->n989110044;
 
 }
 }
