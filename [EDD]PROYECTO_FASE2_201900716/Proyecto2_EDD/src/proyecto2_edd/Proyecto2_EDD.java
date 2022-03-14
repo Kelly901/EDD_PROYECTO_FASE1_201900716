@@ -16,9 +16,18 @@ public class Proyecto2_EDD {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("hola mundo1");
-        Principal principal = new Principal();
-        principal.setVisible(true);
+//        System.out.println("hola mundo1");
+//        Principal principal = new Principal();
+//        principal.setVisible(true);
+
+        CargaMasiva.leerArchivo_clientes(CargaMasiva.abrirArchivo());
+        System.out.println("_______________________________");
+        CargaMasiva.leerArchivo_capas(CargaMasiva.abrirArchivo());
+        System.out.println("________________________________");
+        CargaMasiva.leerArchivo_imagenes(CargaMasiva.abrirArchivo());
+        System.out.println("__________________________");
+        CargaMasiva.leerArchivo_album(CargaMasiva.abrirArchivo());
+        
     }
     
 }
