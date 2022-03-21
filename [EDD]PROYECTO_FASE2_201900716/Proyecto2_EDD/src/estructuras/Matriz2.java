@@ -11,11 +11,11 @@ import java.io.PrintWriter;
  *
  * @author Kelly
  */
-public class Matriz {
+public class Matriz2 {
 
     NodoMatriz raiz;
 
-    public Matriz() {
+    public Matriz2() {
         raiz = new NodoMatriz("Raiz", -1, -1);
     }
 
