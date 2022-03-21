@@ -1,0 +1,15 @@
+digraph G{
+label="Carnet";
+node[shape=box];
+n2018699554[label="Column"];
+n1311053135[label="b"];
+n118352462[label="e"];
+n1550089733[label="a"];
+n865113938[label="c"];
+n1442407170[label="f"];
+n1028566121[label="d"];
+
+
+{rank=same;}
+
+}

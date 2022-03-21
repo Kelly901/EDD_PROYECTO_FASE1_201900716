@@ -8,6 +8,6 @@ package estructuras;
  *
  * @author Kelly
  */
-public class MatrizDispersa {
+public class Abol_avl {
     
 }
