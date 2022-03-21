@@ -174,7 +174,7 @@ public class Matriz {
         }
         conexion += "{rank=same;" + conexion2 + "}";
         cadena += nodos + "\n";
-        cadena += "\n" + conexion + "\n";
+        cadena += "\n{contraint=false" + conexion + "}\n";
         cadena += "\n}";
         System.out.println(cadena);
         return cadena;
