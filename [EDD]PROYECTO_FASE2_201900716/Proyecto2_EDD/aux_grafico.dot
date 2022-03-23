@@ -1,72 +1,88 @@
-digraph G{
-label="Carnet";
-node[shape=box];
-r[label="raiz"];
-b2018699554[label="0"];
-c1311053135[label="0"];
-n1311053135[label="2"];
-b118352462[label="1"];
-c1550089733[label="1"];
-n1550089733[label="0"];
-b865113938[label="2"];
-c1442407170[label="2"];
-n1442407170[label="1"];
-b1028566121[label="3"];
-c1118140819[label="3"];
-n1118140819[label="9"];
-b1975012498[label="4"];
-c1808253012[label="4"];
-n1808253012[label="0"];
-b589431969[label="5"];
-c1252169911[label="5"];
-n1252169911[label="0"];
-b2101973421[label="6"];
-c685325104[label="6"];
-n685325104[label="7"];
-b460141958[label="7"];
-c1163157884[label="7"];
-n1163157884[label="1"];
-b1956725890[label="8"];
-c356573597[label="8"];
-n356573597[label="6"];
+digraph g{
+ label="Matriz dispersa" 
+ node[shape=box] 
+ subgraph h{
+raiz[label="Inicio",group="1"]
+edge[dir="both"]
 
-
-{contraint=falser-> b2018699554;
-{rank=same;r-> c1311053135;
-}b2018699554-> b118352462;
-c1311053135-> n1311053135;
-b2018699554-> n1311053135;
-b118352462-> b865113938;
-c1550089733-> n1550089733;
-b118352462-> n1550089733;
-b865113938-> b1028566121;
-c1442407170-> n1442407170;
-b865113938-> n1442407170;
-b1028566121-> b1975012498;
-c1118140819-> n1118140819;
-b1028566121-> n1118140819;
-b1975012498-> b589431969;
-c1808253012-> n1808253012;
-b1975012498-> n1808253012;
-b589431969-> b2101973421;
-c1252169911-> n1252169911;
-b589431969-> n1252169911;
-b2101973421-> b460141958;
-c685325104-> n685325104;
-b2101973421-> n685325104;
-b460141958-> b1956725890;
-c1163157884-> n1163157884;
-b460141958-> n1163157884;
-c356573597-> n356573597;
-b1956725890-> n356573597;
-{rank=same;c1311053135-> c1550089733;
-c1550089733-> c1442407170;
-c1442407170-> c1118140819;
-c1118140819-> c1808253012;
-c1808253012-> c1252169911;
-c1252169911-> c685325104;
-c685325104-> c1163157884;
-c1163157884-> c356573597;
-}}
-
+Fila0[label="0",group="1"];
+Fila0->Fila1;
+Fila0->Nodo0_0;
+{rank=same;Fila0;Nodo0_0}
+Fila1[label="1",group="1"];
+Fila1->Fila2;
+Fila1->Nodo1_1;
+Nodo1_1->Nodo1_2;
+{rank=same;Fila1;Nodo1_1;Nodo1_2}
+Fila2[label="2",group="1"];
+Fila2->Fila3;
+Fila2->Nodo2_2;
+Nodo2_2->Nodo2_5;
+{rank=same;Fila2;Nodo2_2;Nodo2_5}
+Fila3[label="3",group="1"];
+Fila3->Fila4;
+Fila3->Nodo3_3;
+{rank=same;Fila3;Nodo3_3}
+Fila4[label="4",group="1"];
+Fila4->Fila5;
+Fila4->Nodo4_4;
+{rank=same;Fila4;Nodo4_4}
+Fila5[label="5",group="1"];
+Fila5->Fila6;
+Fila5->Nodo5_5;
+{rank=same;Fila5;Nodo5_5}
+Fila6[label="6",group="1"];
+Fila6->Fila7;
+Fila6->Nodo6_6;
+{rank=same;Fila6;Nodo6_6}
+Fila7[label="7",group="1"];
+Fila7->Fila8;
+Fila7->Nodo7_7;
+{rank=same;Fila7;Nodo7_7}
+Fila8[label="8",group="1"];
+Fila8->Nodo8_8;
+{rank=same;Fila8;Nodo8_8}
+Columna0[label="0",group="2"]
+Columna0->Nodo0_0;
+Nodo0_0[label="a",group="2"]
+Columna0->Columna1;
+Columna1[label="1",group="3"]
+Columna1->Nodo1_1;
+Nodo1_1[label="b",group="3"]
+Columna1->Columna2;
+Columna2[label="2",group="4"]
+Columna2->Nodo1_2;
+Nodo1_2[label="ba",group="4"]
+Nodo1_2->Nodo2_2
+Nodo2_2[label="c",group="4"]
+Columna2->Columna3;
+Columna3[label="3",group="5"]
+Columna3->Nodo3_3;
+Nodo3_3[label="d",group="5"]
+Columna3->Columna4;
+Columna4[label="4",group="6"]
+Columna4->Nodo4_4;
+Nodo4_4[label="e",group="6"]
+Columna4->Columna5;
+Columna5[label="5",group="7"]
+Columna5->Nodo2_5;
+Nodo2_5[label="ca",group="7"]
+Nodo2_5->Nodo5_5
+Nodo5_5[label="f",group="7"]
+Columna5->Columna6;
+Columna6[label="6",group="8"]
+Columna6->Nodo6_6;
+Nodo6_6[label="g",group="8"]
+Columna6->Columna7;
+Columna7[label="7",group="9"]
+Columna7->Nodo7_7;
+Nodo7_7[label="h",group="9"]
+Columna7->Columna8;
+Columna8[label="8",group="10"]
+Columna8->Nodo8_8;
+Nodo8_8[label="i",group="10"]
+{rank=same;raiz;Columna0;Columna1;Columna2;Columna3;Columna4;Columna5;Columna6;Columna7;Columna8}
+raiz->Fila0;
+raiz->Columna0;
+}
 }

@@ -114,83 +114,120 @@ public class Matriz {
         }
         System.out.println(">>>>>>>fin<<<<<<<");
     }
+//Este sirve
+    public String grafico() {
+        String principal = "digraph g{\n label=\"Matriz dispersa\" \n node[shape=box] \n subgraph h{\n";
+        principal += "raiz[label=\"Inicio\",group=\"1\"]\nedge[dir=\"both\"]\n\n";
+        int grupos;
+        String F = "Fila";
+        String C = "Columna";
+        String N = "Nodo";
+        Lista_2 listaFilas = new Lista_2();
+        Lista_2 listaColumnas = new Lista_2();
 
-    public String retornar() {
+        ListaEnlazada recorridoFilas = new ListaEnlazada();
+        ListaEnlazada recorridoColumnas = new ListaEnlazada();
 
-        String cadena = "digraph G{\nlabel=\"Carnet\";\nnode[shape=box];\n";
-        String conexion = "";
-        String nodos = "";
-        String raiz1 = "";
-        NodoEncabezado efila = this.encabezadoFilas.primero;
-        NodoEncabezado eCol = this.encabezadoFilas.primero;
-        //  Nodo nodo = null;
-        String conexion2 = "";
-        nodos += "r" + "[label=\"raiz\"];\n";
-        conexion += "r" + "-> b" + efila.hashCode() + ";\n";
-        raiz1 += "r" + "-> c" + efila.getAcceso().hashCode() + ";\n";
-        conexion += "{rank=same;" + raiz1 + "}";
-        while (efila != null) {
-            Nodo actual = efila.getAcceso();
+        NodoEncabezado eFila = this.encabezadoFilas.primero;
+        NodoEncabezado eColumna = this.encabezadoColumnas.primero;
 
-            nodos += "b" + efila.hashCode() + "[label=\"" + efila.getId() + "\"];\n";
-            nodos += "c" + actual.hashCode() + "[label=\"" + efila.getAcceso().getColumna() + "\"];\n";
-            if (efila.getSiguiente() != null) {
-                conexion += "b" + efila.hashCode() + "-> b" + efila.getSiguiente().hashCode() + ";\n";
-                conexion2 += "c" + efila.getAcceso().hashCode() + "-> c" + efila.getSiguiente().getAcceso().hashCode() + ";\n";
+        while (eFila != null) {
+            Nodo actual = eFila.getAcceso();
 
-            }
-
-            conexion += "c" + efila.getAcceso().hashCode() + "-> n" + efila.getAcceso().hashCode() + ";\n";
-            conexion += "b" + efila.hashCode() + "-> n" + efila.getAcceso().hashCode() + ";\n";
-
-            System.out.println("id" + efila.getId());
-            System.out.println("col" + actual.getColumna());
-            nodos += "n" + efila.getAcceso().hashCode() + "[label=\"" + actual.getValor() + "\"];\n";
+            listaFilas.add(actual);
+//Se agrega a la lista los datos del nodo de la matriz.
+//recorriendo por filas
+            Lista_2 aux = new Lista_2();
 
             while (actual != null) {
-
-//                if (actual.getDerecha() != null) {
-//                    System.out.println("entre en el if");
-//                    conexion += "c" + actual.hashCode() + "-> c" + actual.getDerecha().hashCode() + ";\n";
-//                }
-//                if (actual.getAbajo() != null) {
-//                    conexion += "n" + actual.hashCode() + "-> n" + actual.getAbajo().hashCode() + ";\n";
-//                    conexion += "n" + actual.hashCode() + "-> n" + actual.getAbajo().hashCode() + ";\n";
-//                }
-//                if (actual.getArriba() != null) {
-//                    conexion += "n" + actual.hashCode() + "-> n" + actual.getArriba().hashCode() + ";\n";
-//                }
-//
-//                if (actual.getDerecha() != null) {
-//                    conexion2 += "n" + actual.hashCode() + "-> n" + actual.getDerecha().hashCode() + ";\n";
-//                }
-//                if (actual.getIzquierda() != null) {
-//                    conexion2 += "n" + actual.hashCode() + "-> n" + actual.getIzquierda().hashCode() + ";\n";
-//                }
+                aux.add(actual);
                 actual = actual.getDerecha();
             }
-
-            efila = efila.getSiguiente();
+//Se guarda en otra lista los datos
+            recorridoFilas.add(aux);
+            eFila = eFila.getSiguiente();
         }
-        conexion += "{rank=same;" + conexion2 + "}";
-        cadena += nodos + "\n";
-        cadena += "\n{contraint=false" + conexion + "}\n";
-        cadena += "\n}";
-        System.out.println(cadena);
-        return cadena;
+//Recorrido por columnas
+        while (eColumna != null) {
+            Nodo actual = eColumna.getAcceso();
+            listaColumnas.add(actual);
+            Lista_2 aux = new Lista_2();
+
+            while (actual != null) {
+                aux.add(actual);
+                actual = actual.getAbajo();
+            }
+            recorridoColumnas.add(aux);
+            eColumna = eColumna.getSiguiente();
+        }
+
+        for (int i = 0; i < listaFilas.size(); i++) {
+            String filaAux = F + listaFilas.get(i).getFila();
+            principal += filaAux + "[label=\"" + listaFilas.get(i).getFila() + "\",group=\"1\"];\n";
+            if (i < listaFilas.size() - 1) {
+                principal += F + "" + listaFilas.get(i).getFila() + "->" + F + "" + String.valueOf(listaFilas.get(i + 1).getFila() + ";\n");
+            }
+///
+//RECORRER El contenido de las listas dentro de la lista de filas
+            Lista_2 aux = recorridoFilas.get(i);
+            principal += F + listaFilas.get(i).getFila() + "->" + N + aux.get(0).getFila() + "_" + aux.get(0).getColumna() + ";\n";
+            String rankAux = "{rank=same;" + filaAux + ";";
+
+            for (int j = 0; j < aux.size(); j++) {
+
+                if (j < aux.size() - 1) {
+                    principal += N + aux.get(j).getFila() + "_" + aux.get(j).getColumna() + "->" + N + aux.get(j).getFila() + "_" + aux.get(j + 1).getColumna() + ";\n";
+
+                }
+                rankAux += N + aux.get(j).getFila() + "_" + aux.get(j).getColumna() + ";";
+
+            }
+            principal += rankAux.substring(0, rankAux.length() - 1) + "}\n";
+
+        }
+
+        grupos = 2;
+        String rankColumnas = "{rank=same;raiz;";
+
+        for (int i = 0; i < listaColumnas.size(); i++) {
+            String columnaAux = C + listaColumnas.get(i).getColumna();
+            principal += columnaAux + "[label=\"" + listaColumnas.get(i).getColumna() + "\",group=\"" + grupos + "\"]\n";
+            rankColumnas += columnaAux + ";";
+//obtener la lista dentro de la lista de columnas.
+            Lista_2 aux = recorridoColumnas.get(i);
+            principal += columnaAux + "->" + N + aux.get(0).getFila() + "_" + aux.get(0).getColumna() + ";\n";
+//_______________________________________
+
+            for (int j = 0; j < aux.size(); j++) {
+              principal+=N+aux.get(j).getFila()+"_"+aux.get(j).getColumna()+"[label=\""+aux.get(j).getValor()+"\",group=\""+grupos+"\"]\n";
+                if (j < aux.size() - 1) {
+                    principal += N + aux.get(j).getFila() + "_" + aux.get(j).getColumna() + "->" + N + aux.get(j + 1).getFila() + "_" + aux.get(j).getColumna() + "\n";
+                }
+            }
+            grupos++;
+
+            if (i < listaColumnas.size() - 1) {
+                principal += C + listaColumnas.get(i).getColumna() + "->" + C + listaColumnas.get(i + 1).getColumna() + ";\n";
+            }
+        }
+        principal += rankColumnas.substring(0, rankColumnas.length() - 1) + "}\n";
+        principal += "raiz->" + F + listaFilas.get(0).getFila() + ";\n";
+        principal += "raiz->" + C + listaColumnas.get(0).getColumna() + ";\n";
+        principal += "}\n}";
+
+        return principal;
     }
 
-
-    public  void crearGrafo(String path) {
+    public void crearGrafo(String path) {
         //String grafo = "digraph grafica{\n rankdir=TB;\n node[shape=record, style=filled,fillcolor=seashell2]\n nodo[lable=\"1\"];};";
         FileWriter fichero = null;
         PrintWriter escritor;
-
+        System.out.println(grafico());
         try {
 
             fichero = new FileWriter("aux_grafico.dot");
             escritor = new PrintWriter(fichero);
-            escritor.print(retornar());
+            escritor.print(grafico());
 
         } catch (Exception e) {
             System.err.println("Error al escribir el archivvo");

@@ -1,0 +1,43 @@
+digraph g{
+rankdir=TB;
+node [shape=record,width=0.5,fontsize=12, fillcolor=seashell2,style=filled];
+nodo2018699554[label="<C0> |32|</C1> "];
+nodo2018699554:C0->nodo1311053135
+nodo2018699554:C1->nodo118352462
+nodo118352462[label="<C1> |40|</C2> "];
+nodo118352462:C1->nodo1550089733
+nodo118352462:C2->nodo865113938
+nodo865113938[label="<C2> |75|</C3> "];
+nodo865113938:C2->nodo1442407170
+nodo865113938:C3->nodo1028566121
+nodo1028566121[label="<C3> |88|</C4> "];
+nodo1442407170[label="<C4> |45|</C5> "];
+nodo1442407170:C5->nodo1118140819
+nodo1118140819[label="<C5> |66|</C6> "];
+nodo1550089733[label="<C6> |37|</C7> "];
+nodo1550089733:C7->nodo1975012498
+nodo1975012498[label="<C7> |39|</C8> "];
+nodo1311053135[label="<C8> |11|</C9> "];
+nodo1311053135:C8->nodo1808253012
+nodo1311053135:C9->nodo589431969
+nodo589431969[label="<C9> |23|</C10> "];
+nodo589431969:C9->nodo1252169911
+nodo589431969:C10->nodo2101973421
+nodo2101973421[label="<C10> |25|</C11> "];
+nodo2101973421:C10->nodo685325104
+nodo2101973421:C11->nodo460141958
+nodo460141958[label="<C11> |29|</C12> "];
+nodo685325104[label="<C12> |24|</C13> "];
+nodo1252169911[label="<C13> |14|</C14> "];
+nodo1252169911:C13->nodo1163157884
+nodo1163157884[label="<C14> |12|</C15> "];
+nodo1808253012[label="<C15> |6|</C16> "];
+nodo1808253012:C15->nodo1956725890
+nodo1808253012:C16->nodo356573597
+nodo356573597[label="<C16> |8|</C17> "];
+nodo356573597:C16->nodo1735600054
+nodo1735600054[label="<C17> |7|</C18> "];
+nodo1956725890[label="<C18> |1|</C19> "];
+nodo1956725890:C19->nodo21685669
+nodo21685669[label="<C19> |4|</C20> "];
+}
