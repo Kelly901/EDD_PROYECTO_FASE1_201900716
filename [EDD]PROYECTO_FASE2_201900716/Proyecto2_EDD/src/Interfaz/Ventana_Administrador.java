@@ -4,6 +4,13 @@
  */
 package Interfaz;
 
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import proyecto2_edd.CargaMasiva;
+
 /**
  *
  * @author Kelly
@@ -13,8 +20,45 @@ public class Ventana_Administrador extends javax.swing.JFrame {
     /**
      * Creates new form Ventana_Administrador
      */
+    JFileChooser jFile = new JFileChooser();
+    File file;
+    String ruta;
+
     public Ventana_Administrador() {
         initComponents();
+    }
+
+    public void mostrarArbol_B() {
+        ImageIcon img = new ImageIcon("arbol_b.jpg");
+
+        JLabel label = new JLabel();
+
+        label.setBounds(0, 0, img.getIconWidth(), img.getIconHeight());
+
+        label.setIcon(img);
+        jScrollPane1.setViewportView(label);
+    }
+///////////
+
+    public String cargaMasiva() {
+        String texto = "";
+        if (jFile.showDialog(null, "Abrir") == JFileChooser.APPROVE_OPTION) {
+            file = jFile.getSelectedFile();
+            if (file.canRead()) {
+                if (file.getName().endsWith("json")) {
+
+                    ruta = file.getPath();
+                  //  texto = CargaMasiva.abrirArchivo(file, ruta);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Extensión erronea");
+
+                }
+
+            }
+        }
+
+        return texto;
     }
 
     /**
@@ -28,6 +72,8 @@ public class Ventana_Administrador extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -35,21 +81,39 @@ public class Ventana_Administrador extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mostrar Arbol B de usuarios", "Operaciones sobre los usuarios", "Operaciones de Carga masiva" }));
 
+        jButton1.setText("Aceptar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(509, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(432, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -65,6 +129,19 @@ public class Ventana_Administrador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (jComboBox1.getSelectedItem() == "Operaciones de Carga masiva") {
+
+            CargaMasiva.leerArchivo_clientes(cargaMasiva());
+            System.out.println(cargaMasiva());
+            CargaMasiva.arbol_b.crearGrafo("arbol_b.jpg", "arbol_b", CargaMasiva.arbol_b.getCodigos(CargaMasiva.arbol_b));
+
+        } else if (jComboBox1.getSelectedItem() == "Mostrar Arbol B de usuarios") {
+            mostrarArbol_B();
+
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -102,7 +179,9 @@ public class Ventana_Administrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

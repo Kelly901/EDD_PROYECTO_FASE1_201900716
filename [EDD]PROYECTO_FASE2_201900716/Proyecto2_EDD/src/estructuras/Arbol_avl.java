@@ -93,8 +93,8 @@ public class Arbol_avl {
         return nodo;
     }
 
-    public void insertarI(int numero) {
-        NodeAvl nodo = new NodeAvl(numero);
+    public void insertarI(int numero,Arbol_binario arbol) {
+        NodeAvl nodo = new NodeAvl(numero,arbol);
         this.root = this.insertar(this.root, nodo);
     }
 

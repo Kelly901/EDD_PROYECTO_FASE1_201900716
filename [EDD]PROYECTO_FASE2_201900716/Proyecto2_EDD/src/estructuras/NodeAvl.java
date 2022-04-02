@@ -11,11 +11,13 @@ package estructuras;
 public class NodeAvl {
 
     private int dato;
+    private Arbol_binario arbol_binaro;
     private int altura;
     private NodeAvl izquierdo;
     private NodeAvl derecho;
 
-    public NodeAvl(int dato) {
+    public NodeAvl(int dato, Arbol_binario binario) {
+        this.arbol_binaro = binario;
         this.dato = dato;
         this.altura = 1;
         this.izquierdo = null;
@@ -28,6 +30,14 @@ public class NodeAvl {
 
     public void setDato(int dato) {
         this.dato = dato;
+    }
+
+    public Arbol_binario getArbol_binaro() {
+        return arbol_binaro;
+    }
+
+    public void setArbol_binaro(Arbol_binario arbol_binaro) {
+        this.arbol_binaro = arbol_binaro;
     }
 
     public int getAltura() {

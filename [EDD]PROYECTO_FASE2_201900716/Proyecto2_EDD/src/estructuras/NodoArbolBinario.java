@@ -9,22 +9,22 @@ package estructuras;
  * @author Kelly
  */
 public class NodoArbolBinario {
-     private int id;
+     private Capas capas;
     private NodoArbolBinario hijo_left;
     private NodoArbolBinario hijo_right;
 
-    public NodoArbolBinario(int id) {
-        this.id =id;
+    public NodoArbolBinario(Capas capas) {
+        this.capas =capas;
         this.hijo_left = this.hijo_right;
        
     }
 
-    public int getId() {
-        return id;
+    public Capas getCapas() {
+        return capas;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCapas(Capas capas) {
+        this.capas = capas;
     }
 
     public NodoArbolBinario getHijo_left() {

@@ -98,25 +98,60 @@ public class Matriz {
 
         NodoEncabezado efila = this.encabezadoFilas.primero;
 
-        System.out.println(">>>>Recorrer por fila<<<<<<<<<<");
-
+//        System.out.println(">>>>Recorrer por fila<<<<<<<<<<");
         while (efila != null) {
             Nodo actual = efila.getAcceso();
 
-            System.out.println("\nFila " + actual.getFila());
-            System.out.println("Columna valor");
+            //System.out.println("\nFila " + actual.getFila());
+//            System.out.println("Columna valor");
             while (actual != null) {
-                System.out.println(actual.getColumna() + " id:" + actual.getId() + ". " + actual.getValor());
+//                System.out.println(actual.getColumna() + " id:" + actual.getId() + ". " + actual.getValor());
                 actual = actual.getDerecha();
             }
 
             efila = efila.getSiguiente();
         }
-        System.out.println(">>>>>>>fin<<<<<<<");
+//        System.out.println(">>>>>>>fin<<<<<<<");
+    }
+//Meetodo para insertar
+
+    public void insertar_(int fila, int columna, String valor, int cont) {
+        if (buscar(fila, columna, valor)) {
+            insertar(fila, columna, valor, cont);
+        }
+    }
+
+//metodo para comparar si dos datos son iguales
+    public boolean buscar(int fila, int columna, String color) {
+
+        NodoEncabezado efila = this.encabezadoFilas.primero;
+
+//        System.out.println(">>>>Recorrer por fila<<<<<<<<<<");
+        while (efila != null) {
+            Nodo actual = efila.getAcceso();
+
+            //System.out.println("\nFila " + actual.getFila());
+//            System.out.println("Columna valor");
+            while (actual != null) {
+                if (actual.getFila() == fila && actual.getColumna() == columna) {
+                    actual.setValor(color);
+                    return false;
+                }
+//                System.out.println(actual.getColumna() + " id:" + actual.getId() + ". " + actual.getValor());
+                actual = actual.getDerecha();
+            }
+
+            efila = efila.getSiguiente();
+        }
+        return true;
+
+//        System.out.println(">>>>>>>fin<<<<<<<");
     }
 //Este sirve
+
     public String grafico() {
-        String principal = "digraph g{\n label=\"Matriz dispersa\" \n node[shape=box] \n subgraph h{\n";
+//size='7.75,10.25'
+        String principal = "digraph g{\n graph[size=\"5.75,5.25\"]\n label=\"Matriz dispersa\" \n node[shape=box] \n subgraph h{\n";
         principal += "raiz[label=\"Inicio\",group=\"1\"]\nedge[dir=\"both\"]\n\n";
         int grupos;
         String F = "Fila";
@@ -199,7 +234,7 @@ public class Matriz {
 //_______________________________________
 
             for (int j = 0; j < aux.size(); j++) {
-              principal+=N+aux.get(j).getFila()+"_"+aux.get(j).getColumna()+"[label=\""+aux.get(j).getValor()+"\",group=\""+grupos+"\"]\n";
+                principal += N + aux.get(j).getFila() + "_" + aux.get(j).getColumna() + "[style=\"filled\",fillcolor=\"" + aux.get(j).getValor() + "\",label=\"\",group=\"" + grupos + "\"]\n";
                 if (j < aux.size() - 1) {
                     principal += N + aux.get(j).getFila() + "_" + aux.get(j).getColumna() + "->" + N + aux.get(j + 1).getFila() + "_" + aux.get(j).getColumna() + "\n";
                 }
@@ -222,10 +257,10 @@ public class Matriz {
         //String grafo = "digraph grafica{\n rankdir=TB;\n node[shape=record, style=filled,fillcolor=seashell2]\n nodo[lable=\"1\"];};";
         FileWriter fichero = null;
         PrintWriter escritor;
-        System.out.println(grafico());
+        // System.out.println(grafico());
         try {
 
-            fichero = new FileWriter("aux_grafico.dot");
+            fichero = new FileWriter("aux_grafico.txt");
             escritor = new PrintWriter(fichero);
             escritor.print(grafico());
 
@@ -247,9 +282,9 @@ public class Matriz {
         try {
 
             Runtime rt = Runtime.getRuntime();
-            rt.exec("dot -Tjpg -o " + path + " aux_grafico.dot");
+            rt.exec("dot -Tjpg -o " + path + " aux_grafico.txt");
 
-            //Thread.sleep(500);
+            Thread.sleep(500);
         } catch (Exception ex) {
 
             System.err.println("Error al generar la imagen");

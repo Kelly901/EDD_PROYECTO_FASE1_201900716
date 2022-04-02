@@ -9,39 +9,33 @@ package estructuras;
  * @author Kelly
  */
 public class Pixeles {
+ public NodoPixeles primero;
+    public int tamanio;
 
-    private int fila;
-    private int columna;
-    private String color;
-
-    public Pixeles(int fila, int columna, String color) {
-        this.fila = fila;
-        this.columna = columna;
-        this.color = color;
+    public Pixeles() {
+        this.primero = null;
+        this.tamanio = 0;
     }
 
-    public int getFila() {
-        return fila;
+    public void add(int fila, int columna, String color) {
+        NodoPixeles nodo = new NodoPixeles(fila, columna, color);
+        tamanio++;
+        if (this.primero == null) {
+            this.primero = nodo;
+
+        } else {
+            NodoPixeles aux = this.primero;
+            while (aux.getSiguiente() != null) {
+                aux = aux.getSiguiente();
+            }
+            aux.setSiguiente(nodo);
+        }
     }
 
-    public void setFila(int fila) {
-        this.fila = fila;
-    }
+   
 
-    public int getColumna() {
-        return columna;
+    public int size() {
+        return this.tamanio;
     }
-
-    public void setColumna(int columna) {
-        this.columna = columna;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
+   
 }

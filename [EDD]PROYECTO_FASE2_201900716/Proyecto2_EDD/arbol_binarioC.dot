@@ -1,0 +1,10 @@
+digraph g{
+label="Carnet: 201612218";
+rankdir=TB;
+node [shape=oval,width=0.5,fontsize=15, fillcolor=purple,style=filled];
+nodo1304836502[label="1 "];
+nodo1304836502->nodo225534817
+nodo1304836502->nodo1878246837
+nodo1878246837[label="1 "];
+nodo225534817[label="1 "];
+}
