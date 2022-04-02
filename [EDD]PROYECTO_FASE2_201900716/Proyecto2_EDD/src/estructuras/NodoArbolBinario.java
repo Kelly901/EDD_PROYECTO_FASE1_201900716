@@ -4,19 +4,24 @@
  */
 package estructuras;
 
+import Matriz_Dispersa.Matriz;
+
 /**
  *
  * @author Kelly
  */
 public class NodoArbolBinario {
-     private Capas capas;
+
+    private Capas capas;
+    private Matriz matriz;
+
     private NodoArbolBinario hijo_left;
     private NodoArbolBinario hijo_right;
 
-    public NodoArbolBinario(Capas capas) {
-        this.capas =capas;
+    public NodoArbolBinario(Capas capas, Matriz matriz) {
+        this.capas = capas;
         this.hijo_left = this.hijo_right;
-       
+        this.matriz = matriz;
     }
 
     public Capas getCapas() {
@@ -41,5 +46,13 @@ public class NodoArbolBinario {
 
     public void setHijo_right(NodoArbolBinario hijo_right) {
         this.hijo_right = hijo_right;
+    }
+
+    public Matriz getMatriz() {
+        return matriz;
+    }
+
+    public void setMatriz(Matriz matriz) {
+        this.matriz = matriz;
     }
 }

@@ -12,6 +12,7 @@ import estructuras.Arbol_avl;
 import estructuras.Arbol_binario;
 import estructuras.Capas;
 import estructuras.Cliente;
+import estructuras.NodoPixeles;
 import estructuras.Pixeles;
 import java.io.BufferedReader;
 import java.io.File;
@@ -125,6 +126,7 @@ public class CargaMasiva {
             JSONArray array_pixeles = new JSONArray(objeto1.getJSONArray("pixeles").toString());
             //  System.out.println(objeto1.getJSONArray("pixeles").toString());
             Pixeles pixeles = new Pixeles();
+            Matriz matriz = new Matriz();
             for (int k = 0; k < array_pixeles.length(); k++) {
 
                 JSONObject objetoPixeles = new JSONObject(array_pixeles.get(k).toString());
@@ -132,14 +134,33 @@ public class CargaMasiva {
                 //System.out.println("    columna: " + objetoPixeles.get("columna"));
                 //System.out.println("    color: " + objetoPixeles.get("color"));
                 pixeles.add(objetoPixeles.getInt("fila"), objetoPixeles.getInt("columna"), objetoPixeles.getString("color"));
-
+                matriz.insertar_(objetoPixeles.getInt("fila"), objetoPixeles.getInt("columna"), objetoPixeles.getString("color"), objetoPixeles.getInt("fila"));
             }
-            arbol_binario.agregar(new Capas(objeto1.getInt("id_capa"), pixeles));
+            //matriz.crearGrafo("matrizCC" + objeto1.getInt("id_capa")+ ".jpg");
+            arbol_binario.agregar(new Capas(objeto1.getInt("id_capa"), pixeles), matriz);
 
         }
-         arbol_binario.pre_orden();
-         matriz.crearGrafo("matriz.jpg");
+        // arbol_binario.pre_orden();
+        // matriz.crearGrafo("matriz.jpg");
+        Scanner sc = new Scanner(System.in);
 
+        System.out.println("Ingrese el numero de capas separdas por comaa");
+        String var = sc.nextLine();
+
+        arbol_binario.pre_orden(arbol_binario.raiz, Integer.parseInt(var));
+        arbol_binario.matrizPreOden = null;
+        arbol_binario.cont = 0;
+
+        arbol_binario.in_orden(arbol_binario.raiz, Integer.parseInt(var));
+        arbol_binario.matrizInOrden = new Matriz();
+        arbol_binario.cont = 0;
+        arbol_binario.post_orden(arbol_binario.raiz, Integer.parseInt(var));
+//        String[] numeroCapas = var.split(",");
+//
+//        for (int i = 0; i < numeroCapas.length; i++) {
+//
+//            arbol_binario.pre_orden(arbol_binario.raiz, Integer.parseInt(numeroCapas[i]));
+//        }
 //        }
     }
 
@@ -176,10 +197,14 @@ public class CargaMasiva {
             for (int j = 0; j < array_pixeles.length(); j++) {
                 System.out.println("*" + array_pixeles.getInt(j));
                 arbol_binario.buscar_dato(array_pixeles.getInt(j));
-                if (arbol_binario.capa != null) {
+                if (arbol_binario.capa != null && arbol_binario.matriz != null) {
                     System.out.println("--numero de capa: " + arbol_binario.capa.getId_capa());
-                    arbol.agregar(arbol_binario.capa);
+                    arbol.agregar(arbol_binario.capa, arbol_binario.matriz);
+                    System.out.println("______________j" + j);
+                    // arbol_binario.matriz.crearGrafo("matriz"+j+".jpg");
                     arbol_binario.capa = null;
+                    arbol_binario.matriz = null;
+
                 }
 
             }
@@ -188,7 +213,7 @@ public class CargaMasiva {
 //Generar la grafica del arbol binario con su capa
             if (arbol.raiz != null) {
                 System.out.println("________arbol");
-                arbol.crearGrafo("arbol_binarioC"+objeto1.get("id").toString()+".jpg","arbol_binarioC"+String.valueOf(objeto1.getInt("id")) , arbol.getCodigos(arbol.raiz,String.valueOf(objeto1.getInt("id"))), String.valueOf(objeto1.getInt("id")) );
+                arbol.crearGrafo("arbol_binarioC" + objeto1.get("id").toString() + ".jpg", "arbol_binarioC" + String.valueOf(objeto1.getInt("id")), arbol.getCodigos(arbol.raiz, String.valueOf(objeto1.getInt("id"))), String.valueOf(objeto1.getInt("id")));
             }
 
 // Insertar los arboles binarios y su id en el arbol avl
@@ -197,6 +222,14 @@ public class CargaMasiva {
         }
 // Generar la gráfica cel arbol binario
         arbol_avl.crearGrafo("arbol_avl.jpg", "arbo_avl", arbol_avl.getCodigos(arbol_avl.root));
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Ingrese el id de la imagen");
+        String var = sc.nextLine();
+
+        arbol_avl.buscarImage_id(Integer.parseInt(var), arbol_avl.root);
+        System.out.println("___________________");
 
     }
 

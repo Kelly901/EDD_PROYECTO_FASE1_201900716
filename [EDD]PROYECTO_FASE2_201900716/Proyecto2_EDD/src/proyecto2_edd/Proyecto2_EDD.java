@@ -27,10 +27,16 @@ public class Proyecto2_EDD {
 //C:\Users\Kelly\Downloads\Sonic.json
 //C:\Users\Kelly\Downloads\mario.json
 //C:\Users\Kelly\Downloads\Imagenes-AuxEDD.json
-CargaMasiva.leerArchivo_capas(CargaMasiva.abrirArchivo());
+//CargaMasiva.leerArchivo_capas(CargaMasiva.abrirArchivo());
 //CargaMasiva.leerArchivo_imagenes(CargaMasiva.abrirArchivo());
 
+//C:\Users\Kelly\Downloads\sonic (1).json
+//_________________________________
 
+//C:\Users\Kelly\Downloads\Capas - Sonic .json
+//C:\Users\Kelly\Downloads\Imagenes - Sonic.json
+//C:\Users\Kelly\Downloads\clients.json
+//___________________________________
 //Matriz matriz= new Matriz();
 //matriz.insertar_(0, 0, "2", 1);
 //matriz.insertar_(0, 1, "2", 1);

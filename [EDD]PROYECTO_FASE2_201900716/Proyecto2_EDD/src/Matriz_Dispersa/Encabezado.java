@@ -10,7 +10,7 @@ package Matriz_Dispersa;
  */
 public class Encabezado {
 
-    NodoEncabezado primero;
+   public  NodoEncabezado primero;
 
     public Encabezado(NodoEncabezado primero) {
 

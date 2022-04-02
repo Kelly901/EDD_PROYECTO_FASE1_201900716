@@ -93,8 +93,8 @@ public class Arbol_avl {
         return nodo;
     }
 
-    public void insertarI(int numero,Arbol_binario arbol) {
-        NodeAvl nodo = new NodeAvl(numero,arbol);
+    public void insertarI(int numero, Arbol_binario arbol) {
+        NodeAvl nodo = new NodeAvl(numero, arbol);
         this.root = this.insertar(this.root, nodo);
     }
 
@@ -144,6 +144,19 @@ public class Arbol_avl {
             System.out.println(tmp.getDato());
             preorder(tmp.getIzquierdo());
             preorder(tmp.getDerecho());
+        }
+
+    }
+
+    //Buscar imagen por id
+    public void  buscarImage_id(int id,NodeAvl tmp) {
+        if (tmp != null) {
+            if (id==tmp.getDato()) {
+                tmp.getArbol_binaro().recorrido_porAmplitud(tmp.getArbol_binaro().raiz,id);
+            }
+            System.out.println(tmp.getDato());
+           buscarImage_id(id,tmp.getIzquierdo());
+           buscarImage_id(id,tmp.getDerecho());
         }
 
     }
@@ -214,8 +227,7 @@ public class Arbol_avl {
         while (pila.PilaVacia() == false) {
             nodo = (NodeAvl) pila.pop();
 
-
-          etiqueta += "nodo" + nodo.hashCode() + "[label=\"<C" + cont + "> |" +  nodo.getDato() + "|</C" + (cont+1) + "> \"];\n";
+            etiqueta += "nodo" + nodo.hashCode() + "[label=\"<C" + cont + "> |" + nodo.getDato() + "|</C" + (cont + 1) + "> \"];\n";
 
             if (nodo.getIzquierdo() != null) {
                 etiqueta = etiqueta + "nodo" + nodo.hashCode() + ":C" + cont + "->nodo" + nodo.getIzquierdo().hashCode() + "\n";

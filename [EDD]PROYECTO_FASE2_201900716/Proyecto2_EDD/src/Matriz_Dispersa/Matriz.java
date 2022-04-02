@@ -13,8 +13,8 @@ import java.io.PrintWriter;
  */
 public class Matriz {
 
-    Encabezado encabezadoFilas;
-    Encabezado encabezadoColumnas;
+    public Encabezado encabezadoFilas;
+    public Encabezado encabezadoColumnas;
 
     public Matriz() {
         this.encabezadoColumnas = new Encabezado(null);
