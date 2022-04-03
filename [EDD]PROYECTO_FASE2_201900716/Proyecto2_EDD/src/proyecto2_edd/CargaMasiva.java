@@ -12,6 +12,8 @@ import estructuras.Arbol_avl;
 import estructuras.Arbol_binario;
 import estructuras.Capas;
 import estructuras.Cliente;
+import estructuras.Lista_Doble;
+import estructuras.Lista_de_album;
 import estructuras.NodoPixeles;
 import estructuras.Pixeles;
 import java.io.BufferedReader;
@@ -84,7 +86,7 @@ public class CargaMasiva {
             System.out.println("password" + objeto2.get("password"));
             
             long dpi = Long.parseLong(objeto2.getString("dpi"));
-            arbol_b.insertar(dpi, objeto2.getString("nombre_cliente"), objeto2.getString("password"), null, null);
+            arbol_b.insertar(dpi, objeto2.getString("nombre_cliente"), objeto2.getString("password"), null, null, null);
             
         }
 
@@ -235,7 +237,7 @@ public class CargaMasiva {
         }
 // Generar la gráfica cel arbol binario
         arbol_avl.crearGrafo("arbol_avl" + id + ".jpg", "arbo_avl" + id, arbol_avl.getCodigos(arbol_avl.root));
-arbol_b.AgregarArboAvl(arbol_b.raiz, id, arbol_avl);
+        arbol_b.AgregarArboAvl(arbol_b.raiz, id, arbol_avl);
         arbol_b.arbol_bin = null;
 //        Scanner sc = new Scanner(System.in);
 //
@@ -248,7 +250,7 @@ arbol_b.AgregarArboAvl(arbol_b.raiz, id, arbol_avl);
 
 //aLBUM
     public static void leerArchivo_album(String texto, String id) {
-        
+        Lista_Doble listaD = new Lista_Doble();
         System.out.println("______________\n\n");
         //String texto1 = "[\n{\n\"dpi\":\"123\",\n\"nombre_cliente\":\"juan\",\n\"password\":\"1234\"\n},\n{\n\"dpi\":\"1234\",\n\"nombre_cliente\":\"juan2\",\n\"password\":\"12345\"\n}\n]";
         //Se cree un objeto de tipo Json a partir de una caddena de entrada.
@@ -270,8 +272,15 @@ arbol_b.AgregarArboAvl(arbol_b.raiz, id, arbol_avl);
 
 //Obtener lo que esta dentro del array de capas
             System.out.println("__imgs_____");
-            JSONArray array_pixeles = new JSONArray(objeto1.getJSONArray("imgs").toString());
-            System.out.println("   imgs:" + array_pixeles.toString());
+            JSONArray array_image = new JSONArray(objeto1.getJSONArray("imgs").toString());
+            System.out.println("   imgs:" + array_image.toString());
+            Lista_de_album listaU = new Lista_de_album();
+            for (int j = 0; j < array_image.length(); j++) {
+                listaU.add(array_image.getInt(j));
+                
+            }
+            
+            listaD.insertar(objeto1.getString("nombre_album"), listaU);
             // System.out.println(objeto1.getJSONArray("pixeles").toString());
 //            for (int k = 0; k < array_pixeles.length(); k++) {
 //
@@ -283,6 +292,9 @@ arbol_b.AgregarArboAvl(arbol_b.raiz, id, arbol_avl);
 //            }
 
         }
+        arbol_b.AgregarAlbum(arbol_b.raiz, id, listaD);
+        
+        listaD.crearGrafo("ListaD" + id + ".jpg", "ListaD" + id, listaD.graficaClitesE(listaD.primero));
     }
     
 }

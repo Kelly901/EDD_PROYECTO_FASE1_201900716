@@ -1,8 +1,0 @@
-digraph g{
-label="Id:5";
-rankdir=TB;
-node [shape=oval,width=0.5,fontsize=15, fillcolor=seashell2,style=filled];
-nodo1797240432[label="2 "];
-nodo1797240432->nodo774781346
-nodo774781346[label="1 "];
-}

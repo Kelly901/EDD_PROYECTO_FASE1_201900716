@@ -278,7 +278,7 @@ public class Navegacion_imagenes extends javax.swing.JFrame {
         if (jComboBox1.getSelectedItem() == "Preorder") {
             arbol_bi.pre_orden(arbol_bi.raiz, Integer.parseInt(jTextField1.getText()));
             jLabel6.setText(arbol_bi.recorrido);
-            ImageIcon img = new ImageIcon("MatrizPreOrder.jpg");
+            ImageIcon img = new ImageIcon( new ImageIcon("MatrizPreOrder.jpg").getImage());
 
             label.setBounds(0, 50, img.getIconWidth(), img.getIconHeight());
 
@@ -292,7 +292,7 @@ public class Navegacion_imagenes extends javax.swing.JFrame {
         } else if (jComboBox1.getSelectedItem() == "Inorder") {
             arbol_bi.in_orden(arbol_bi.raiz, Integer.parseInt(jTextField1.getText()));
             jLabel6.setText(arbol_bi.recorrido);
-            ImageIcon img = new ImageIcon("MatrizIn_order.jpg");
+            ImageIcon img = new ImageIcon( new ImageIcon("MatrizIn_order.jpg").getImage());
             System.out.println("mostrar");
 
             label.setBounds(0, 50, img.getIconWidth(), img.getIconHeight());
@@ -306,7 +306,7 @@ public class Navegacion_imagenes extends javax.swing.JFrame {
         } else if (jComboBox1.getSelectedItem() == "PostOrder") {
             arbol_bi.post_orden(arbol_bi.raiz, Integer.parseInt(jTextField1.getText()));
             jLabel6.setText(arbol_bi.recorrido);
-            ImageIcon img = new ImageIcon("Matriz_PostOrder.jpg");
+            ImageIcon img = new ImageIcon(new ImageIcon("Matriz_PostOrder.jpg").getImage());
 
             label.setBounds(0, 50, img.getIconWidth(), img.getIconHeight());
 
@@ -327,7 +327,7 @@ public class Navegacion_imagenes extends javax.swing.JFrame {
         System.out.println(jTextField3.getText());
         arbol.buscarImage_id(Integer.parseInt(jTextField3.getText()), arbol.root);
         if (arbol.existe) {
-            ImageIcon img = new ImageIcon("matriz_Avl" + jTextField3.getText() + ".jpg");
+            ImageIcon img = new ImageIcon(new ImageIcon("matriz_Avl" + jTextField3.getText() + ".jpg").getImage());
 
             JLabel label = new JLabel();
             label.setBounds(10, 50, img.getIconWidth(), img.getIconHeight());

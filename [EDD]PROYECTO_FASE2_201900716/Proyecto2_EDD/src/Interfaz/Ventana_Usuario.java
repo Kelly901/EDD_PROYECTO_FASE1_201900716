@@ -5,6 +5,7 @@
 package Interfaz;
 
 import estructuras.Arbol_avl;
+import estructuras.Lista_Doble;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -15,12 +16,12 @@ import proyecto2_edd.CargaMasiva;
  * @author Kelly
  */
 public class Ventana_Usuario extends javax.swing.JFrame {
-
+    
     JFileChooser jFile = new JFileChooser();
     File file;
     String ruta;
     String id;
-
+    
     public Ventana_Usuario(String id) {
         this.id = id;
         initComponents();
@@ -34,18 +35,18 @@ public class Ventana_Usuario extends javax.swing.JFrame {
             file = jFile.getSelectedFile();
             if (file.canRead()) {
                 if (file.getName().endsWith("json")) {
-
+                    
                     ruta = file.getPath();
                     texto = CargaMasiva.abrirArchivo(file, ruta);
-
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Extensión erronea");
-
+                    
                 }
-
+                
             }
         }
-
+        
         return texto;
     }
 ////////////////////////////////////////
@@ -56,18 +57,18 @@ public class Ventana_Usuario extends javax.swing.JFrame {
             file = jFile.getSelectedFile();
             if (file.canRead()) {
                 if (file.getName().endsWith("json")) {
-
+                    
                     ruta = file.getPath();
                     texto = CargaMasiva.abrirArchivo(file, ruta);
-
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Extensión erronea");
-
+                    
                 }
-
+                
             }
         }
-
+        
         return texto;
     }
 ////////////////////////////////////////
@@ -78,18 +79,18 @@ public class Ventana_Usuario extends javax.swing.JFrame {
             file = jFile.getSelectedFile();
             if (file.canRead()) {
                 if (file.getName().endsWith("json")) {
-
+                    
                     ruta = file.getPath();
                     texto = CargaMasiva.abrirArchivo(file, ruta);
-
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Extensión erronea");
-
+                    
                 }
-
+                
             }
         }
-
+        
         return texto;
     }
 /////////////////////////////////
@@ -238,9 +239,9 @@ public class Ventana_Usuario extends javax.swing.JFrame {
             VisualizarEstruturas vE = new VisualizarEstruturas(id);
             vE.show();
             dispose();
-
+            
         } else if (jComboBox1.getSelectedItem() == "Navegación y gesstión de imágenes") {
-
+            
             JOptionPane.showMessageDialog(null, "Navegación y gesstión de imágenes");
             Navegacion_imagenes nI = new Navegacion_imagenes(id);
             nI.show();
@@ -256,7 +257,7 @@ public class Ventana_Usuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Cargar Imagenes");
 ////
         } else if (jComboBox1.getSelectedItem() == "Cargar Albumes") {
-            CargaMasiva.leerArchivo_album(cargaImagenes(), id);
+            CargaMasiva.leerArchivo_album(cargaAlbum(), id);
             JOptionPane.showMessageDialog(null, "Cargar Albumes");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -267,13 +268,15 @@ public class Ventana_Usuario extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         CargaMasiva.arbol_b.bucar_Avl(CargaMasiva.arbol_b.raiz, id);
-
+        CargaMasiva.arbol_b.bucar_ListaD_(CargaMasiva.arbol_b.raiz, id);
+        Lista_Doble lD = CargaMasiva.arbol_b.list_D;
         Arbol_avl arbol = CargaMasiva.arbol_b.arbolAvl;
-
-int valor=Integer.parseInt(jTextField1.getText());
-arbol.eliminar(arbol.root, valor);
-
- arbol.crearGrafo("arbol_avl" + id + ".jpg", "arbo_avl" + id, arbol.getCodigos(arbol.root));
+        
+        int valor = Integer.parseInt(jTextField1.getText());
+        arbol.eliminar(arbol.root, valor);
+        
+        arbol.crearGrafo("arbol_avl" + id + ".jpg", "arbo_avl" + id, arbol.getCodigos(arbol.root));
+        lD.crearGrafo("ListaD" + id + ".jpg", "ListaD" + id, lD.graficaClitesE(lD.primero));
 
     }//GEN-LAST:event_jButton3ActionPerformed
 

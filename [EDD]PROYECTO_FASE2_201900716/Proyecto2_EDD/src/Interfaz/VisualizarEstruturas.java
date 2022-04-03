@@ -42,7 +42,7 @@ public class VisualizarEstruturas extends javax.swing.JFrame {
     }
     
     public void mostrarArbol_binario(String id) {
-        ImageIcon img = new ImageIcon("ArbolBi" + id + ".jpg");
+        ImageIcon img = new ImageIcon(new ImageIcon("ArbolBi" + id + ".jpg").getImage());
         
         JLabel label = new JLabel();
         
@@ -53,7 +53,20 @@ public class VisualizarEstruturas extends javax.swing.JFrame {
     }
     
     public void mostrarArbol_Capa(String id, String nC) {
-        ImageIcon img = new ImageIcon("Capa" + id + "_" + nC + ".jpg");
+        ImageIcon img = new ImageIcon( new ImageIcon("Capa" + id + "_" + nC + ".jpg").getImage());
+        
+        JLabel label = new JLabel();
+        
+        label.setBounds(0, 0, img.getIconWidth(), img.getIconHeight());
+        
+        label.setIcon(img);
+        jScrollPane1.setViewportView(label);
+    }
+
+//"ListaD" + id + ".jpg"
+
+ public void mostrarListaD(String id) {
+        ImageIcon img = new ImageIcon(new ImageIcon("ListaD" + id +".jpg").getImage());
         
         JLabel label = new JLabel();
         
@@ -148,7 +161,7 @@ public class VisualizarEstruturas extends javax.swing.JFrame {
         } else if (jComboBox1.getSelectedItem() == "Ver Arbol de capas") {
             mostrarArbol_binario(id);
         } else if (jComboBox1.getSelectedItem() == "Ver listado de Albumes") {
-            
+            mostrarListaD(id);
         } else if (jComboBox1.getSelectedItem() == "Ver capa") {
             
             String capa = JOptionPane.showInputDialog(null, "Ingrese el número de capa");

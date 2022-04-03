@@ -6,6 +6,7 @@ package arbol_b;
 
 import estructuras.Arbol_avl;
 import estructuras.Arbol_binario;
+import estructuras.Lista_Doble;
 
 /**
  *
@@ -18,23 +19,26 @@ public class Nodo {
     private String password;
     private Arbol_binario arbol_binario;
     private Arbol_avl arbolAvl;
+    private Lista_Doble listaD;
 
+  
     private Nodo anterior;
     private Nodo siguiente;
     private Pagina right;
     private Pagina left;
 
-    public Nodo(long id, String nombre_cliente, String pasword, Arbol_binario arbol_binario, Arbol_avl arbolAvl) {
+    public Nodo(long id, String nombre_cliente, String pasword, Arbol_binario arbol_binario, Arbol_avl arbolAvl, Lista_Doble listaD) {
         this.id = id;
         this.nombre_cliente = nombre_cliente;
         this.password = pasword;
         this.arbol_binario = arbol_binario;
         this.arbolAvl = arbolAvl;
+        this.listaD = listaD;
         this.anterior = this.siguiente = null;
         this.left = this.right = null;
     }
 
-    public Nodo(long id, String nombre_cliente, String pasword, Arbol_binario arbol_binario, Arbol_avl arbolAvl, Pagina izquierda, Pagina derecha) {
+    public Nodo(long id, String nombre_cliente, String pasword, Arbol_binario arbol_binario, Arbol_avl arbolAvl, Pagina izquierda, Pagina derecha,Lista_Doble listaD) {
         this.id = id;
         this.nombre_cliente = nombre_cliente;
         this.password = pasword;
@@ -116,5 +120,14 @@ public class Nodo {
     public void setArbolAvl(Arbol_avl arbolAvl) {
         this.arbolAvl = arbolAvl;
     }
+
+  public Lista_Doble getListaD() {
+        return listaD;
+    }
+
+    public void setListaD(Lista_Doble listaD) {
+        this.listaD = listaD;
+    }
+
 
 }

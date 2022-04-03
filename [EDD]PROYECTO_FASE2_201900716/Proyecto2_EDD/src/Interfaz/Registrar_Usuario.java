@@ -195,7 +195,7 @@ public class Registrar_Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        CargaMasiva.arbol_b.insertar(Long.parseLong(jTextField3.getText()), jTextField2.getText(), jTextField4.getText(), null, null);
+        CargaMasiva.arbol_b.insertar(Long.parseLong(jTextField3.getText()), jTextField2.getText(), jTextField4.getText(), null, null,null);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

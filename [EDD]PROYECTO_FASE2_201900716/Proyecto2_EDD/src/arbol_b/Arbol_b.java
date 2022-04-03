@@ -7,6 +7,7 @@ package arbol_b;
 import estructuras.Arbol_avl;
 import estructuras.Arbol_binario;
 import estructuras.Cola_arbol_b;
+import estructuras.Lista_Doble;
 import estructuras.NodoCola;
 import estructuras.Pila;
 import java.io.FileWriter;
@@ -24,6 +25,7 @@ public class Arbol_b {
     public boolean bandera = false;
     public Arbol_binario arbol_bin = null;
     public Arbol_avl arbolAvl = null;
+public Lista_Doble list_D=null;
 
     public Arbol_b() {
         this.raiz = new Pagina();
@@ -31,8 +33,8 @@ public class Arbol_b {
     }
 //metodo insertar
 
-    public void insertar(long id, String nombre, String password, Arbol_binario arbol_binario, Arbol_avl arbolAvl) {
-        Nodo nodo = new Nodo(id, nombre, password, arbol_binario, arbolAvl);
+    public void insertar(long id, String nombre, String password, Arbol_binario arbol_binario, Arbol_avl arbolAvl, Lista_Doble listaD) {
+        Nodo nodo = new Nodo(id, nombre, password, arbol_binario, arbolAvl, listaD);
         Nodo objeto = insertar_en_pagina(nodo, raiz);
         if (objeto != null) {
             raiz = new Pagina();
@@ -85,6 +87,7 @@ public class Arbol_b {
         String password = "";
         Arbol_avl arbolAvl = null;
         Arbol_binario arbol_binario = null;
+        Lista_Doble listaD = null;
         Nodo temp, nuevo;
         Nodo aux = rama.primero;
 
@@ -96,7 +99,7 @@ public class Arbol_b {
             contador++;
 
             if (contador < 3) {
-                temp = new Nodo(aux.getId(), aux.getNombre_cliente(), aux.getPassword(), aux.getArbol_binario(), aux.getArbolAvl(), aux.getRight(), aux.getLeft());
+                temp = new Nodo(aux.getId(), aux.getNombre_cliente(), aux.getPassword(), aux.getArbol_binario(), aux.getArbolAvl(), aux.getRight(), aux.getLeft(), aux.getListaD());
                 rIzquierda.hoja = !(temp.getRight() != null && temp.getLeft() != null);
                 rIzquierda.insertar(temp);
             } else if (contador == 3) {
@@ -105,16 +108,17 @@ public class Arbol_b {
                 password = aux.getPassword();
                 arbolAvl = aux.getArbolAvl();
                 arbol_binario = aux.getArbol_binario();
+                listaD = aux.getListaD();
             } else {
 
-                temp = new Nodo(aux.getId(), aux.getNombre_cliente(), aux.getPassword(), aux.getArbol_binario(), aux.getArbolAvl(), aux.getLeft(), aux.getRight());
+                temp = new Nodo(aux.getId(), aux.getNombre_cliente(), aux.getPassword(), aux.getArbol_binario(), aux.getArbolAvl(), aux.getLeft(), aux.getRight(), aux.getListaD());
 
                 rDerecha.hoja = !(temp.getRight() != null && temp.getLeft() != null);
                 rDerecha.insertar(temp);
             }
             aux = aux.getSiguiente();
         }
-        nuevo = new Nodo(valor, nombre, password, arbol_binario, arbolAvl, rIzquierda, rDerecha);
+        nuevo = new Nodo(valor, nombre, password, arbol_binario, arbolAvl, rIzquierda, rDerecha, listaD);
         return nuevo;
     }
 //Metodo para buscar cliente
@@ -200,7 +204,7 @@ public class Arbol_b {
                     //________________________derecho_______________________
                     primero.setRight(buscar_Avl_(primero.getRight(), dpi));
                 } else {
-                    if (primero.getArbolAvl()==null) {
+                    if (primero.getArbolAvl() == null) {
                         System.out.println("Esta vacio");
                     }
                     this.arbolAvl = primero.getArbolAvl();
@@ -213,6 +217,41 @@ public class Arbol_b {
         }
         return raiz;
     }
+
+//Bucar lista doble
+public void bucar_ListaD(Pagina raiz, String dpi) {
+        this.raiz = this.bucar_ListaD_(raiz, dpi);
+    }
+//_______________________________________________________________________
+
+    public Pagina bucar_ListaD_(Pagina raiz, String dpi) {
+
+        if (raiz != null) {
+            Nodo primero = raiz.primero;
+
+            while (primero != null) {
+                if (Long.parseLong(dpi) < primero.getId()) {
+                    //________________izquierdo
+                    primero.setLeft(bucar_ListaD_(primero.getLeft(), dpi));
+
+                } else if (Long.parseLong(dpi) > primero.getId()) {
+                    //________________________derecho_______________________
+                    primero.setRight(bucar_ListaD_(primero.getRight(), dpi));
+                } else {
+                    if (primero.getArbolAvl() == null) {
+                        System.out.println("Esta vacio");
+                    }
+                    this.list_D = primero.getListaD();
+                    System.out.println("Si existe");
+
+                }
+                primero = primero.getSiguiente();
+            }
+            return raiz;
+        }
+        return raiz;
+    }
+
 //Metodo para modificar cliente
 
     public void modificar_clinte(Pagina raiz, String dpi, String nombre, String password) {
@@ -288,7 +327,6 @@ public class Arbol_b {
     }
 
 //__________________________
-
 //Agregar arbol binario
     public void AgregarArboAvl(Pagina raiz, String dpi, Arbol_avl avl) {
         this.raiz = this.AgregarArbolAvl_(raiz, dpi, avl);
@@ -320,8 +358,40 @@ public class Arbol_b {
         }
         return raiz;
     }
-//Metodo para graficar
 
+//Album
+    public void AgregarAlbum(Pagina raiz, String dpi, Lista_Doble doble) {
+        this.raiz = this.AgregarAlbum_(raiz, dpi, doble);
+    }
+//_______________________________________________________________________
+
+    public Pagina AgregarAlbum_(Pagina raiz, String dpi, Lista_Doble doble) {
+
+        if (raiz != null) {
+            Nodo primero = raiz.primero;
+            while (primero != null) {
+                if (Long.parseLong(dpi) < primero.getId()) {
+                    //________________izquierdo
+                    primero.setLeft(AgregarAlbum_(primero.getLeft(), dpi, doble));
+
+                } else if (Long.parseLong(dpi) > primero.getId()) {
+                    //________________________derecho_______________________
+                    primero.setRight(AgregarAlbum_(primero.getRight(), dpi, doble));
+                } else {
+
+                    this.bandera = true;
+                    primero.setListaD(doble);
+
+                    // System.out.println("true");
+                }
+                primero = primero.getSiguiente();
+            }
+            return raiz;
+        }
+        return raiz;
+    }
+
+//Metodo para graficar
     public void crearGrafo(String path, String nombreG, String cadena) {
         System.out.println(cadena);
         //String grafo = "digraph grafica{\n rankdir=TB;\n node[shape=record, style=filled,fillcolor=seashell2]\n nodo[lable=\"1\"];};";
