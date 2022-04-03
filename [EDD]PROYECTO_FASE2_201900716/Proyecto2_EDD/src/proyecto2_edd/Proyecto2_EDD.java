@@ -47,16 +47,17 @@ public class Proyecto2_EDD {
 //matriz.insertar_(1, 4, "2", 1);
 //matriz.insertar_(1, 2, "2", 1);
 //matriz.insertar_(1, 4, "2", 1);
-       
-       
+//       
+//   CargaMasiva.leerArchivo_clientes(CargaMasiva.abrirArchivo());
+
 
 
 //"F:\archivos de prueba\client.json"
 
 //CargaMasiva.leerArchivo_clientes(CargaMasiva.abrirArchivo());
 
-//Principal principal= new Principal();
-//principal.show();
+Principal principal= new Principal();
+principal.show();
 //        System.out.println("hola mundo1");
 //        Principal principal = new Principal();
 //        principal.setVisible(true);

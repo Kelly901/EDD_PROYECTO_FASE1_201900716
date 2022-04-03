@@ -21,8 +21,11 @@ public class Arbol_binario {
     public NodoArbolBinario raiz;
     public Capas capa = null;
     public Matriz matriz = null;
+    public boolean existeCapa = false;
     public Matriz matrizPreOden = new Matriz();
     public Matriz matrizInOrden = new Matriz();
+    public Matriz matrizPost = new Matriz();
+    public String recorrido = "";
     public int cont = 0;
 
     public Arbol_binario() {
@@ -44,8 +47,10 @@ public class Arbol_binario {
             if (valor.getId_capa() < raiz.getCapas().getId_capa()) {
 
                 raiz.setHijo_left(this.metodoRecursivo(valor, matriz, raiz.getHijo_left()));
-            } else {
+            } else if (valor.getId_capa() > raiz.getCapas().getId_capa()) {
                 raiz.setHijo_right(this.metodoRecursivo(valor, matriz, raiz.getHijo_right()));
+            } else {
+                System.out.println("repetido");
             }
         }
         return raiz;
@@ -57,7 +62,8 @@ public class Arbol_binario {
     public void pre_orden(NodoArbolBinario raiz, int id) {
 
         this.pre_order_recursivo(raiz, id);
-        matrizPreOden.crearGrafo("MatrizPreOrden.jpg");
+        matrizPreOden.crearGrafo("MatrizPreOrder.jpg");
+
     }
 
     public void pre_order_recursivo(NodoArbolBinario raiz, int id) {
@@ -65,6 +71,7 @@ public class Arbol_binario {
             NodoPixeles aux = raiz.getCapas().getPixeles().primero;
 
             if (cont < id) {
+                recorrido += raiz.getCapas().getId_capa() + ",";
                 System.out.println("Cantidad de capas" + raiz.getCapas().getId_capa());
                 while (aux != null) {
                     matrizPreOden.insertar_(aux.getFila(), aux.getColumna(), aux.getColor(), aux.getFila());
@@ -83,7 +90,8 @@ public class Arbol_binario {
 
     public void in_orden(NodoArbolBinario raiz, int id) {
         this.in_order_recursivo(raiz, id);
-        matrizInOrden.crearGrafo("MatrizIn_orden.jpg");
+        matrizInOrden.crearGrafo("MatrizIn_order.jpg");
+
     }
 
     public void in_order_recursivo(NodoArbolBinario raiz, int id) {
@@ -95,6 +103,7 @@ public class Arbol_binario {
             NodoPixeles aux = raiz.getCapas().getPixeles().primero;
 
             if (cont < id) {
+                recorrido += raiz.getCapas().getId_capa() + ",";
                 System.out.println("Cantidad de capas" + raiz.getCapas().getId_capa());
                 while (aux != null) {
                     matrizInOrden.insertar_(aux.getFila(), aux.getColumna(), aux.getColor(), aux.getFila());
@@ -112,7 +121,8 @@ public class Arbol_binario {
 
     public void post_orden(NodoArbolBinario raiz, int id) {
         this.post_order_recursivo(raiz, id);
-        matrizInOrden.crearGrafo("MatrizIn_PostOrden.jpg");
+        matrizPost.crearGrafo("Matriz_PostOrder.jpg");
+
     }
 
     public void post_order_recursivo(NodoArbolBinario raiz, int id) {
@@ -124,9 +134,10 @@ public class Arbol_binario {
             NodoPixeles aux = raiz.getCapas().getPixeles().primero;
 
             if (cont < id) {
+                recorrido += raiz.getCapas().getId_capa() + ",";
                 System.out.println("Cantidad de capas" + raiz.getCapas().getId_capa());
                 while (aux != null) {
-                    matrizInOrden.insertar_(aux.getFila(), aux.getColumna(), aux.getColor(), aux.getFila());
+                    matrizPost.insertar_(aux.getFila(), aux.getColumna(), aux.getColor(), aux.getFila());
 
                     aux = aux.getSiguiente();
                 }
@@ -137,8 +148,8 @@ public class Arbol_binario {
     }
 
 //_______________________-
-    public void buscar_dato(int dato) {
-        this.buscar_dato_(this.raiz, dato);
+    public void buscar_dato(NodoArbolBinario raiz, int dato) {
+        this.buscar_dato_(raiz, dato);
     }
 
     public void buscar_dato_(NodoArbolBinario raiz, int dato) {
@@ -149,6 +160,7 @@ public class Arbol_binario {
                 System.out.println(raiz.getCapas().getId_capa() + "==" + dato);
                 capa = raiz.getCapas();
                 matriz = raiz.getMatriz();
+                existeCapa = true;
             }
 //            while (aux != null) {
 //                //CargaMasiva.matriz.insertar(aux.getFila(), aux.getColumna(), aux.getColor(), aux.getFila());
@@ -285,7 +297,7 @@ public class Arbol_binario {
         // System.out.println(graficarArbol());
         return "digraph g{\nlabel=\"Id:" + id + "\";\n"
                 + "rankdir=TB;\n"
-                + "node [shape=oval,width=0.5,fontsize=15, fillcolor=purple,style=filled];\n"
+                + "node [shape=oval,width=0.5,fontsize=15, fillcolor=seashell2,style=filled];\n"
                 + graficarArbol(raiz)
                 + "}\n";
 

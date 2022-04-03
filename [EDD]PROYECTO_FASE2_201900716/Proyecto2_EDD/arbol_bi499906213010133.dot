@@ -1,0 +1,14 @@
+digraph g{
+label="Id:3";
+rankdir=TB;
+node [shape=oval,width=0.5,fontsize=15, fillcolor=seashell2,style=filled];
+nodo1810668396[label="5 "];
+nodo1810668396->nodo851134709
+nodo851134709[label="4 "];
+nodo851134709->nodo1236935513
+nodo1236935513[label="3 "];
+nodo1236935513->nodo826003278
+nodo826003278[label="2 "];
+nodo826003278->nodo1048774142
+nodo1048774142[label="1 "];
+}

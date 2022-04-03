@@ -4,25 +4,42 @@
  */
 package arbol_b;
 
+import estructuras.Arbol_avl;
+import estructuras.Arbol_binario;
+
 /**
  *
  * @author Kelly
  */
 public class Nodo {
+
     private long id;
+    private String nombre_cliente;
+    private String password;
+    private Arbol_binario arbol_binario;
+    private Arbol_avl arbolAvl;
+
     private Nodo anterior;
     private Nodo siguiente;
     private Pagina right;
     private Pagina left;
 
-    public Nodo(long id) {
+    public Nodo(long id, String nombre_cliente, String pasword, Arbol_binario arbol_binario, Arbol_avl arbolAvl) {
         this.id = id;
+        this.nombre_cliente = nombre_cliente;
+        this.password = pasword;
+        this.arbol_binario = arbol_binario;
+        this.arbolAvl = arbolAvl;
         this.anterior = this.siguiente = null;
         this.left = this.right = null;
     }
 
-    public Nodo(long id, Pagina izquierda, Pagina derecha) {
+    public Nodo(long id, String nombre_cliente, String pasword, Arbol_binario arbol_binario, Arbol_avl arbolAvl, Pagina izquierda, Pagina derecha) {
         this.id = id;
+        this.nombre_cliente = nombre_cliente;
+        this.password = pasword;
+        this.arbol_binario = arbol_binario;
+        this.arbolAvl = arbolAvl;
         this.anterior = this.siguiente = null;
         this.left = izquierda;
         this.right = derecha;
@@ -67,4 +84,37 @@ public class Nodo {
     public void setLeft(Pagina left) {
         this.left = left;
     }
+
+    public String getNombre_cliente() {
+        return nombre_cliente;
+    }
+
+    public void setNombre_cliente(String nombre_cliente) {
+        this.nombre_cliente = nombre_cliente;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Arbol_binario getArbol_binario() {
+        return arbol_binario;
+    }
+
+    public void setArbol_binario(Arbol_binario arbol_binario) {
+        this.arbol_binario = arbol_binario;
+    }
+
+    public Arbol_avl getArbolAvl() {
+        return arbolAvl;
+    }
+
+    public void setArbolAvl(Arbol_avl arbolAvl) {
+        this.arbolAvl = arbolAvl;
+    }
+
 }

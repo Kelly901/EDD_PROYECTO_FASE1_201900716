@@ -5,6 +5,7 @@
 package Interfaz;
 
 import javax.swing.JOptionPane;
+import proyecto2_edd.CargaMasiva;
 
 /**
  *
@@ -15,6 +16,8 @@ public class Iniciar_Sesion extends javax.swing.JFrame {
     /**
      * Creates new form Iniciar_Sesion
      */
+    public static String idcliente;
+
     public Iniciar_Sesion() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -146,9 +149,26 @@ public class Iniciar_Sesion extends javax.swing.JFrame {
 
         if (jTextField1.getText().equals("admin") && jTextField2.getText().equals("EDD2022")) {
             JOptionPane.showMessageDialog(null, "Bienvenido admin");
-            
+
             Ventana_Administrador vA = new Ventana_Administrador();
-            vA.setVisible(true);
+            vA.show();
+            dispose();
+        } else {
+            CargaMasiva.arbol_b.bucar_clinte(CargaMasiva.arbol_b.raiz, jTextField1.getText(), "", jTextField2.getText());
+            if (CargaMasiva.arbol_b.bandera == true) {
+                JOptionPane.showMessageDialog(null, "Bienvenido " + jTextField1.getText());
+                CargaMasiva.arbol_b.bandera = false;
+                Ventana_Usuario usuario = new Ventana_Usuario(jTextField1.getText());
+               
+                usuario.show();
+
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario no enconrado, por favor registrarse");
+                Principal principal = new Principal();
+                principal.show();
+                dispose();
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

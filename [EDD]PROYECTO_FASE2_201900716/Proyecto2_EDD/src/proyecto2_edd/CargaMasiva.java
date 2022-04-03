@@ -28,16 +28,16 @@ import org.json.JSONObject;
  * @author Kelly
  */
 public class CargaMasiva {
-
+    
     public static Arbol_b arbol_b = new Arbol_b();
-    public static Arbol_binario arbol_binario = new Arbol_binario();
+    //  public static Arbol_binario arbol_binario = new Arbol_binario();
     public static Matriz matriz = new Matriz();
+    
+    public static String abrirArchivo(File archivo, String direccion) {
 
-    public static String abrirArchivo() {
-
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("ingrese la ruta:");
-        String direccion = entrada.nextLine();
+//        Scanner entrada = new Scanner(System.in);
+//        System.out.println("ingrese la ruta:");
+//        String direccion = entrada.nextLine();
         String cadena = "";
         String texto = "";
         try {
@@ -46,49 +46,56 @@ public class CargaMasiva {
 //            
 //            BufferedReader leer = new BufferedReader(new FileReader(archivo));
 //File abrir = new File(direccion);
-            File archivo = new File(direccion);
+            archivo = new File(direccion);
             BufferedReader leer = new BufferedReader(new FileReader(archivo));
             while ((cadena = leer.readLine()) != null) {
-
+                
                 texto += cadena + "\n";
-
+                
             }
             leer.close();
-
+            
         } catch (Exception e) {
             System.err.println("No se pudo abrir el archivo");
         }
         //  System.out.println(texto);
         return texto;
     }
-
+    
     public static void leerArchivo_clientes(String texto) {
-
+        
         System.out.println("______________\n\n");
         // String texto1 = "[\n{\n\"dpi\":\"123\",\n\"nombre_cliente\":\"juan\",\n\"password\":\"1234\"\n},\n{\n\"dpi\":\"1234\",\n\"nombre_cliente\":\"juan2\",\n\"password\":\"12345\"\n}\n]";
         //Se cree un objeto de tipo Json a partir de una caddena de entrada.
         //La cadena se obtuvo de la carga masiva de un archivo.json (abrirArchivo funcion de tipo String que contiene la cadena)
         System.out.println(texto);
-
+        
         JSONArray array = new JSONArray(texto);
         JSONObject objeto = new JSONObject(array.get(0).toString());
-        objeto.get("dpi");
+        //objeto.get("dpi");
         //  System.out.println("dpi" + objeto.get("dpi"));
 
         for (int i = 0; i < array.length(); i++) {
             System.out.println("_______________" + i);
             JSONObject objeto2 = new JSONObject(array.get(i).toString());
-            objeto2.get("dpi");
-            System.out.println("dpi" + objeto2.get("dpi"));
+            // objeto2.get("dpi");
+            System.out.println("dpi" + objeto2.getString("dpi"));
             System.out.println("nombre_cliente" + objeto2.get("nombre_cliente"));
             System.out.println("password" + objeto2.get("password"));
-
+            
             long dpi = Long.parseLong(objeto2.getString("dpi"));
-            arbol_b.insertar(dpi);
-
+            arbol_b.insertar(dpi, objeto2.getString("nombre_cliente"), objeto2.getString("password"), null, null);
+            
         }
 
-        arbol_b.crearGrafo("arbol_b.png", "arbol_b", arbol_b.getCodigos(arbol_b));
+//        arbol_b.crearGrafo("arbol_b.png", "arbol_b", arbol_b.getCodigos(arbol_b));
+//
+//        arbol_b.bucar_clinte(arbol_b.raiz,"3999062130101", "juan", "2edd1s2022");
+//        System.out.println(arbol_b.bandera);
+//        arbol_b.bandera = false;
+//        arbol_b.modificar_clinte("4999062130101", "Pedro", "");
+//        System.out.println(arbol_b.bandera);
+        //arbol_b.crearGrafo("arbol_b.jpg", "arbol_b", arbol_b.getCodigos(arbol_b));
 //        arbol_b.modificar_clinte("6745567890123", "d", "f");
 //        System.out.println("bandera" + arbol_b.bandera);
 //arbol_b.crearGrafo("arbol_b.png", "arbol_b", arbol_b.getCodigos(arbol_b));
@@ -102,9 +109,9 @@ public class CargaMasiva {
 //            arbol_b.insertar(new Cliente(String.valueOf(i), "b", "a"));
 //        }
     }
-
-    public static void leerArchivo_capas(String texto) {
-
+    
+    public static void leerArchivo_capas(String texto, String id) {
+        Arbol_binario arbol_binario = new Arbol_binario();
         System.out.println("______________\n\n");
         //String texto1 = "[\n{\n\"dpi\":\"123\",\n\"nombre_cliente\":\"juan\",\n\"password\":\"1234\"\n},\n{\n\"dpi\":\"1234\",\n\"nombre_cliente\":\"juan2\",\n\"password\":\"12345\"\n}\n]";
         //Se cree un objeto de tipo Json a partir de una caddena de entrada.
@@ -112,7 +119,7 @@ public class CargaMasiva {
         // System.out.println(texto);
 //paso1: obtener el arreglo generala
         JSONArray array = new JSONArray(texto);
-
+        
         for (int i = 0; i < array.length(); i++) {
             // System.out.println("_______________" + i);
 //Paso 2: obtener los diccionarios
@@ -128,7 +135,7 @@ public class CargaMasiva {
             Pixeles pixeles = new Pixeles();
             Matriz matriz = new Matriz();
             for (int k = 0; k < array_pixeles.length(); k++) {
-
+                
                 JSONObject objetoPixeles = new JSONObject(array_pixeles.get(k).toString());
                 // System.out.println("    fila: " + objetoPixeles.get("fila"));
                 //System.out.println("    columna: " + objetoPixeles.get("columna"));
@@ -138,23 +145,27 @@ public class CargaMasiva {
             }
             //matriz.crearGrafo("matrizCC" + objeto1.getInt("id_capa")+ ".jpg");
             arbol_binario.agregar(new Capas(objeto1.getInt("id_capa"), pixeles), matriz);
-
+            
         }
+        arbol_binario.crearGrafo("ArbolBi" + id + ".jpg", "ArbolBi", arbol_binario.getCodigos(arbol_binario.raiz, id), id);
+        arbol_b.AgregarArbolBinario(arbol_b.raiz, id, arbol_binario);
         // arbol_binario.pre_orden();
         // matriz.crearGrafo("matriz.jpg");
-        Scanner sc = new Scanner(System.in);
+//        Scanner sc = new Scanner(System.in);
 
-        System.out.println("Ingrese el numero de capas separdas por comaa");
-        String var = sc.nextLine();
-
-        arbol_binario.pre_orden(arbol_binario.raiz, Integer.parseInt(var));
-        arbol_binario.matrizPreOden = null;
-        arbol_binario.cont = 0;
-
-        arbol_binario.in_orden(arbol_binario.raiz, Integer.parseInt(var));
-        arbol_binario.matrizInOrden = new Matriz();
-        arbol_binario.cont = 0;
-        arbol_binario.post_orden(arbol_binario.raiz, Integer.parseInt(var));
+//        System.out.println("Ingrese el numero de capas separdas por comaa");
+//        String var = sc.nextLine();
+//        arbol_binario.pre_orden(arbol_binario.raiz, Integer.parseInt(var));
+//        arbol_binario.matrizPreOden = null;
+//        arbol_binario.cont = 0;
+//
+//        arbol_binario.in_orden(arbol_binario.raiz, Integer.parseInt(var));
+//        arbol_binario.matrizInOrden = new Matriz();
+//        arbol_binario.cont = 0;
+//        arbol_binario.post_orden(arbol_binario.raiz, Integer.parseInt(var));
+//
+//        CargaMasiva.arbol_b.AgregarArbolBinario(CargaMasiva.arbol_b.raiz, id, arbol_binario);
+//        arbol_binario.crearGrafo("ArbolBi.jpg", "ArbolBi", arbol_binario.getCodigos(arbol_binario.raiz, id), id);
 //        String[] numeroCapas = var.split(",");
 //
 //        for (int i = 0; i < numeroCapas.length; i++) {
@@ -165,8 +176,10 @@ public class CargaMasiva {
     }
 
 //archivo de imagenes
-    public static void leerArchivo_imagenes(String texto) {
-
+    public static void leerArchivo_imagenes(String texto, String id) {
+        arbol_b.bucar_binario(arbol_b.raiz, id);
+        System.out.println("arbo:bi_" + arbol_b.arbol_bin.raiz.getCapas().getId_capa());
+        Arbol_binario arbol_binario = arbol_b.arbol_bin;
         System.out.println("______________\n\n");
         //String texto1 = "[\n{\n\"dpi\":\"123\",\n\"nombre_cliente\":\"juan\",\n\"password\":\"1234\"\n},\n{\n\"dpi\":\"1234\",\n\"nombre_cliente\":\"juan2\",\n\"password\":\"12345\"\n}\n]";
         //Se cree un objeto de tipo Json a partir de una caddena de entrada.
@@ -196,7 +209,7 @@ public class CargaMasiva {
 //Inicio del for
             for (int j = 0; j < array_pixeles.length(); j++) {
                 System.out.println("*" + array_pixeles.getInt(j));
-                arbol_binario.buscar_dato(array_pixeles.getInt(j));
+                arbol_binario.buscar_dato(arbol_binario.raiz, array_pixeles.getInt(j));
                 if (arbol_binario.capa != null && arbol_binario.matriz != null) {
                     System.out.println("--numero de capa: " + arbol_binario.capa.getId_capa());
                     arbol.agregar(arbol_binario.capa, arbol_binario.matriz);
@@ -204,38 +217,38 @@ public class CargaMasiva {
                     // arbol_binario.matriz.crearGrafo("matriz"+j+".jpg");
                     arbol_binario.capa = null;
                     arbol_binario.matriz = null;
-
+                    
                 }
-
+                
             }
 
 //
 //Generar la grafica del arbol binario con su capa
             if (arbol.raiz != null) {
                 System.out.println("________arbol");
-                arbol.crearGrafo("arbol_binarioC" + objeto1.get("id").toString() + ".jpg", "arbol_binarioC" + String.valueOf(objeto1.getInt("id")), arbol.getCodigos(arbol.raiz, String.valueOf(objeto1.getInt("id"))), String.valueOf(objeto1.getInt("id")));
+                arbol.crearGrafo("arbol_bi" + id + objeto1.get("id").toString() + ".jpg", "arbol_bi" + id + String.valueOf(objeto1.getInt("id")), arbol.getCodigos(arbol.raiz, String.valueOf(objeto1.getInt("id"))), String.valueOf(objeto1.getInt("id")));
             }
 
 // Insertar los arboles binarios y su id en el arbol avl
             arbol_avl.insertarI(objeto1.getInt("id"), arbol);
-
+            
         }
 // Generar la gráfica cel arbol binario
-        arbol_avl.crearGrafo("arbol_avl.jpg", "arbo_avl", arbol_avl.getCodigos(arbol_avl.root));
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Ingrese el id de la imagen");
-        String var = sc.nextLine();
-
-        arbol_avl.buscarImage_id(Integer.parseInt(var), arbol_avl.root);
-        System.out.println("___________________");
-
+        arbol_avl.crearGrafo("arbol_avl" + id + ".jpg", "arbo_avl" + id, arbol_avl.getCodigos(arbol_avl.root));
+arbol_b.AgregarArboAvl(arbol_b.raiz, id, arbol_avl);
+        arbol_b.arbol_bin = null;
+//        Scanner sc = new Scanner(System.in);
+//
+//        System.out.println("Ingrese el id de la imagen");
+//        String var = sc.nextLine();
+//
+//        arbol_avl.buscarImage_id(Integer.parseInt(var), arbol_avl.root);
+//        System.out.println("___________________");
     }
 
 //aLBUM
-    public static void leerArchivo_album(String texto) {
-
+    public static void leerArchivo_album(String texto, String id) {
+        
         System.out.println("______________\n\n");
         //String texto1 = "[\n{\n\"dpi\":\"123\",\n\"nombre_cliente\":\"juan\",\n\"password\":\"1234\"\n},\n{\n\"dpi\":\"1234\",\n\"nombre_cliente\":\"juan2\",\n\"password\":\"12345\"\n}\n]";
         //Se cree un objeto de tipo Json a partir de una caddena de entrada.
@@ -271,5 +284,5 @@ public class CargaMasiva {
 
         }
     }
-
+    
 }

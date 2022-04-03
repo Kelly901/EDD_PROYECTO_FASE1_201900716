@@ -16,6 +16,7 @@ public class Arbol_avl {
     public NodeAvl root;
     ListaAvl listaDeNodos;//lista para guardar los nodos del arbol avl
     ListaAvl listaAuxiliar;//lista auxiliar
+    public boolean existe = false;
 
     public Arbol_avl() {
 
@@ -149,18 +150,87 @@ public class Arbol_avl {
     }
 
     //Buscar imagen por id
-    public void  buscarImage_id(int id,NodeAvl tmp) {
+    public void buscarImage_id(int id, NodeAvl tmp) {
         if (tmp != null) {
-            if (id==tmp.getDato()) {
-                tmp.getArbol_binaro().recorrido_porAmplitud(tmp.getArbol_binaro().raiz,id);
+            if (id == tmp.getDato()) {
+                existe = true;
+                tmp.getArbol_binaro().recorrido_porAmplitud(tmp.getArbol_binaro().raiz, id);
             }
-            System.out.println(tmp.getDato());
-           buscarImage_id(id,tmp.getIzquierdo());
-           buscarImage_id(id,tmp.getDerecho());
+
+            buscarImage_id(id, tmp.getIzquierdo());
+            buscarImage_id(id, tmp.getDerecho());
         }
 
     }
 
+/////////////////////////////
+//Metodo de eliminacion
+    public void eliminarImagen(NodeAvl raiz, int id) {
+
+        this.root = eliminar(raiz, id);
+
+    }
+
+    public NodeAvl eliminar(NodeAvl raiz, int id) {
+        if (raiz == null) {
+            return raiz;
+        }
+        if (id < raiz.getDato()) {
+            raiz.setIzquierdo(eliminar(raiz.getIzquierdo(), id));
+        } else if (id > raiz.getDato()) {
+            raiz.setDerecho(eliminar(raiz.getDerecho(), id));
+        } else {
+
+            if (raiz.getIzquierdo() == null || raiz.getDerecho() == null) {
+                NodeAvl temporal = null;
+                if (temporal == raiz.getIzquierdo()) {
+                    temporal = raiz.getDerecho();
+                } else {
+                    temporal = raiz.getIzquierdo();
+                }
+                if (temporal == null) {
+                    temporal = raiz;
+                    raiz = null;
+
+                } else {
+                    raiz = temporal;
+                }
+
+            } else {
+                NodeAvl temporal = this.minimo(raiz.getDerecho());
+                raiz.setDato(temporal.getDato());
+                raiz.setArbol_binaro(temporal.getArbol_binaro());
+                raiz.setDerecho(eliminar(raiz.getDerecho(), temporal.getDato()));
+            }
+            return raiz;
+        }
+        if (raiz == null) {
+            return raiz;
+        }
+        raiz.setAltura(maximo(this.altura(raiz.getIzquierdo()), altura(raiz.getDerecho())) + 1);
+        int banlance = this.balance(raiz);
+//rotar a la derecha
+        if (banlance < -1 && id < raiz.getIzquierdo().getDato()) {
+            return this.rotar_right(raiz);
+        }
+//rotar a la izquierda
+        if (banlance > 1 && id > raiz.getDerecho().getDato()) {
+            return this.rotar_left(raiz);
+        }
+//rotar izquierdda derecha
+        if (banlance < -1 && id > raiz.getIzquierdo().getDato()) {
+            raiz.setIzquierdo(this.rotar_left(raiz.getIzquierdo()));
+            return this.rotar_right(raiz);
+        }
+        if (banlance > 1 && id < raiz.getDerecho().getDato()) {
+            raiz.setDerecho(this.rotar_right(raiz.getDerecho()));
+            return this.rotar_left(raiz);
+        }
+        return raiz;
+
+    }
+
+////////////////////////////////////
     public void crearGrafo(String path, String nombreG, String cadena) {
         System.out.println(cadena);
         //String grafo = "digraph grafica{\n rankdir=TB;\n node[shape=record, style=filled,fillcolor=seashell2]\n nodo[lable=\"1\"];};";
@@ -221,7 +291,7 @@ public class Arbol_avl {
 
         pila.push(raiz);
         String etiqueta = "";
-        String variable = "";
+        //  String variable = "";
         int cont = 0;
 
         while (pila.PilaVacia() == false) {

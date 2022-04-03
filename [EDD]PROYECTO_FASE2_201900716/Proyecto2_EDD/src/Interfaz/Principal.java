@@ -98,15 +98,17 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-  //Ventana registrar usuario
+        //Ventana registrar usuario
 
-Registrar_Usuario registrar= new Registrar_Usuario();
-registrar.setVisible(true);
+        Registrar_Usuario registrar = new Registrar_Usuario();
+        registrar.show();
+        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Iniciar_Sesion iniciar_Sesion = new Iniciar_Sesion();
-        iniciar_Sesion.setVisible(true);
+        iniciar_Sesion.show();
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
