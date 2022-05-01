@@ -16,7 +16,10 @@ public class Proyecto3_EDD {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        CargaMasiva.leerArchivo_clientes(CargaMasiva.AbrirArchivo());
+        //CargaMasiva.leerArchivo_lugares(CargaMasiva.AbrirArchivo());
+        //CargaMasiva.leerArchivo_mensajeros(CargaMasiva.AbrirArchivo());
+        
+        CargaMasiva.leerArchivo_Grafo(CargaMasiva.AbrirArchivo());
     }
     
 }
