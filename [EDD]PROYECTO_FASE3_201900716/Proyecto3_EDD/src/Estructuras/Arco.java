@@ -10,7 +10,7 @@ package Estructuras;
  */
 public class Arco {
     
-    int destino;
+   public int destino;
     double peso;
 
     

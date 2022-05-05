@@ -24,54 +24,52 @@ import org.mindrot.bcrypt.BCrypt;
  * @author herre
  */
 public class CargaMasiva {
-    public static Lista lista= new Lista();
-    public static  Estructuras.TablaHash th= new Estructuras.TablaHash(37);
 
-    
-    public static String AbrirArchivo(){
-        
-        
-        Scanner entrada= new Scanner(System.in);
-        
+    public static Lista lista = new Lista();
+    public static Estructuras.TablaHash th = new Estructuras.TablaHash(37);
+   public static Lista2 lista2 = new Lista2();
+ public static ListaAdyacente lA = new ListaAdyacente();
+    public static String AbrirArchivo() {
+
+        Scanner entrada = new Scanner(System.in);
+
         System.out.println("Ingrese la ruta");
-        String direccion=entrada.nextLine();
-        
-        String cadena="";
-        String texto="";
-        
-        try {
-           File abrir = new File(direccion);
-            BufferedReader leerArchivo= new BufferedReader(new FileReader(abrir));
-        
-            while ((cadena=leerArchivo.readLine())!=null) {
+        String direccion = entrada.nextLine();
 
-                texto+=cadena+"\n";
-                
-                
+        String cadena = "";
+        String texto = "";
+
+        try {
+            File abrir = new File(direccion);
+            BufferedReader leerArchivo = new BufferedReader(new FileReader(abrir));
+
+            while ((cadena = leerArchivo.readLine()) != null) {
+
+                texto += cadena + "\n";
+
             }
-            
+
             leerArchivo.close();
         } catch (Exception e) {
-            
+
             System.err.println("No se pudo abrir el archivo");
         }
-        
-        
+
         return texto;
-  
+
     }
-    
-    public static void leerArchivo_clientes(String texto){
-        
+
+    public static void leerArchivo_clientes(String texto) {
+
         System.out.println("___________________________");
         //Obtener los clientes del Array
-        JSONArray array= new JSONArray(texto);
+        JSONArray array = new JSONArray(texto);
         System.out.println(array);
-        
+
         for (int i = 0; i < array.length(); i++) {
-           // System.out.println(array.get(i));
-           // System.out.println("_____________________________________");
-            JSONObject ob= new JSONObject(array.get(i).toString());
+            // System.out.println(array.get(i));
+            // System.out.println("_____________________________________");
+            JSONObject ob = new JSONObject(array.get(i).toString());
 //            System.out.println("dpi: "+ob.get("dpi"));
 //            System.out.println("nombres: "+ob.get("nombre_completo"));
 //            System.out.println("usuario: "+ob.get("nombre_usuario"));
@@ -80,127 +78,118 @@ public class CargaMasiva {
 //            System.out.println("telefono: "+ob.get("telefono"));
 //            System.out.println("direccion: "+ob.get("direccion"));
 //            System.out.println("id_municipio: "+ob.get("id_municipio"));
-            
-          boolean ban=  lista.clienteExistente(ob.get("nombre_usuario").toString());
-         
- 
+
+            boolean ban = lista.clienteExistente(ob.get("nombre_usuario").toString());
+
             if (ban) {
                 System.out.println("El cliente ya existe");
-            }else{
-                
-                 String hashed=BCrypt.hashpw(ob.get("contrasenia").toString(), BCrypt.gensalt());
-                lista.add(new Clientes(ob.get("dpi").toString(),ob.get("nombre_completo").toString(),ob.get("nombre_usuario").toString(),ob.get("correo").toString(),hashed, ob.get("telefono").toString(),ob.get("direccion").toString(),ob.get("id_municipio").toString()));
+            } else {
+
+                String hashed = BCrypt.hashpw(ob.get("contrasenia").toString(), BCrypt.gensalt());
+                lista.add(new Clientes(ob.get("dpi").toString(), ob.get("nombre_completo").toString(), ob.get("nombre_usuario").toString(), ob.get("correo").toString(), hashed, ob.get("telefono").toString(), ob.get("direccion").toString(), ob.get("id_municipio").toString()));
             }
-            
-            
+
         }
         System.out.println("________________________");
         //lista.mostrar();
-        
-        Scanner sc= new Scanner(System.in);
-      
-                
-                
+
+        Scanner sc = new Scanner(System.in);
+
         System.out.println("Ingrese la contraseña");
-          String pass=sc.nextLine();
+        String pass = sc.nextLine();
         lista.getCliente(pass, "veniam");
-        
+
         System.out.println("_______________________");
-        
 
-        
     }
-    
-    public static void leerArchivo_mensajeros(String texto){
 
-       // System.out.println("___________________________");
+    public static void leerArchivo_mensajeros(String texto) {
+
+        // System.out.println("___________________________");
         //Obtener los clientes del Array
-        JSONArray array= new JSONArray(texto);
+        JSONArray array = new JSONArray(texto);
         System.out.println(array);
         //ob= sera el objeto que contiene los datos del cliente
         for (int i = 0; i < array.length(); i++) {
-           // System.out.println(array.get(i));
-           // System.out.println("_____________________________________");
-            JSONObject ob= new JSONObject(array.get(i).toString());
+            // System.out.println(array.get(i));
+            // System.out.println("_____________________________________");
+            JSONObject ob = new JSONObject(array.get(i).toString());
 //            System.out.println("dpi: "+ob.get("dpi"));
 //            System.out.println("nombres: "+ob.get("nombres"));
 //            System.out.println("apellidos: "+ob.get("apellidos"));
 //            System.out.println("tipo_licencia "+ob.get("tipo_licencia"));
 //            System.out.println("genero: "+ob.get("genero"));
 //            System.out.println("direccion: "+ob.get("direccion"));
-            
+
             th.insertarHash(Long.parseLong(ob.get("dpi").toString()));
-          //  System.out.println(th.factor_carga);
-      
+            //  System.out.println(th.factor_carga);
+
         }
         System.out.println("_________mostrar__________________");
         th.imprimir();
-   //th.mostrar();
-       System.out.println("factor de carga: "+th.factor_carga);
-        System.out.println("tamaño "+th.tamanio);
-        Grafica graf= new Grafica();
+        //th.mostrar();
+        System.out.println("factor de carga: " + th.factor_carga);
+        System.out.println("tamaño " + th.tamanio);
+        Grafica graf = new Grafica();
         graf.crearGrafo("tabla.jpg", "tabla", graf.tabla());
+        graf.crearGrafo("tabla1.jpg", "tabla1", graf.TablaHash());
         //System.out.println(graf.tabla());
     }
-    
-        public static void leerArchivo_lugares(String texto){
-        
-        System.out.println("___________________________");
-        //Obtener los clientes del Array
-       
-        JSONObject ob= new JSONObject(texto);
-        
-        System.out.println(ob.get("Lugares"));
-        
-         JSONArray array= new JSONArray(ob.get("Lugares").toString());
-         
-            for (int i = 0; i < array.length(); i++) {
-                
-                JSONObject ob2= new JSONObject(array.get(i).toString());
-                   System.out.println("id: "+ob2.get("id"));
-                   System.out.println("departamento: "+ob2.get("departamento"));
-                   System.out.println("nombre: "+ob2.get("nombre"));
-                   System.out.println("sn_sucursal: "+ob2.get("sn_sucursal"));
 
-            }
-      
-   
-    }
-        
-              public static void leerArchivo_Grafo(String texto){
-        
+    public static void leerArchivo_lugares(String texto) {
+
         System.out.println("___________________________");
         //Obtener los clientes del Array
-       
-        JSONObject ob= new JSONObject(texto);
-        Lista2 lista2= new Lista2();
-        System.out.println(ob.get("Grafo"));
-        
-         JSONArray array= new JSONArray(ob.get("Grafo").toString());
-         
-            for (int i = 0; i < array.length(); i++) {
-                
-                JSONObject ob2= new JSONObject(array.get(i).toString());
-                   System.out.println("inicio: "+ob2.get("inicio"));
-                   System.out.println("final: "+ob2.get("final"));
-                   System.out.println("peso: "+ob2.get("peso"));
-                  lista2.insertar(new Grafo(Integer.parseInt(ob2.get("inicio").toString()), Integer.parseInt(ob2.get("final").toString()),Integer.parseInt(ob2.get("peso").toString()) ));
-                   
-            }
-            ListaAdyacente lA= new ListaAdyacente();
-                  if (lista2.size()!=0) {
-                    lA.reccorer(lista2);
-            lA.mostrar();  
-                  }else{
-                      System.out.println("vacia");
-                  }
-            
-      
-   
+
+        JSONObject ob = new JSONObject(texto);
+
+        System.out.println(ob.get("Lugares"));
+
+        JSONArray array = new JSONArray(ob.get("Lugares").toString());
+
+        for (int i = 0; i < array.length(); i++) {
+
+            JSONObject ob2 = new JSONObject(array.get(i).toString());
+            System.out.println("id: " + ob2.get("id"));
+            System.out.println("departamento: " + ob2.get("departamento"));
+            System.out.println("nombre: " + ob2.get("nombre"));
+            System.out.println("sn_sucursal: " + ob2.get("sn_sucursal"));
+
+        }
+
     }
-              
-              
-   
+
+    public static void leerArchivo_Grafo(String texto) {
+
+        System.out.println("___________________________");
+        //Obtener los clientes del Array
+
+        JSONObject ob = new JSONObject(texto);
+
+        System.out.println(ob.get("Grafo"));
+
+        JSONArray array = new JSONArray(ob.get("Grafo").toString());
+
+        for (int i = 0; i < array.length(); i++) {
+
+            JSONObject ob2 = new JSONObject(array.get(i).toString());
+            System.out.println("inicio: " + ob2.get("inicio"));
+            System.out.println("final: " + ob2.get("final"));
+            System.out.println("peso: " + ob2.get("peso"));
+            lista2.insertar(new Grafo(Integer.parseInt(ob2.get("inicio").toString()), Integer.parseInt(ob2.get("final").toString()), Integer.parseInt(ob2.get("peso").toString())));
+
+        }
+       
+        if (lista2.size() != 0) {
+            lA.reccorer(lista2);
+            lA.mostrar();
+        } else {
+            System.out.println("vacia");
+        }
         
-        
+        Grafica gra= new Grafica();
+        gra.crearGrafo("lugar.jpg", "lugar",gra.grafica1());
+
+    }
+
 }

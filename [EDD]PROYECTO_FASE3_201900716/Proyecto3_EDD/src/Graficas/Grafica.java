@@ -4,7 +4,10 @@
  */
 package Graficas;
 
+import Estructuras.Arco;
 import Estructuras.Datos;
+import Estructuras.NodoLista2;
+import Estructuras.Vertice;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import proyecto3_edd.CargaMasiva;
@@ -14,8 +17,8 @@ import proyecto3_edd.CargaMasiva;
  * @author herre
  */
 public class Grafica {
-    
-     public void crearGrafo(String path, String nombreG, String cadena) {
+
+    public void crearGrafo(String path, String nombreG, String cadena) {
         //String grafo = "digraph grafica{\n rankdir=TB;\n node[shape=record, style=filled,fillcolor=seashell2]\n nodo[lable=\"1\"];};";
         FileWriter fichero = null;
         PrintWriter escritor;
@@ -56,39 +59,81 @@ public class Grafica {
 
     }
 
-    
-    public String TablaHash(){
-        
-        return null;
-    }
-    
-    
-     public String tabla() {
+    public String tabla() {
         String cadena = "digraph G{\nlabel=\"Tabla Hash\";\nnode[shape=box];\n";
         String conexion = "";
         String nodos = "";
-        
+
         String principal = "";
-            Datos tabla[]=CargaMasiva.th.tabla;
-            for (int i = 0; i < tabla.length; i++) {
-                if (tabla[i]!=null) {
-               nodos += "nC" + String.valueOf(i).hashCode() + "[label=\"" + tabla[i].getLlave() + "\"];\n";
- 
-                }else{
-                    nodos += "nC" + String.valueOf(i).hashCode() + "[label=\"" + i + "\"];\n";
+        Datos tabla[] = CargaMasiva.th.tabla;
+        for (int i = 0; i < tabla.length; i++) {
+            if (tabla[i] != null) {
+                nodos += "nC" + String.valueOf(i).hashCode() + "[label=\"Key: " + tabla[i].getLlave() + "\nDPI: " + tabla[i].getDpi() + "\"];\n";
 
-                }
-                if ((i+1)<tabla.length) {
-                  conexion += "nC" + String.valueOf(i).hashCode() + "->nC" + String.valueOf(i+1).hashCode() + ";\n";
+            } else {
+                nodos += "nC" + String.valueOf(i).hashCode() + "[label=\"Key: " + i + " DPI: null" + "\"];\n";
 
-                }
-         }
+            }
+            if ((i + 1) < tabla.length) {
+                conexion += "nC" + String.valueOf(i).hashCode() + "->nC" + String.valueOf(i + 1).hashCode() + ";\n";
+
+            }
+        }
 
         cadena += nodos + "\n";
         cadena += conexion + "\n";
         cadena += "{rank=same;" + principal + "}";
         //cadena += GrafoVentanilla();
 
+        cadena += "\n}";
+        return cadena;
+
+    }
+
+    public String TablaHash() {
+        String cadena = "digraph G{\nlabel=\"Tabla Hash\";\nnode[shape=box];\n";
+        String etiqueta = "";
+        Datos tabla[] = CargaMasiva.th.tabla;
+
+        for (int i = 0; i < tabla.length; i++) {
+
+            if (tabla[i] != null) {
+                etiqueta += "<TR><TD>Key: " + tabla[i].getLlave() + "</TD><TD> dpi: " + tabla[i].getDpi() + "</TD></TR>";
+            } else {
+                etiqueta += "<TR><TD>Key: " + i + "</TD><TD> dpi: " + null + "</TD></TR>";
+
+            }
+        }
+        String cuerpo = "<<TABLE>\n"
+                + etiqueta + "\n"
+                + "</TABLE>>\n";
+
+        cadena += "a[label=" + cuerpo + "];\n}";
+        return cadena;
+    }
+
+    public String grafica1() {
+        String cadena = "digraph G{\nlabel=\"Tabla Hash\";\n";
+       
+        NodoLista2 temp = CargaMasiva.lA.dest.raiz;
+        String conexion="";
+        String nodos = "";
+        while (temp != null) {
+            Vertice vertice = (Vertice) temp.objeto;
+            NodoLista2 aux = vertice.arcos.raiz;
+          nodos += "nC" + vertice.numVertice + "[label=\""+vertice.numVertice + "\"];\n";
+          conexion+="nC"+vertice.numVertice+"->";
+            while (aux != null) {
+                Arco arco = (Arco) aux.objeto;
+                
+                //nodos += "nd" + arco.destino + "[label=\""+arco.destino + "\"];\n";
+                conexion+="nC"+arco.destino+";\n";
+                aux = aux.siguiente;
+            }
+            temp = temp.siguiente;
+        }
+        cadena+=nodos;
+        cadena+=conexion;
         cadena += "\n}";
         return cadena;
 

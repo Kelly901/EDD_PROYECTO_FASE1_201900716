@@ -1,0 +1,22 @@
+digraph G{
+label="Tabla Hash";
+nC17[label="17"];
+nC13[label="13"];
+nC16[label="16"];
+nC14[label="14"];
+nC13[label="13"];
+nC16[label="16"];
+nC8[label="8"];
+nC13[label="13"];
+nC17->nC13;
+nC16;
+nC13->nC17;
+nC16->nC17;
+nC14->nC13;
+nC16;
+nC13->nC14;
+nC16->nC14;
+nC8->nC13;
+nC13->nC8;
+
+}

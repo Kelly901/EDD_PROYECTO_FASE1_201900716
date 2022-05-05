@@ -10,8 +10,8 @@ package Estructuras;
  */
 public class Lista2 {
 
-    NodoLista2 raiz;
-
+   public NodoLista2 raiz;
+   
     public void insertar(Object ob) {
         NodoLista2 nuevo = new NodoLista2(ob);
 

@@ -12,8 +12,8 @@ public class Vertice {
     
     
     String nombre;
-     int numVertice;
-     Lista2 arcos;
+   public  int numVertice;
+   public  Lista2 arcos;
   //lISTA  lista adyacencia
     public Vertice(int numVertice) {
       this.arcos=new Lista2();

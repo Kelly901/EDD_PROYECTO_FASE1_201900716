@@ -22,12 +22,12 @@ public class Proyecto3_EDD {
         // TODO code application logic here
         System.out.println("d");
         //CargaMasiva.leerArchivo_lugares(CargaMasiva.AbrirArchivo());
-       CargaMasiva.leerArchivo_mensajeros(CargaMasiva.AbrirArchivo());
+      // CargaMasiva.leerArchivo_mensajeros(CargaMasiva.AbrirArchivo());
        
        
         //double val= 1/37;
         //System.out.println("val: "+val);
-       // CargaMasiva.leerArchivo_Grafo(CargaMasiva.AbrirArchivo());
+       CargaMasiva.leerArchivo_Grafo(CargaMasiva.AbrirArchivo());
         //CargaMasiva.leerArchivo_clientes(CargaMasiva.AbrirArchivo());
 //        System.out.println("hola");
 //TablaHash th= new TablaHash(37);

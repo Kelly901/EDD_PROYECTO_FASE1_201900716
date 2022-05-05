@@ -10,9 +10,9 @@ package Estructuras;
  */
 public class NodoLista2 {
 
-    Object objeto;
-    NodoLista2 anterior;
-    NodoLista2 siguiente;
+   public Object objeto;
+   public NodoLista2 anterior;
+  public  NodoLista2 siguiente;
 
     public NodoLista2(Object objeto) {
         this.objeto = objeto;
