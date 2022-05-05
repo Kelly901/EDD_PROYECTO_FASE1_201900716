@@ -8,17 +8,19 @@ package Estructuras;
  *
  * @author herre
  */
-public class NodoMerkle {
+public class Grafo2 {
     
-    NodoMerkle izuqierdo;
-    NodoMerkle derecho;
-    String hash;
+    int numeVertices;
+    static int maxVerts=20;
+    Vertice [] tabla;
 
-    public NodoMerkle(NodoMerkle izuqierdo, NodoMerkle derecho, String hash) {
-        this.izuqierdo = izuqierdo;
-        this.derecho = derecho;
-        this.hash = hash;
+    public Grafo2(int mx) {
+        tabla= new Vertice[mx];
+        numeVertices=0;
+        maxVerts=mx;
     }
+    
+    
     
     
 }

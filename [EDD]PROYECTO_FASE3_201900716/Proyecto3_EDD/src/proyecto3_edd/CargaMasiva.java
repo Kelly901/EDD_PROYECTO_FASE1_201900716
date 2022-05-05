@@ -5,7 +5,11 @@
 package proyecto3_edd;
 
 import Estructuras.Clientes;
+import Estructuras.Grafo;
 import Estructuras.Lista;
+import Estructuras.Lista2;
+import Estructuras.ListaAdyacente;
+import Graficas.Grafica;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -21,6 +25,8 @@ import org.mindrot.bcrypt.BCrypt;
  */
 public class CargaMasiva {
     public static Lista lista= new Lista();
+    public static  Estructuras.TablaHash th= new Estructuras.TablaHash(37);
+
     
     public static String AbrirArchivo(){
         
@@ -106,7 +112,6 @@ public class CargaMasiva {
     }
     
     public static void leerArchivo_mensajeros(String texto){
-        Estructuras.TablaHash th= new Estructuras.TablaHash(37);
 
        // System.out.println("___________________________");
         //Obtener los clientes del Array
@@ -128,9 +133,14 @@ public class CargaMasiva {
           //  System.out.println(th.factor_carga);
       
         }
-  // th.mostrar();
-       // System.out.println("factor de carga: "+th.factor_carga);
-       // System.out.println("tamaño "+th.tamanio);
+        System.out.println("_________mostrar__________________");
+        th.imprimir();
+   //th.mostrar();
+       System.out.println("factor de carga: "+th.factor_carga);
+        System.out.println("tamaño "+th.tamanio);
+        Grafica graf= new Grafica();
+        graf.crearGrafo("tabla.jpg", "tabla", graf.tabla());
+        //System.out.println(graf.tabla());
     }
     
         public static void leerArchivo_lugares(String texto){
@@ -163,7 +173,7 @@ public class CargaMasiva {
         //Obtener los clientes del Array
        
         JSONObject ob= new JSONObject(texto);
-        
+        Lista2 lista2= new Lista2();
         System.out.println(ob.get("Grafo"));
         
          JSONArray array= new JSONArray(ob.get("Grafo").toString());
@@ -174,9 +184,17 @@ public class CargaMasiva {
                    System.out.println("inicio: "+ob2.get("inicio"));
                    System.out.println("final: "+ob2.get("final"));
                    System.out.println("peso: "+ob2.get("peso"));
-   
-
+                  lista2.insertar(new Grafo(Integer.parseInt(ob2.get("inicio").toString()), Integer.parseInt(ob2.get("final").toString()),Integer.parseInt(ob2.get("peso").toString()) ));
+                   
             }
+            ListaAdyacente lA= new ListaAdyacente();
+                  if (lista2.size()!=0) {
+                    lA.reccorer(lista2);
+            lA.mostrar();  
+                  }else{
+                      System.out.println("vacia");
+                  }
+            
       
    
     }
