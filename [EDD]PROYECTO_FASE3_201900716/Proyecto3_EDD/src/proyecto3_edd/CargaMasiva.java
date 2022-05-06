@@ -28,6 +28,8 @@ public class CargaMasiva {
     public static Estructuras.TablaHash th = new Estructuras.TablaHash(37);
    public static Lista2 lista2 = new Lista2();
  public static ListaAdyacente lA = new ListaAdyacente();
+ 
+ public static int idCliente=0;
     public static String AbrirArchivo(File file,String ruta) {
 
         Scanner entrada = new Scanner(System.in);
@@ -89,6 +91,10 @@ public class CargaMasiva {
             }
 
         }
+        
+        
+                Grafica graf = new Grafica();
+                graf.crearGrafo("Clientes"+String.valueOf(idCliente)+".jpg", "Clientes",graf.clientes());
         System.out.println("________________________");
         //lista.mostrar();
 
@@ -181,9 +187,9 @@ public class CargaMasiva {
         
         
    
-//        Grafica gra= new Grafica();
-//        gra.crearGrafo("grafo.jpg","grafo",gra.grafica1());
-//        gra.crearGrafo("lugar.jpg", "lugar",gra.ListaAdyacente());
+        Grafica gra= new Grafica();
+        gra.crearGrafo("grafo.jpg","grafo",gra.grafica1());
+        gra.crearGrafo("listaAd.jpg", "listaAd",gra.ListaAdyacente());
 
     }
 

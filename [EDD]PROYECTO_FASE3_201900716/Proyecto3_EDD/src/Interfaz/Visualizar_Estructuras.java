@@ -7,6 +7,7 @@ package Interfaz;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import proyecto3_edd.CargaMasiva;
 
 /**
  *
@@ -22,8 +23,8 @@ public class Visualizar_Estructuras extends javax.swing.JFrame {
     }
 
     
-     public void mostrarArbol_Lista(String id) {
-        ImageIcon img = new ImageIcon( new ImageIcon("arbol_avl" + id + ".jpg").getImage());
+     public void mostrarClientes(String id) {
+        ImageIcon img = new ImageIcon( new ImageIcon("Clientes"+id + ".jpg").getImage());
         
         JLabel label = new JLabel();
         
@@ -35,6 +36,40 @@ public class Visualizar_Estructuras extends javax.swing.JFrame {
      
      public void mostrarTabla(String id) {
         ImageIcon img = new ImageIcon( new ImageIcon("Tabla"  + ".jpg").getImage());
+        
+        JLabel label = new JLabel();
+        
+        label.setBounds(0, 0, img.getIconWidth(), img.getIconHeight());
+        
+        label.setIcon(img);
+        jScrollPane1.setViewportView(label);
+    }
+     
+     
+     public void mostrarLugares(String id) {
+        ImageIcon img = new ImageIcon( new ImageIcon("Tabla"  + ".jpg").getImage());
+        
+        JLabel label = new JLabel();
+        
+        label.setBounds(0, 0, img.getIconWidth(), img.getIconHeight());
+        
+        label.setIcon(img);
+        jScrollPane1.setViewportView(label);
+    }
+     
+      public void mostrarListaAdyacente(String id) {
+        ImageIcon img = new ImageIcon( new ImageIcon("listaAd"  + ".jpg").getImage());
+        
+        JLabel label = new JLabel();
+        
+        label.setBounds(0, 0, img.getIconWidth(), img.getIconHeight());
+        
+        label.setIcon(img);
+        jScrollPane1.setViewportView(label);
+    }
+      
+      public void mostrarGrafo(String id) {
+        ImageIcon img = new ImageIcon( new ImageIcon("grafo"  + ".jpg").getImage());
         
         JLabel label = new JLabel();
         
@@ -137,6 +172,7 @@ public class Visualizar_Estructuras extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (jComboBox1.getSelectedItem()=="Clientes") {
+            mostrarClientes(String.valueOf(CargaMasiva.idCliente));
             System.out.println("Clientes");
         }else if (jComboBox1.getSelectedItem()=="Tabla Hash") {
             System.out.println("Tabla Hash");
@@ -144,9 +180,10 @@ public class Visualizar_Estructuras extends javax.swing.JFrame {
         }else if (jComboBox1.getSelectedItem()=="Lugares") {
             
         }else if (jComboBox1.getSelectedItem()=="Lista Adyacente") {
+            mostrarListaAdyacente("ED");
             
         }else if (jComboBox1.getSelectedItem()=="Grafo") {
-            
+            mostrarGrafo("d");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

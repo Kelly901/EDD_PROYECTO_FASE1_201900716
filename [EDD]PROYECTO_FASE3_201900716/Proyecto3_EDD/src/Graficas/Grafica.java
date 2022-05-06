@@ -7,6 +7,7 @@ package Graficas;
 import Estructuras.Arco;
 import Estructuras.Datos;
 import Estructuras.NodoLista2;
+import Estructuras.Nodo_lista;
 import Estructuras.Vertice;
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -114,78 +115,106 @@ public class Grafica {
 
     public String grafica1() {
         String cadena = "digraph G{\nlabel=\"Tabla Hash\";\n";
-       
+
         NodoLista2 temp = CargaMasiva.lA.dest.raiz;
-        String conexion="";
+        String conexion = "";
         String nodos = "";
-        String principal="";
+        String principal = "";
         while (temp != null) {
             Vertice vertice = (Vertice) temp.objeto;
             NodoLista2 aux = vertice.arcos.raiz;
-          nodos += "nC" + vertice.numVertice + "[label=\""+vertice.numVertice + "\"];\n";
-          conexion+="nC"+vertice.numVertice+"->";
+            nodos += "nC" + vertice.numVertice + "[label=\"" + vertice.numVertice + "\"];\n";
+            conexion += "nC" + vertice.numVertice + "->";
             while (aux != null) {
                 Arco arco = (Arco) aux.objeto;
-                
+
                 //nodos += "nd" + arco.destino + "[label=\""+arco.destino + "\"];\n";
-                conexion+="nC"+arco.destino+";\n";
+                conexion += "nC" + arco.destino + ";\n";
                 aux = aux.siguiente;
             }
             temp = temp.siguiente;
         }
-        cadena+=nodos;
-        cadena+=conexion;
+        cadena += nodos;
+        cadena += conexion;
         cadena += "\n}";
         return cadena;
 
     }
-    
-    
-        public String ListaAdyacente() {
+
+    public String ListaAdyacente() {
         String cadena = "digraph G{\nlabel=\"Tabla Hash\";\nnode[shape=box];\n";
-       
+
         NodoLista2 temp = CargaMasiva.lA.dest.raiz;
-        String conexion="";
+        String conexion = "";
         String nodos = "";
-        String principal="";
-        String principales="";
+        String principal = "";
+        String principales = "";
         while (temp != null) {
             Vertice vertice = (Vertice) temp.objeto;
             NodoLista2 aux = vertice.arcos.raiz;
-          nodos += "nC" + temp.hashCode() + "[label=\""+vertice.numVertice + "\"];\n";
-          principales+="nC"+temp.hashCode()+";";
-            if (temp.siguiente!=null) {
-              principal+="nC"+temp.hashCode()+"->nC"+temp.siguiente.hashCode()+";\n";
+            nodos += "nC" + temp.hashCode() + "[label=\"" + vertice.numVertice + "\"];\n";
+            principales += "nC" + temp.hashCode() + ";";
+            if (temp.siguiente != null) {
+                principal += "nC" + temp.hashCode() + "->nC" + temp.siguiente.hashCode() + ";\n";
 
             }
 
             while (aux != null) {
                 Arco arco = (Arco) aux.objeto;
-                
-                nodos += "nd" + aux.hashCode() + "[label=\""+arco.destino + "\"];\n";
-                if (aux==vertice.arcos.raiz) {
-                   conexion+="nC"+temp.hashCode()+"->nd"+aux.hashCode()+";\n";
-  
+
+                nodos += "nd" + aux.hashCode() + "[label=\"" + arco.destino + "\"];\n";
+                if (aux == vertice.arcos.raiz) {
+                    conexion += "nC" + temp.hashCode() + "->nd" + aux.hashCode() + ";\n";
+
                 }
-                if (aux.siguiente!=null) {
-                  conexion+="nd"+aux.hashCode()+"->nd"+aux.siguiente.hashCode()+";\n";
+                if (aux.siguiente != null) {
+                    conexion += "nd" + aux.hashCode() + "->nd" + aux.siguiente.hashCode() + ";\n";
 
                 }
                 aux = aux.siguiente;
             }
             temp = temp.siguiente;
         }
-        cadena+=nodos;
-        
-         cadena += "{rank=same;" + principales + "}";
-            System.out.println(principales);
-            cadena+=principal;
-        cadena+=conexion;
+        cadena += nodos;
+
+        cadena += "{rank=same;" + principales + "}";
+        System.out.println(principales);
+        cadena += principal;
+        cadena += conexion;
         cadena += "\n}";
         return cadena;
 
     }
+
+    /////////////////////////////clientes
+    public String clientes() {
+        String cadena = "digraph G{\nlabel=\"Tabla Hash\";\nnode[shape=box];\n";
+        String conexion = "";
+        String nodos = "";
+
+        String principal = "";
     
-    
-    
+        Nodo_lista temp = CargaMasiva.lista.primero;
+        while (temp != null) {
+
+            nodos += "nC" + temp.hashCode() + "[label=\"Nombre: " +temp.getCliente().getNombre() + "\nDPI: " +temp.getCliente().getDpi() + "\nUsuario: " +temp.getCliente().getUsuario() +"\nDireccion: " +temp.getCliente().getDirección() +"\ncorreo: " +temp.getCliente().getCorreo() +"\nId_municipio: " +temp.getCliente().getId_municipio() + "\nContraseña: " +temp.getCliente().getPassword() +    "\"];\n";
+
+            if (temp.getSiguiente() != null) {
+                conexion += "nC" +temp.hashCode() + "->nC" + temp.getSiguiente().hashCode() + ";\n";
+
+            }
+            temp = temp.getSiguiente();
+           
+        }
+
+        cadena += nodos + "\n";
+        cadena += conexion + "\n";
+        cadena += "{rank=same;" + conexion + "}";
+        //cadena += GrafoVentanilla();
+
+        cadena += "\n}";
+        return cadena;
+
+    }
+
 }

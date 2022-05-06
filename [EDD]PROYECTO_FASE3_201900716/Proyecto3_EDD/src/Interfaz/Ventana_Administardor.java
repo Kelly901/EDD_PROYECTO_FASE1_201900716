@@ -66,6 +66,27 @@ public class Ventana_Administardor extends javax.swing.JFrame {
         return texto;
     }
 
+     
+       public String cargaRutas() {
+        String texto = "";
+        if (jFile.showDialog(null, "Abrir") == JFileChooser.APPROVE_OPTION) {
+            file = jFile.getSelectedFile();
+            if (file.canRead()) {
+                if (file.getName().endsWith("json")) {
+
+                    ruta = file.getPath();
+                    texto = CargaMasiva.AbrirArchivo(file, ruta);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Extensión erronea");
+
+                }
+
+            }
+        }
+
+        return texto;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -240,6 +261,7 @@ public class Ventana_Administardor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        CargaMasiva.leerArchivo_Grafo(cargaRutas());
         JOptionPane.showMessageDialog(null, "Rutas cargadas con exito");
 
     }//GEN-LAST:event_jButton7ActionPerformed

@@ -1,0 +1,59 @@
+digraph G{
+label="Tabla Hash";
+node[shape=box];
+nC938053683[label="Nombre: William Hodge
+DPI: 9789611590172
+Usuario: Briana
+Direccion: 792 Lefferts Avenue, Bloomington, New Mexico, 7151
+correo: brianahodge@waterbaby.com
+Id_municipio: 12
+Contraseña: $2a$10$Of7oFlvOumFb3Depea3nPOd/iA2Hms9.YT6MDgj1t5Uo0z.I4c3HS"];
+nC798266940[label="Nombre: Francesca Hyde
+DPI: 7920879245361
+Usuario: Olive
+Direccion: 186 Duffield Street, Moquino, Palau, 7127
+correo: olivehyde@waterbaby.com
+Id_municipio: 15
+Contraseña: $2a$10$FyllurBiTZuLf28idQ8gtOk7oWgKvo9Wmn1TIVRMkWq92O5D.sHh6"];
+nC390127049[label="Nombre: Nieves Cabrera
+DPI: 4635574897635
+Usuario: Winnie
+Direccion: 623 Harbor Lane, Gilgo, Colorado, 510
+correo: winniecabrera@waterbaby.com
+Id_municipio: 17
+Contraseña: $2a$10$gSscdLhb2vcfn9sEqcAcOeEsIJmmE7E47XbOdm9Q3sRx80RykOzmG"];
+nC748023706[label="Nombre: Amparo Christian
+DPI: 9092207681372
+Usuario: Concetta
+Direccion: 799 Grattan Street, Manchester, Kentucky, 2699
+correo: concettachristian@waterbaby.com
+Id_municipio: 10
+Contraseña: $2a$10$nCtUs1xFahS2hEfmez2RHeZWPHFR7IFdPIbtCKJq29ptZMjeRKEtW"];
+nC1236158780[label="Nombre: Juan
+DPI: 232
+Usuario: Juan
+Direccion: 231
+correo: juan@gami.com
+Id_municipio: 324
+Contraseña: 123"];
+nC9168754[label="Nombre: Pedro
+DPI: 231
+Usuario: pepe
+Direccion: 232
+correo: pepe
+Id_municipio: 23123
+Contraseña: 2313"];
+
+nC938053683->nC798266940;
+nC798266940->nC390127049;
+nC390127049->nC748023706;
+nC748023706->nC1236158780;
+nC1236158780->nC9168754;
+
+{rank=same;nC938053683->nC798266940;
+nC798266940->nC390127049;
+nC390127049->nC748023706;
+nC748023706->nC1236158780;
+nC1236158780->nC9168754;
+}
+}
