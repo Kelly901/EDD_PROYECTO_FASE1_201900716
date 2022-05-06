@@ -18,7 +18,6 @@ import netscape.javascript.JSObject;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.mindrot.bcrypt.BCrypt;
-
 /**
  *
  * @author herre
@@ -29,12 +28,12 @@ public class CargaMasiva {
     public static Estructuras.TablaHash th = new Estructuras.TablaHash(37);
    public static Lista2 lista2 = new Lista2();
  public static ListaAdyacente lA = new ListaAdyacente();
-    public static String AbrirArchivo() {
+    public static String AbrirArchivo(File file,String ruta) {
 
         Scanner entrada = new Scanner(System.in);
 
         System.out.println("Ingrese la ruta");
-        String direccion = entrada.nextLine();
+        String direccion =ruta;
 
         String cadena = "";
         String texto = "";
@@ -93,13 +92,7 @@ public class CargaMasiva {
         System.out.println("________________________");
         //lista.mostrar();
 
-        Scanner sc = new Scanner(System.in);
 
-        System.out.println("Ingrese la contraseña");
-        String pass = sc.nextLine();
-        lista.getCliente(pass, "veniam");
-
-        System.out.println("_______________________");
 
     }
 
@@ -169,7 +162,6 @@ public class CargaMasiva {
         System.out.println(ob.get("Grafo"));
 
         JSONArray array = new JSONArray(ob.get("Grafo").toString());
-
         for (int i = 0; i < array.length(); i++) {
 
             JSONObject ob2 = new JSONObject(array.get(i).toString());
@@ -187,8 +179,11 @@ public class CargaMasiva {
             System.out.println("vacia");
         }
         
-        Grafica gra= new Grafica();
-        gra.crearGrafo("lugar.jpg", "lugar",gra.grafica1());
+        
+   
+//        Grafica gra= new Grafica();
+//        gra.crearGrafo("grafo.jpg","grafo",gra.grafica1());
+//        gra.crearGrafo("lugar.jpg", "lugar",gra.ListaAdyacente());
 
     }
 

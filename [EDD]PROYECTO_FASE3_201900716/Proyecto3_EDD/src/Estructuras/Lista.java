@@ -38,15 +38,15 @@ public class Lista {
         }
     }
 
-    public String getCliente(String password, String usuario) {
+    public boolean getCliente(String password, String usuario) {
 
         Nodo_lista aux = this.primero;
         while (aux != null) {
 
-            if (BCrypt.checkpw(password, aux.getCliente().getPassword())) {
+            if (BCrypt.checkpw(password, aux.getCliente().getPassword()) && usuario.equals(aux.getCliente().getUsuario())) {
                 System.out.println("It matches");
 
-                return aux.getCliente().getNombre();
+                return true;
 
             }
 //            if (aux.getCliente().getUsuario().equals(usuario) && aux.getCliente().getPassword().equals(password)) {
@@ -58,7 +58,7 @@ public class Lista {
         }
         System.err.println("It does not match");
 
-        return null;
+        return false;
 
     }
 

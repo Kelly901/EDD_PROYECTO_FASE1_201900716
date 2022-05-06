@@ -79,13 +79,19 @@ public class ListaAdyacente {
         while (temp != null) {
 
             Vertice vertice = (Vertice) temp.objeto;
-            String a = "" + vertice.numVertice;
+            String a = "" + vertice.numVertice+"->";
 
             NodoLista2 aux = vertice.arcos.raiz;
             while (aux != null) {
 
                 Arco ar = (Arco) aux.objeto;
-                a += "->" + ar.destino;
+                
+              // a += ar.destino;
+//                System.out.println("_______"+ar.destino);
+                if (aux.siguiente!=null) {
+                     Arco ar2 = (Arco) aux.siguiente.objeto;
+                      a +="->"+ar2.destino;
+                }
                 aux = aux.siguiente;
 
             }
@@ -95,5 +101,7 @@ public class ListaAdyacente {
         }
 
     }
+    
+    
 
 }

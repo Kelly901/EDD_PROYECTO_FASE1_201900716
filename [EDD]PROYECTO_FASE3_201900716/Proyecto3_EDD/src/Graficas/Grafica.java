@@ -118,6 +118,7 @@ public class Grafica {
         NodoLista2 temp = CargaMasiva.lA.dest.raiz;
         String conexion="";
         String nodos = "";
+        String principal="";
         while (temp != null) {
             Vertice vertice = (Vertice) temp.objeto;
             NodoLista2 aux = vertice.arcos.raiz;
@@ -138,4 +139,53 @@ public class Grafica {
         return cadena;
 
     }
+    
+    
+        public String ListaAdyacente() {
+        String cadena = "digraph G{\nlabel=\"Tabla Hash\";\nnode[shape=box];\n";
+       
+        NodoLista2 temp = CargaMasiva.lA.dest.raiz;
+        String conexion="";
+        String nodos = "";
+        String principal="";
+        String principales="";
+        while (temp != null) {
+            Vertice vertice = (Vertice) temp.objeto;
+            NodoLista2 aux = vertice.arcos.raiz;
+          nodos += "nC" + temp.hashCode() + "[label=\""+vertice.numVertice + "\"];\n";
+          principales+="nC"+temp.hashCode()+";";
+            if (temp.siguiente!=null) {
+              principal+="nC"+temp.hashCode()+"->nC"+temp.siguiente.hashCode()+";\n";
+
+            }
+
+            while (aux != null) {
+                Arco arco = (Arco) aux.objeto;
+                
+                nodos += "nd" + aux.hashCode() + "[label=\""+arco.destino + "\"];\n";
+                if (aux==vertice.arcos.raiz) {
+                   conexion+="nC"+temp.hashCode()+"->nd"+aux.hashCode()+";\n";
+  
+                }
+                if (aux.siguiente!=null) {
+                  conexion+="nd"+aux.hashCode()+"->nd"+aux.siguiente.hashCode()+";\n";
+
+                }
+                aux = aux.siguiente;
+            }
+            temp = temp.siguiente;
+        }
+        cadena+=nodos;
+        
+         cadena += "{rank=same;" + principales + "}";
+            System.out.println(principales);
+            cadena+=principal;
+        cadena+=conexion;
+        cadena += "\n}";
+        return cadena;
+
+    }
+    
+    
+    
 }

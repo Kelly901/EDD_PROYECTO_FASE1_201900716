@@ -8,6 +8,8 @@ import Estructuras.Grafo;
 import Estructuras.Lista2;
 import Estructuras.ListaAdyacente;
 import Estructuras.TablaHash;
+import Interfaz.Principal;
+
 
 /**
  *
@@ -19,15 +21,20 @@ public class Proyecto3_EDD {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        
+        Principal pr= new Principal();
+        pr.show();
         // TODO code application logic here
         System.out.println("d");
         //CargaMasiva.leerArchivo_lugares(CargaMasiva.AbrirArchivo());
-      // CargaMasiva.leerArchivo_mensajeros(CargaMasiva.AbrirArchivo());
+        System.out.println(":::::::::::::::::::::");
+    // CargaMasiva.leerArchivo_mensajeros(CargaMasiva.AbrirArchivo());
        
-       
+     
         //double val= 1/37;
         //System.out.println("val: "+val);
-       CargaMasiva.leerArchivo_Grafo(CargaMasiva.AbrirArchivo());
+       //CargaMasiva.leerArchivo_Grafo(CargaMasiva.AbrirArchivo());
         //CargaMasiva.leerArchivo_clientes(CargaMasiva.AbrirArchivo());
 //        System.out.println("hola");
 //TablaHash th= new TablaHash(37);
@@ -52,6 +59,7 @@ public class Proyecto3_EDD {
 //        lA.reccorer(l2);
 //        
 //        lA.mostrar();
+        System.out.println(numeroPrimo(4));
     }
 
     public static int numeroPrimo(int num) {

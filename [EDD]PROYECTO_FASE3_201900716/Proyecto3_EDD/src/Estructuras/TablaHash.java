@@ -42,28 +42,41 @@ public class TablaHash {
             System.out.println(factor_carga < 75.0 && factor_carga >= 0);
 
             for (int i = 0; i < this.tamanio; i++) {
-                int llave = obtenerLlave(dpi);
-                int posicion = funcion_doble_dispersion(llave, i);
+            int llave = obtenerLlave(dpi);
 
-                if (posicion > tamanio) {
-                    posicion -= tamanio;
+            if (llave > tamanio) {
+                llave -= tamanio;
+            }
+            //System.out.println("posicion___ "+posicion);
+            if (tabla[llave] == null) {
+                tabla[llave] = new Datos(dpi, llave);
+                this.n += 1;
+                factor_carga = getFactorCarga();
+                // System.out.println("n+ "+this.n);
+                bander = true;
+             return;
+            } else {
+                int j = 0;
+                int posicion =funcion_doble_dispersion(llave, i);
+
+                if (posicion>tamanio) {
+                    posicion-=tamanio;
                 }
-                //System.out.println("posicion___ "+posicion);
-                if (tabla[posicion] == null) {
+                     //posicion = cuadratica(llave, j);
+                     if (tabla[posicion]==null) {
                     tabla[posicion] = new Datos(dpi, posicion);
-                    this.n += 1;
-                    factor_carga = getFactorCarga();
-                    // System.out.println("n+ "+this.n);
-                    bander = true;
-                    break;
-
-                } else {
-                    if (tabla[posicion].getDpi() == dpi) {
-                        System.out.println("ya existe");
-                    } else {
-                        System.out.println("colicion en la pos " + posicion);
-                    }
+                    this.n+=1;
+                    factor_carga=getFactorCarga();
+                    bander=true;
+                    
+                break;
                 }
+                    
+                    
+                
+//                    insertarHash(dpi);
+
+            }
 
             }
             if (bander == true) {
@@ -79,14 +92,13 @@ public class TablaHash {
 
 //        
         //System.out.println("hash overflow");
-
 //         
 //      
     }
 
     public void Resizing() {
         //Crear un arreglo temporal
-
+System.out.println("risizing");
         Datos auxiliar[] = tabla.clone();
         int tamanio_temp = this.tamanio;
         // System.out.println("____tamaño  _"+tamanio);
@@ -105,30 +117,29 @@ public class TablaHash {
     public void imprimir() {
         System.out.println("__________________-imprimir_______________");
         for (int i = 0; i < tabla.length; i++) {
-            if (tabla[i]!=null) {
-                            System.out.println("llave " + tabla[i].getLlave() + " dpi: " + tabla[i].getDpi());
+            if (tabla[i] != null) {
+                System.out.println("llave " + tabla[i].getLlave() + " dpi: " + tabla[i].getDpi());
 
-            }else{
-                               System.out.println("llave " + i + " dpi: null" );
- 
+            } else {
+                System.out.println("llave " + i + " dpi: null");
+
             }
 
         }
 
         //System.out.println("333333333333333333333");
-    
-}
+    }
 
-public int obtenerLlave(long dpi) {
+    public int obtenerLlave(long dpi) {
 
         return (int) (dpi % this.tamanio);
     }
 
     public double getFactorCarga() {
-        double n1=(double)this.n;
-        double n2=(double)this.tamanio;
-        double val=(n1/n2)*100;
-        System.out.println("________________"+(this.n)+"_____________"+this.tamanio+"__________"+val);
+        double n1 = (double) this.n;
+        double n2 = (double) this.tamanio;
+        double val = (n1 / n2) * 100;
+        System.out.println("________________" + (this.n) + "_____________" + this.tamanio + "__________" + val);
         return val;
 
     }
@@ -143,35 +154,35 @@ public int obtenerLlave(long dpi) {
         return (llv % 7 + 1) * i;
     }
 
-
     public boolean busquedaLlave(int llave) {
 
-        for (int i = 0; i < tabla.length; i++) {
-            if (tabla[i] != null) {
-                if (tabla[i].getLlave() == llave) {
-                    return true;
-                }
-            }
+        if (tabla[llave] != null) {
+            System.out.println("ya existe la llave");
+            return true;
 
         }
+
         return false;
     }
-
 
     public int cuadratica(int key, int i) {
 
         int pos = ((key % 7) + 1) * i;
-        System.out.println("pos " + pos);
-
-        if (this.busquedaLlave(pos)) {
-            i += 1;
-
-            return this.cuadratica(key, i);
-
+        if (pos>this.tamanio) {
+            pos-=tamanio;
         }
+            System.out.println("pos " + pos);
+
+            if (this.busquedaLlave(pos)) {
+                i += 1;
+
+                return this.cuadratica(pos, i);
+
+            
+        } 
+
         return pos;
     }
-
 
     public int numeroPrimo(int num) {
 
