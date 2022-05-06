@@ -9,6 +9,7 @@ import Estructuras.Grafo;
 import Estructuras.Lista;
 import Estructuras.Lista2;
 import Estructuras.ListaAdyacente;
+import Estructuras.Lista_Lugares;
 import Graficas.Grafica;
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,6 +19,7 @@ import netscape.javascript.JSObject;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.mindrot.bcrypt.BCrypt;
+
 /**
  *
  * @author herre
@@ -26,16 +28,18 @@ public class CargaMasiva {
 
     public static Lista lista = new Lista();
     public static Estructuras.TablaHash th = new Estructuras.TablaHash(37);
-   public static Lista2 lista2 = new Lista2();
- public static ListaAdyacente lA = new ListaAdyacente();
- 
- public static int idCliente=0;
-    public static String AbrirArchivo(File file,String ruta) {
+    public static Lista2 lista2 = new Lista2();
+    public static ListaAdyacente lA = new ListaAdyacente();
+    public static Lista_Lugares lista_lugares = new Lista_Lugares();
+
+    public static int idCliente = 0;
+
+    public static String AbrirArchivo(File file, String ruta) {
 
         Scanner entrada = new Scanner(System.in);
 
         System.out.println("Ingrese la ruta");
-        String direccion =ruta;
+        String direccion = ruta;
 
         String cadena = "";
         String texto = "";
@@ -91,14 +95,11 @@ public class CargaMasiva {
             }
 
         }
-        
-        
-                Grafica graf = new Grafica();
-                graf.crearGrafo("Clientes"+String.valueOf(idCliente)+".jpg", "Clientes",graf.clientes());
+
+        Grafica graf = new Grafica();
+        graf.crearGrafo("Clientes" + String.valueOf(idCliente) + ".jpg", "Clientes", graf.clientes());
         System.out.println("________________________");
         //lista.mostrar();
-
-
 
     }
 
@@ -120,7 +121,7 @@ public class CargaMasiva {
 //            System.out.println("genero: "+ob.get("genero"));
 //            System.out.println("direccion: "+ob.get("direccion"));
 
-            th.insertarHash(Long.parseLong(ob.get("dpi").toString()));
+            th.insertarHash(Long.parseLong(ob.get("dpi").toString()),ob.get("nombres").toString(),ob.get("apellidos").toString(),ob.get("tipo_licencia").toString(),ob.get("genero").toString(),ob.get("direccion").toString());
             //  System.out.println(th.factor_carga);
 
         }
@@ -153,9 +154,12 @@ public class CargaMasiva {
             System.out.println("departamento: " + ob2.get("departamento"));
             System.out.println("nombre: " + ob2.get("nombre"));
             System.out.println("sn_sucursal: " + ob2.get("sn_sucursal"));
+            lista_lugares.add(Integer.parseInt(ob2.get("id").toString()), ob2.get("departamento").toString(), ob2.get("nombre").toString(), ob2.get("sn_sucursal").toString());
 
         }
-
+        
+        Grafica graf= new Grafica();
+        graf.crearGrafo("Lugares.jpg", "Lugares", graf.Lugares());
     }
 
     public static void leerArchivo_Grafo(String texto) {
@@ -177,19 +181,17 @@ public class CargaMasiva {
             lista2.insertar(new Grafo(Integer.parseInt(ob2.get("inicio").toString()), Integer.parseInt(ob2.get("final").toString()), Integer.parseInt(ob2.get("peso").toString())));
 
         }
-       
+
         if (lista2.size() != 0) {
             lA.reccorer(lista2);
             lA.mostrar();
         } else {
             System.out.println("vacia");
         }
-        
-        
-   
-        Grafica gra= new Grafica();
-        gra.crearGrafo("grafo.jpg","grafo",gra.grafica1());
-        gra.crearGrafo("listaAd.jpg", "listaAd",gra.ListaAdyacente());
+
+        Grafica gra = new Grafica();
+        gra.crearGrafo("grafo.jpg", "grafo", gra.grafica1());
+        gra.crearGrafo("listaAd.jpg", "listaAd", gra.ListaAdyacente());
 
     }
 

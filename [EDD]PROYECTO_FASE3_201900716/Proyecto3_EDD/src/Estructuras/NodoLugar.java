@@ -8,19 +8,29 @@ package Estructuras;
  *
  * @author herre
  */
-public class Lugar {
+public class NodoLugar {
     
     
     private int id;
     private String departamento;
     private String nombre;
     private String sn_sucursal;
+    private NodoLugar siguiente;
 
-    public Lugar(int id, String departamento, String nombre, String sn_sucursal) {
+    public NodoLugar(int id, String departamento, String nombre, String sn_sucursal) {
         this.id = id;
         this.departamento = departamento;
         this.nombre = nombre;
         this.sn_sucursal = sn_sucursal;
+        this.siguiente=null;
+    }
+
+    public NodoLugar getSiguiente() {
+        return siguiente;
+    }
+
+    public void setSiguiente(NodoLugar siguiente) {
+        this.siguiente = siguiente;
     }
 
     public int getId() {

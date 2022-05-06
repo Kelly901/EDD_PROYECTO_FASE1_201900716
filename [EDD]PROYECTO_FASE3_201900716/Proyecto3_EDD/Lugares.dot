@@ -1,0 +1,20 @@
+digraph G{
+label="Tabla Hash";
+node[shape=box];
+nC838697785[label="Id: 17
+nombre: Amatitlan
+Departamento: Guatemala
+Sucursal: si"];
+nC1638848023[label="Id: 19
+nombre: Zacapa
+Departamento: Zacapa
+Sucursal: si"];
+nC907313937[label="Id: 18
+nombre: San Jose Pinula
+Departamento: Jalapa
+Sucursal: no"];
+
+{rank=same;nC838697785->nC1638848023;
+nC1638848023->nC907313937;
+}
+}

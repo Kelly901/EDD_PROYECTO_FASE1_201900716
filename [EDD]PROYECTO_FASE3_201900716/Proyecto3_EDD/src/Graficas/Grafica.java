@@ -7,6 +7,7 @@ package Graficas;
 import Estructuras.Arco;
 import Estructuras.Datos;
 import Estructuras.NodoLista2;
+import Estructuras.NodoLugar;
 import Estructuras.Nodo_lista;
 import Estructuras.Vertice;
 import java.io.FileWriter;
@@ -69,7 +70,7 @@ public class Grafica {
         Datos tabla[] = CargaMasiva.th.tabla;
         for (int i = 0; i < tabla.length; i++) {
             if (tabla[i] != null) {
-                nodos += "nC" + String.valueOf(i).hashCode() + "[label=\"Key: " + tabla[i].getLlave() + "\nDPI: " + tabla[i].getDpi() + "\"];\n";
+                nodos += "nC" + String.valueOf(i).hashCode() + "[label=\"Key: " + tabla[i].getLlave() + "\nDPI: " + tabla[i].getDpi()+ "\nNombres: " + tabla[i].getNombre() + "\nApellidos: " + tabla[i].getApellido()+ "\nGenero " + tabla[i].getGenero() + "\nDireccion: " + tabla[i].getDireccion() + "\nTipo licencia: " + tabla[i].getTipo_licencia()  + "\"];\n";
 
             } else {
                 nodos += "nC" + String.valueOf(i).hashCode() + "[label=\"Key: " + i + " DPI: null" + "\"];\n";
@@ -114,7 +115,7 @@ public class Grafica {
     }
 
     public String grafica1() {
-        String cadena = "digraph G{\nlabel=\"Tabla Hash\";\n";
+        String cadena = "digraph G{\nlabel=\"Grafo\";\n";
 
         NodoLista2 temp = CargaMasiva.lA.dest.raiz;
         String conexion = "";
@@ -142,7 +143,7 @@ public class Grafica {
     }
 
     public String ListaAdyacente() {
-        String cadena = "digraph G{\nlabel=\"Tabla Hash\";\nnode[shape=box];\n";
+        String cadena = "digraph G{\nlabel=\"Lista adyacente\";\nnode[shape=box];\n";
 
         NodoLista2 temp = CargaMasiva.lA.dest.raiz;
         String conexion = "";
@@ -188,27 +189,27 @@ public class Grafica {
 
     /////////////////////////////clientes
     public String clientes() {
-        String cadena = "digraph G{\nlabel=\"Tabla Hash\";\nnode[shape=box];\n";
+        String cadena = "digraph G{\nlabel=\"Clientes\";\nnode[shape=box];\n";
         String conexion = "";
         String nodos = "";
 
         String principal = "";
-    
+
         Nodo_lista temp = CargaMasiva.lista.primero;
         while (temp != null) {
 
-            nodos += "nC" + temp.hashCode() + "[label=\"Nombre: " +temp.getCliente().getNombre() + "\nDPI: " +temp.getCliente().getDpi() + "\nUsuario: " +temp.getCliente().getUsuario() +"\nDireccion: " +temp.getCliente().getDirección() +"\ncorreo: " +temp.getCliente().getCorreo() +"\nId_municipio: " +temp.getCliente().getId_municipio() + "\nContraseña: " +temp.getCliente().getPassword() +    "\"];\n";
+            nodos += "nC" + temp.hashCode() + "[label=\"Nombre: " + temp.getCliente().getNombre() + "\nDPI: " + temp.getCliente().getDpi() + "\nUsuario: " + temp.getCliente().getUsuario() + "\nDireccion: " + temp.getCliente().getDirección() + "\ncorreo: " + temp.getCliente().getCorreo() + "\nId_municipio: " + temp.getCliente().getId_municipio() + "\nContraseña: " + temp.getCliente().getPassword() + "\"];\n";
 
             if (temp.getSiguiente() != null) {
-                conexion += "nC" +temp.hashCode() + "->nC" + temp.getSiguiente().hashCode() + ";\n";
+                conexion += "nC" + temp.hashCode() + "->nC" + temp.getSiguiente().hashCode() + ";\n";
 
             }
             temp = temp.getSiguiente();
-           
+
         }
 
         cadena += nodos + "\n";
-        cadena += conexion + "\n";
+        //cadena += conexion + "\n";
         cadena += "{rank=same;" + conexion + "}";
         //cadena += GrafoVentanilla();
 
@@ -216,5 +217,35 @@ public class Grafica {
         return cadena;
 
     }
+    //____________________Lugares
 
+    public String Lugares() {
+        String cadena = "digraph G{\nlabel=\"Lugares\";\nnode[shape=box];\n";
+        String conexion = "";
+        String nodos = "";
+
+        String principal = "";
+
+        NodoLugar temp = CargaMasiva.lista_lugares.primero;
+        while (temp != null) {
+
+            nodos += "nC" + temp.hashCode() + "[label=\"Id: " + temp.getId()+ "\nnombre: " + temp.getNombre() + "\nDepartamento: " + temp.getDepartamento() + "\nSucursal: " + temp.getSn_sucursal() +"\"];\n";
+
+            if (temp.getSiguiente() != null) {
+                conexion += "nC" + temp.hashCode() + "->nC" + temp.getSiguiente().hashCode() + ";\n";
+
+            }
+            temp = temp.getSiguiente();
+
+        }
+
+        cadena += nodos + "\n";
+        //cadena += conexion + "\n";
+        cadena += "{rank=same;" + conexion + "}";
+        //cadena += GrafoVentanilla();
+
+        cadena += "\n}";
+        return cadena;
+
+    }
 }

@@ -34,7 +34,7 @@ public class TablaHash {
 
     }
 
-    public void insertarHash(long dpi) {
+    public void insertarHash(long dpi, String nombre, String apellido, String tipo_licencia, String genero, String direccion) {
 
         boolean bander = false;
 
@@ -49,7 +49,7 @@ public class TablaHash {
             }
             //System.out.println("posicion___ "+posicion);
             if (tabla[llave] == null) {
-                tabla[llave] = new Datos(dpi, llave);
+                tabla[llave] = new Datos(dpi, llave,nombre,apellido,tipo_licencia,genero,direccion);
                 this.n += 1;
                 factor_carga = getFactorCarga();
                 // System.out.println("n+ "+this.n);
@@ -64,7 +64,7 @@ public class TablaHash {
                 }
                      //posicion = cuadratica(llave, j);
                      if (tabla[posicion]==null) {
-                    tabla[posicion] = new Datos(dpi, posicion);
+                    tabla[posicion] = new Datos(dpi, posicion,nombre,apellido,tipo_licencia,genero,direccion);
                     this.n+=1;
                     factor_carga=getFactorCarga();
                     bander=true;
@@ -87,7 +87,7 @@ public class TablaHash {
 
             //rizising  
             Resizing();
-            insertarHash(dpi);
+            insertarHash(dpi,nombre,apellido,tipo_licencia,genero,direccion);
         }
 
 //        
@@ -108,7 +108,7 @@ System.out.println("risizing");
         factor_carga = getFactorCarga();
         for (int i = 0; i < tamanio_temp; i++) {
             if (auxiliar[i] != null) {
-                insertarHash(auxiliar[i].getDpi());
+                insertarHash(auxiliar[i].getDpi(),auxiliar[i].getNombre(),auxiliar[i].getApellido(), auxiliar[i].getTipo_licencia(),auxiliar[i].getGenero(),auxiliar[i].getDireccion());
                 // this.tabla[i]=auxiliar[i];
             }
         }

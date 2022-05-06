@@ -46,8 +46,8 @@ public class Visualizar_Estructuras extends javax.swing.JFrame {
     }
      
      
-     public void mostrarLugares(String id) {
-        ImageIcon img = new ImageIcon( new ImageIcon("Tabla"  + ".jpg").getImage());
+     public void mostrarLugares() {
+        ImageIcon img = new ImageIcon( new ImageIcon("Lugares"  + ".jpg").getImage());
         
         JLabel label = new JLabel();
         
@@ -178,7 +178,7 @@ public class Visualizar_Estructuras extends javax.swing.JFrame {
             System.out.println("Tabla Hash");
             mostrarTabla("1");
         }else if (jComboBox1.getSelectedItem()=="Lugares") {
-            
+            mostrarLugares();
         }else if (jComboBox1.getSelectedItem()=="Lista Adyacente") {
             mostrarListaAdyacente("ED");
             
